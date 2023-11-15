@@ -7,23 +7,32 @@ import adminRoutes from "./src/routes/adminRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
 
 dotenv.config();
-
 const app = express();
 const root = path.resolve();
-
 const PORT = process.env.PORT;
 
+//template engine
+app.set ('view engine', 'pug');
+
+//Parsers
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//Static files
 app.use(express.static("public"));
 
+//Routes
 app.use("/", mainRoutes);
 app.use("/", shopRoutes);
 app.use("/", adminRoutes);
 app.use("/", authRoutes);
 
-// app.get("/home", (req, res) => {
-//     res.sendFile(path.join(root, "public", "index.html"));
-// });
+//404
+app.use((req, res) => {
+    res.status(404).render("404");
+});
 
+//Start server
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
