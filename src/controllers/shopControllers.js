@@ -1,12 +1,16 @@
+import path from "path";
+
+const root = path.resolve();
+
 export class shopController {
     constructor() {}
 
     shopGet(req, res) {
-        res.send("Route for Shop View");
+        res.sendFile(path.join(root, "src", "views", "shop", "shop.html"));
     }
 
     itemIdGet(req, res) {
-        res.send("Route for find and retrieve a product from and ID");
+        res.sendFile(path.join(root, "src", "views", "shop", "item.html"));
     }
 
     itemIdAddPost(req, res) {
@@ -14,7 +18,7 @@ export class shopController {
     }
 
     shopCartGet(req, res) {
-        res.send("Route for Cart View");
+        res.sendFile(path.join(root, "src", "views", "shop", "cart.html"));
     }
 
     shopCartPost(req, res) {

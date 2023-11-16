@@ -1,12 +1,15 @@
+import path from "path";
+
+const root = path.resolve();
 export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        res.send("Route for Admin View");
+        res.sendFile(path.join(root, "src", "views", "admin", "admin.html"));
     }
 
     adminCreateGet(req, res) {
-        res.send("Route for create item in Admin View");
+        res.sendFile(path.join(root, "src", "views", "admin", "create.html"));
     }
 
     adminCreatePost(req, res) {
@@ -14,7 +17,7 @@ export class adminController {
     }
 
     adminEditIdGet(req, res) {
-        res.send("Route for edit/:id get");
+        res.sendFile(path.join(root, "src", "views", "admin", "edit.html"));
     }
 
     adminEditIdPut(req, res) {

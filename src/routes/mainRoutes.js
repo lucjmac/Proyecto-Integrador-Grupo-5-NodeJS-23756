@@ -14,3 +14,8 @@ router
     .get("/faqs", mainControllers.faqsGet);
 
 export default router;
+
+
+// app.get("/home", (req, res) => {
+//     res.sendFile(path.join(root, "public", "index.html"));
+// });

@@ -1,8 +1,11 @@
+import path from "path";
+
+const root = path.resolve();
 export class authController {
     constructor() {}
 
     authLoginGet(req, res) {
-        res.send("Route for Login View");
+        res.sendFile(path.join(root, "src", "views", "admin", "login.html"));
     }
 
     authLoginPost(req, res) {
@@ -10,7 +13,7 @@ export class authController {
     }
 
     authRegisterGet(req, res) {
-        res.send("Route for Resgiter View");
+        res.sendFile(path.join(root, "src", "views", "admin", "register.html"));
     }
 
     authRegisterPost(req, res) {
