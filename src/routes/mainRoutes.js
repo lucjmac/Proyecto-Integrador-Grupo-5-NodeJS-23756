@@ -5,6 +5,8 @@ const router = express.Router();
 const mainControllers = new mainController();
 
 router
+    .get("/", mainControllers.homeGet)
+
     .get("/home", mainControllers.homeGet)
 
     .get("/contact", mainControllers.contactGet)
