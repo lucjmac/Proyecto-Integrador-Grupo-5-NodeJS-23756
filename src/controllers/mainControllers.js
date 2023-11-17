@@ -1,12 +1,31 @@
 import path from "path";
+import fs from "fs";
+import { renderHeader, renderFooter } from "../services/headerFooter.js";
 
 const root = path.resolve();
+
 export class mainController {
     constructor() {}
 
-    homeGet(req, res){
-            res.sendFile(path.join(root, "src", "views", "index.html"));
-            };
+    // homeGet(req, res) {
+    //     res.sendFile(path.join(root, "src", "views", "index.html"));
+    // }
+    
+    homeGet(req, res) {
+        const indexFilePath = path.join(root, "src", "views", "index.html");
+        const headerContent = renderHeader();
+        const footerContent = renderFooter();
+
+        fs.readFile(indexFilePath, "utf8", (err, data) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send("Error interno del servidor");
+            }
+
+            const content = headerContent + data + footerContent;
+            res.send(content);
+        });
+    }
     
 
     contactGet(req, res) {
