@@ -1,5 +1,5 @@
 import express from "express";
-import path from "path";
+import path, { resolve } from "path";
 import dotenv from "dotenv";
 import mainRoutes from "./src/routes/mainRoutes.js";
 import shopRoutes from "./src/routes/shopRoutes.js";
@@ -13,6 +13,7 @@ const PORT = process.env.PORT;
 
 //template engine
 app.set ('view engine', 'pug');
+app.set('views', path.join(resolve(), 'src', 'views'));
 
 //Parsers
 app.use(express.json());
@@ -26,11 +27,6 @@ app.use("/", mainRoutes);
 app.use("/", shopRoutes);
 app.use("/", adminRoutes);
 app.use("/", authRoutes);
-
-//404
-// app.use((req, res) => {
-//     res.status(404).render("404");
-// });
 
 //Start server
 app.listen(PORT, () => {
