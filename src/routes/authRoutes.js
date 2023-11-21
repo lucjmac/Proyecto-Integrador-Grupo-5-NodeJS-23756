@@ -5,14 +5,16 @@ const router = express.Router();
 const authControllers = new authController();
 
 router
-    .get("/auth/login", authControllers.authLoginGet)
+    .get("/login", authControllers.authLoginGet)
 
-    .post("/auth/login", authControllers.authLoginPost)
+    .post("/login", authControllers.authLoginPost)
 
-    .get("/auth/register", authControllers.authRegisterGet)
 
-    .post("/auth/register", authControllers.authRegisterPost)
+    .get("/register", authControllers.authRegisterGet)
 
-    .get("/auth/logout", authControllers.authLogoutGet);
+    .post("/register", authControllers.authRegisterPost)
+    
+
+    .get("/logout", authControllers.authLogoutGet);
 
 export default router;

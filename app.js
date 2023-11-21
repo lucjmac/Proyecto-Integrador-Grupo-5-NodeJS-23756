@@ -1,5 +1,5 @@
 import express from "express";
-import path, { resolve } from "path";
+import path from "path";
 import dotenv from "dotenv";
 import mainRoutes from "./src/routes/mainRoutes.js";
 import shopRoutes from "./src/routes/shopRoutes.js";
@@ -12,21 +12,24 @@ const root = path.resolve();
 const PORT = process.env.PORT;
 
 //template engine
-app.set ('view engine', 'pug');
-app.set('views', path.join(resolve(), 'src', 'views'));
+app
+    .set ('view engine', 'pug')
+    .set('views', path.join(root, 'src', 'views'));
 
 //Parsers
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app
+    .use(express.json())
+    .use(express.urlencoded({ extended: true }));
 
 //Static files
 app.use(express.static("public"));
 
 //Routes
-app.use("/", mainRoutes);
-app.use("/", shopRoutes);
-app.use("/", adminRoutes);
-app.use("/", authRoutes);
+app
+    .use("/", mainRoutes)
+    .use("/shop", shopRoutes)
+    .use("/admin", adminRoutes)
+    .use("/auth", authRoutes);
 
 //Start server
 app.listen(PORT, () => {

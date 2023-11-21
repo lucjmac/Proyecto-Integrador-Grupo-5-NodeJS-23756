@@ -1,11 +1,26 @@
 import path from "path";
+import fs from "fs";
+import { renderPage } from "../services/headerFooter.js";
 
-const root = path.resolve();
+const viewsPath = path.resolve() + "/src/views/admin";
+
 export class authController {
     constructor() {}
 
     authLoginGet(req, res) {
-        res.sendFile(path.join(root, "src", "views", "admin", "login.html"));
+        const filePath = path.join(viewsPath, "login.html");
+        const headerContent = renderPage("headerAdmin");
+        const footerContent = renderPage("footerAdmin");
+
+        fs.readFile(filePath, "utf8", (err, data) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send("Error interno del servidor");
+            }
+
+            const content = headerContent + data + footerContent;
+            res.send(content);
+        });
     }
 
     authLoginPost(req, res) {
@@ -13,7 +28,19 @@ export class authController {
     }
 
     authRegisterGet(req, res) {
-        res.sendFile(path.join(root, "src", "views", "admin", "register.html"));
+        const filePath = path.join(viewsPath, "register.html");
+        const headerContent = renderPage("headerAdmin");
+        const footerContent = renderPage("footerAdmin");
+
+        fs.readFile(filePath, "utf8", (err, data) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).send("Error interno del servidor");
+            }
+
+            const content = headerContent + data + footerContent;
+            res.send(content);
+        });
     }
 
     authRegisterPost(req, res) {
