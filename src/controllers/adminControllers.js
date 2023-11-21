@@ -1,6 +1,5 @@
 import path from "path";
-import fs from "fs";
-import { renderPage } from "../services/headerFooter.js";
+import { sendRenderAdmin } from "../helpers/sendRenderAdmin.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -9,34 +8,12 @@ export class adminController {
 
     adminGet(req, res) {
         const filePath = path.join(viewsPath, "admin.html");
-        const headerContent = renderPage("headerAdmin");
-        const footerContent = renderPage("footerAdmin");
-
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send("Error interno del servidor");
-            }
-
-            const content = headerContent + data + footerContent;
-            res.send(content);
-        });
+        sendRenderAdmin(filePath, req, res);
     }
 
     adminCreateGet(req, res) {
         const filePath = path.join(viewsPath, "create.html");
-        const headerContent = renderPage("headerAdmin");
-        const footerContent = renderPage("footerAdmin");
-
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send("Error interno del servidor");
-            }
-
-            const content = headerContent + data + footerContent;
-            res.send(content);
-        });
+        sendRenderAdmin(filePath, req, res);
     }
 
     adminCreatePost(req, res) {
@@ -45,19 +22,7 @@ export class adminController {
 
     adminEditIdGet(req, res) {
         const filePath = path.join(viewsPath, "edit.html");
-
-        const headerContent = renderPage("headerAdmin");
-        const footerContent = renderPage("footerAdmin");
-
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send("Error interno del servidor");
-            }
-
-            const content = headerContent + data + footerContent;
-            res.send(content);
-        });
+        sendRenderAdmin(filePath, req, res);
     }
 
     adminEditIdPut(req, res) {

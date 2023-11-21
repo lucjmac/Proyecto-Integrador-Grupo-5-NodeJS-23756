@@ -1,6 +1,5 @@
 import path from "path";
-import fs from "fs";
-import { renderPage } from "../services/headerFooter.js";
+import { sendRenderIndexShop } from "../helpers/sendRenderIndexShop.js";
 
 const viewsPath = path.resolve() + "/src/views";
 
@@ -9,34 +8,12 @@ export class mainController {
 
     homeGet(req, res) {
         const filePath = path.join(viewsPath, "index.html");
-        const headerContent = renderPage("headerIndexShop");
-        const footerContent = renderPage("footerIndexShop");
-
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send("Error interno del servidor");
-            }
-
-            const content = headerContent + data + footerContent;
-            res.send(content);
-        });
+        sendRenderIndexShop(filePath, req, res);
     }
 
     contactGet(req, res) {
         const filePath = path.join(viewsPath, "shop", "contact.html");
-        const headerContent = renderPage("headerIndexShop");
-        const footerContent = renderPage("footerIndexShop");
-
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send("Error interno del servidor");
-            }
-
-            const content = headerContent + data + footerContent;
-            res.send(content);
-        });
+        sendRenderIndexShop(filePath, req, res);
     }
 
     aboutGet(req, res) {

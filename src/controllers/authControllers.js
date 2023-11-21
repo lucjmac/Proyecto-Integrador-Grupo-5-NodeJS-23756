@@ -1,6 +1,5 @@
 import path from "path";
-import fs from "fs";
-import { renderPage } from "../services/headerFooter.js";
+import { sendRenderAdmin } from "../helpers/sendRenderAdmin.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -9,18 +8,7 @@ export class authController {
 
     authLoginGet(req, res) {
         const filePath = path.join(viewsPath, "login.html");
-        const headerContent = renderPage("headerAdmin");
-        const footerContent = renderPage("footerAdmin");
-
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send("Error interno del servidor");
-            }
-
-            const content = headerContent + data + footerContent;
-            res.send(content);
-        });
+        sendRenderAdmin(filePath, req, res);
     }
 
     authLoginPost(req, res) {
@@ -29,18 +17,7 @@ export class authController {
 
     authRegisterGet(req, res) {
         const filePath = path.join(viewsPath, "register.html");
-        const headerContent = renderPage("headerAdmin");
-        const footerContent = renderPage("footerAdmin");
-
-        fs.readFile(filePath, "utf8", (err, data) => {
-            if (err) {
-                console.error(err);
-                return res.status(500).send("Error interno del servidor");
-            }
-
-            const content = headerContent + data + footerContent;
-            res.send(content);
-        });
+        sendRenderAdmin(filePath, req, res);
     }
 
     authRegisterPost(req, res) {
