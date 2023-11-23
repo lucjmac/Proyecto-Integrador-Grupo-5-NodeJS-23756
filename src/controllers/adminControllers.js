@@ -1,5 +1,5 @@
 import path from "path";
-import { sendRenderAdmin } from "../helpers/sendRenderAdmin.js";
+import { renderAdmin } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -8,12 +8,12 @@ export class adminController {
 
     adminGet(req, res) {
         const filePath = path.join(viewsPath, "admin.html");
-        sendRenderAdmin(filePath, req, res);
+        renderAdmin(filePath, req, res);
     }
 
     adminCreateGet(req, res) {
         const filePath = path.join(viewsPath, "create.html");
-        sendRenderAdmin(filePath, req, res);
+        renderAdmin(filePath, req, res);
     }
 
     adminCreatePost(req, res) {
@@ -22,7 +22,7 @@ export class adminController {
 
     adminEditIdGet(req, res) {
         const filePath = path.join(viewsPath, "edit.html");
-        sendRenderAdmin(filePath, req, res);
+        renderAdmin(filePath, req, res);
     }
 
     adminEditIdPut(req, res) {

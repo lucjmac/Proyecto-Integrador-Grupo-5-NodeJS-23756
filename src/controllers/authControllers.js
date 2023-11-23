@@ -1,5 +1,5 @@
 import path from "path";
-import { sendRenderAdmin } from "../helpers/sendRenderAdmin.js";
+import { renderAdmin } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -8,7 +8,7 @@ export class authController {
 
     authLoginGet(req, res) {
         const filePath = path.join(viewsPath, "login.html");
-        sendRenderAdmin(filePath, req, res);
+        renderAdmin(filePath, req, res);
     }
 
     authLoginPost(req, res) {
@@ -17,7 +17,7 @@ export class authController {
 
     authRegisterGet(req, res) {
         const filePath = path.join(viewsPath, "register.html");
-        sendRenderAdmin(filePath, req, res);
+        renderAdmin(filePath, req, res);
     }
 
     authRegisterPost(req, res) {

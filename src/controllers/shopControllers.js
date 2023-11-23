@@ -1,5 +1,5 @@
 import path from "path";
-import { sendRenderIndexShop } from "../helpers/sendRenderIndexShop.js";
+import { renderIndexShop } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views/shop";
 
@@ -8,12 +8,12 @@ export class shopController {
 
     shopGet(req, res) {
         const filePath = path.join(viewsPath, "shop.html");
-        sendRenderIndexShop(filePath, req, res);
+        renderIndexShop(filePath, req, res);
     }
 
     itemIdGet(req, res) {
         const filePath = path.join(viewsPath, "item.html");
-        sendRenderIndexShop(filePath, req, res);
+        renderIndexShop(filePath, req, res);
     }
 
     itemIdAddPost(req, res) {
@@ -22,7 +22,7 @@ export class shopController {
 
     shopCartGet(req, res) {
         const filePath = path.join(viewsPath, "cart.html");
-        sendRenderIndexShop(filePath, req, res);
+        renderIndexShop(filePath, req, res);
     }
 
     shopCartPost(req, res) {

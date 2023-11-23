@@ -1,5 +1,5 @@
 import path from "path";
-import { sendRenderIndexShop } from "../helpers/sendRenderIndexShop.js";
+import { renderIndexShop } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views";
 
@@ -8,12 +8,12 @@ export class mainController {
 
     homeGet(req, res) {
         const filePath = path.join(viewsPath, "index.html");
-        sendRenderIndexShop(filePath, req, res);
+        renderIndexShop(filePath, req, res);
     }
 
     contactGet(req, res) {
         const filePath = path.join(viewsPath, "shop", "contact.html");
-        sendRenderIndexShop(filePath, req, res);
+        renderIndexShop(filePath, req, res);
     }
 
     aboutGet(req, res) {
