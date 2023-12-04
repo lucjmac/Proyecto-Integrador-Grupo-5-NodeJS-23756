@@ -13,7 +13,7 @@ const PORT = process.env.PORT;
 
 //template engine
 app
-    .set ('view engine', 'pug')
+    .set ('view engine', 'ejs')
     .set('views', path.join(root, 'src', 'views'));
 
 //Parsers

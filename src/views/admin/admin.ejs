@@ -4,19 +4,19 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Admin | Funkoshop</title>
-        <link href="../../assets/css/style.css" rel="stylesheet" />
-        <link href="../../assets/css/style-admin.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="../../assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link href="/assets/css/style.css" rel="stylesheet" />
+        <link href="/assets/css/style-admin.css" rel="stylesheet" />
+        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
     </head>
     <body>
-        <!--Header generado con pug-->
+        <%- include('../partials/hAdm') %>
         <!-- Inicio Main -->
         <main>
             <article class="search container">
                 <label class="search_content" for="search_input">
                     <a class="search_link" href="#search_input">
                         <img
-                            src="../../assets/img/icons/search_icon.svg"
+                            src="/assets/img/icons/search_icon.svg"
                             alt="Search Icon"
                         />
                     </a>
@@ -34,9 +34,9 @@
                     <h1 class="list_title">LISTADO DE PRODUCTOS</h1>
                     <div class="list-add">
                         <p class="list-add_text">AGREGAR</p>
-                        <a class="list-add_link" href="./create.html">
+                        <a class="list-add_link" href="/admin/create">
                             <img
-                                src="../../assets/img/icons/plus-icon.svg"
+                                src="/assets/img/icons/plus-icon.svg"
                                 alt="Plus Icon"
                             />
                         </a>
@@ -58,9 +58,9 @@
                         <div class="list-item_text">Baby Yoda Blueball</div>
                         <div class="list-item_text">STAR WARS</div>
                         <div class="list-item_text">
-                            <a class="edit_link" href="./edit.html">
+                            <a class="edit_link" href="/admin/edit/1">
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -72,7 +72,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -84,9 +84,9 @@
                         <div class="list-item_text">Boba Fett Fighter</div>
                         <div class="list-item_text">STAR WARS</div>
                         <div class="list-item_text">
-                            <a class="edit_link" href="./edit.html">
+                            <a class="edit_link" href="/admin/edit/1">
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -98,7 +98,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -112,9 +112,9 @@
                         </div>
                         <div class="list-item_text">STAR WARS</div>
                         <div class="list-item_text">
-                            <a class="edit_link" href="./edit.html">
+                            <a class="edit_link" href="/admin/edit/1">
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -126,7 +126,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -140,9 +140,9 @@
                         </div>
                         <div class="list-item_text">STAR WARS</div>
                         <div class="list-item_text">
-                            <a class="edit_link" href="./edit.html">
+                            <a class="edit_link" href="/admin/edit/1">
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -154,7 +154,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -166,9 +166,9 @@
                         <div class="list-item_text">Charmander Smiley</div>
                         <div class="list-item_text">POKEMON</div>
                         <div class="list-item_text">
-                            <a class="edit_link" href="./edit.html">
+                            <a class="edit_link" href="/admin/edit/1">
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -180,7 +180,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -192,9 +192,9 @@
                         <div class="list-item_text">Dragonite Hi!</div>
                         <div class="list-item_text">POKEMON</div>
                         <div class="list-item_text">
-                            <a class="edit_link" href="./edit.html">
+                            <a class="edit_link" href="/admin/edit/1">
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -206,7 +206,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -221,10 +221,10 @@
                             <a
                                 class="edit_link"
                                 class="edit_link"
-                                href="./edit.html"
+                                href="/admin/edit/1"
                             >
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -236,7 +236,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -251,10 +251,10 @@
                             <a
                                 class="edit_link"
                                 class="edit_link"
-                                href="./edit.html"
+                                href="/admin/edit/1"
                             >
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -266,7 +266,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -281,10 +281,10 @@
                             <a
                                 class="edit_link"
                                 class="edit_link"
-                                href="./edit.html"
+                                href="/admin/edit/1"
                             >
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -296,7 +296,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -311,10 +311,10 @@
                             <a
                                 class="edit_link"
                                 class="edit_link"
-                                href="./edit.html"
+                                href="/admin/edit/1"
                             >
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -326,7 +326,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -341,10 +341,10 @@
                             <a
                                 class="edit_link"
                                 class="edit_link"
-                                href="./edit.html"
+                                href="/admin/edit/1"
                             >
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -356,7 +356,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -373,10 +373,10 @@
                             <a
                                 class="edit_link"
                                 class="edit_link"
-                                href="./edit.html"
+                                href="/admin/edit/1"
                             >
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -388,7 +388,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -403,10 +403,10 @@
                             <a
                                 class="edit_link"
                                 class="edit_link"
-                                href="./edit.html"
+                                href="/edit"
                             >
                                 <img
-                                    src="../../assets/img/icons/edit_pencil.svg"
+                                    src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
                                 />
                             </a>
@@ -418,7 +418,7 @@
                                 onclick=""
                             >
                                 <img
-                                    src="../../assets/img/icons/delete_trash.svg"
+                                    src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
                                 />
                             </button>
@@ -429,7 +429,8 @@
             </section>
         </main>
         <!-- Fin Main -->
-        <!--Footer generado con pug-->
+
+        <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     </body>
 </html>

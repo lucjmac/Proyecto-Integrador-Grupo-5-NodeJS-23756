@@ -1,9 +1,9 @@
 import fs from "fs";
-import { pugRender } from "../helpers/pugHelper.js";
+import { ejsRender } from "../helpers/ejsHelper.js";
 
 export const renderContent = (filePath, header, footer, req, res) => {
-    const headerContent = pugRender(header);
-    const footerContent = pugRender(footer);
+    const headerContent = ejsRender(header);
+    const footerContent = ejsRender(footer);
 
     fs.readFile(filePath, "utf8", (err, data) => {
         if (err) {
@@ -21,5 +21,5 @@ export const renderAdmin = (filePath, req, res) => {
 };
 
 export const renderIndexShop = (filePath, req, res) => {
-    renderContent(filePath, "headerIndexShop", "footerIndexShop", req, res);
+    renderContent(filePath, "hShop", "fShop", req, res);
 };

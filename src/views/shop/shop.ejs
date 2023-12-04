@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | Funkoshop</title>
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/style-shop.css" rel="stylesheet" />
+    <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
+  </head>
+  <body>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop | Funkoshop</title>
-  <link href="../../assets/css/style.css" rel="stylesheet" />
-  <link href="../../assets/css/style-shop.css" rel="stylesheet" />
-  <link rel="shorcut icon" href="../../assets/img/branding/isotype.svg" type="image/x-icon" />
-</head>
+    <%- include('../partials/hShop') %>
 
-<body>
-  <!--Header generado con pug-->
-  <!--Inicio Main-->
+      <!--Inicio Main-->
   <main>
     <!--Inicio Aside-->
     <aside>
@@ -84,7 +84,7 @@
 
           <div class="card-item_link">
             <picture class="card-item_cover">
-              <img src="../../assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
+              <img src="/assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
             </picture>
           </div>
           <div class="card-item_content">
@@ -104,7 +104,7 @@
 
             <div class="card-image">
               <picture class="card-item_cover">
-                <img src="../../assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
+                <img src="/assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
               </picture>
             </div>
             <div class="card-item_content">
@@ -124,7 +124,7 @@
 
               <div class="card-image">
                 <picture class="card-item_cover">
-                  <img src="../../assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
+                  <img src="/assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
                 </picture>
               </div>
               <div class="card-item_content">
@@ -145,7 +145,7 @@
     
               <div class="card-item_link">
                 <picture class="card-item_cover">
-                  <img src="../../assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
+                  <img src="/assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
                 </picture>
               </div>
               <div class="card-item_content">
@@ -165,7 +165,7 @@
     
                 <div class="card-image">
                   <picture class="card-item_cover">
-                    <img src="../../assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
+                    <img src="/assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
                   </picture>
                 </div>
                 <div class="card-item_content">
@@ -185,7 +185,7 @@
     
                   <div class="card-image">
                     <picture class="card-item_cover">
-                      <img src="../../assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
+                      <img src="/assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
                     </picture>
                   </div>
                   <div class="card-item_content">
@@ -207,7 +207,7 @@
         
                   <div class="card-item_link">
                     <picture class="card-item_cover">
-                      <img src="../../assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
+                      <img src="/assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
                     </picture>
                   </div>
                   <div class="card-item_content">
@@ -227,7 +227,7 @@
         
                     <div class="card-image">
                       <picture class="card-item_cover">
-                        <img src="../../assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
+                        <img src="/assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
                       </picture>
                     </div>
                     <div class="card-item_content">
@@ -247,7 +247,7 @@
         
                       <div class="card-image">
                         <picture class="card-item_cover">
-                          <img src="../../assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
+                          <img src="/assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
                         </picture>
                       </div>
                       <div class="card-item_content">
@@ -259,12 +259,7 @@
                         </div>
                       </div>
                     </div>
-        
-
-
-
                 <!--Loops otras cards! ...-->
-
           </div>
           </div>
         </div>
@@ -285,7 +280,13 @@
   </div>
 
   <!--Fin Main-->
-  <!--Footer generado con pug-->
-</body>
 
+
+    <%- include('../partials/fShop') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/core.js"></script>
+  </body>
 </html>

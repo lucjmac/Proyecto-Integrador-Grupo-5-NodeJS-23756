@@ -1,5 +1,5 @@
 import path from "path";
-import { renderAdmin } from "../Services/renderPage.js";
+//import { renderAdmin } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -7,13 +7,11 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        const filePath = path.join(viewsPath, "admin.html");
-        renderAdmin(filePath, req, res);
+        res.render(path.join(viewsPath, "admin.ejs"), {});
     }
 
     adminCreateGet(req, res) {
-        const filePath = path.join(viewsPath, "create.html");
-        renderAdmin(filePath, req, res);
+        res.render(path.join(viewsPath, "create.ejs"), {});
     }
 
     adminCreatePost(req, res) {
@@ -21,8 +19,8 @@ export class adminController {
     }
 
     adminEditIdGet(req, res) {
-        const filePath = path.join(viewsPath, "edit.html");
-        renderAdmin(filePath, req, res);
+        //T0D0 BUSCAR POR ID
+        res.render(path.join(viewsPath, "edit.ejs"), {});
     }
 
     adminEditIdPut(req, res) {

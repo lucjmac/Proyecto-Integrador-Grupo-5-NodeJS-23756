@@ -4,13 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Edit | Funkoshop</title>
-        <link href="../../assets/css/style.css" rel="stylesheet" />
-        <link href="../../assets/css/style-edit.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="../../assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link href="/assets/css/style.css" rel="stylesheet" />
+        <link href="/assets/css/style-edit.css" rel="stylesheet" />
+        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
     </head>
-
     <body>
-        <!--Header generado con pug-->
+        <%- include('../partials/hAdm') %>
         <!-- Inicio Main -->
         <main>
             <div class="title-edit">EDITAR ITEM</div>
@@ -179,7 +178,12 @@
                 </div>
             </form>
         </main>
-        <!-- Fin Main -->
-        <!--Footer generado con pug-->
+
+
+
+         <!-- Fin Main -->
+
+        <%- include('../partials/fAdm') %>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     </body>
 </html>
