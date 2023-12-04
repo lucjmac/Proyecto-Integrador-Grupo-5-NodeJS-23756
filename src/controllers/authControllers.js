@@ -13,7 +13,6 @@ export class authController {
         res.render(path.join(viewsPath, "register.ejs"), {});
     }
 
-
     authLoginPost(req, res) {
         res.send("Route for auth/login POST");
     }

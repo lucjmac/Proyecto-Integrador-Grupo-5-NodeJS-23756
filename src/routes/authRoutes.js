@@ -7,8 +7,10 @@ const authControllers = new authController();
 router
     .get("/login", authControllers.authLoginGet)
     .post("/login", authControllers.authLoginPost)
+
     .get("/register", authControllers.authRegisterGet)
     .post("/register", authControllers.authRegisterPost)
+
     .get("/logout", authControllers.authLogoutGet);
 
 export default router;

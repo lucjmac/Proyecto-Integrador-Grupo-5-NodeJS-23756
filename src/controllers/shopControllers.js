@@ -3,7 +3,6 @@ import path from "path";
 const viewsPath = path.resolve() + "/src/views/shop";
 import { sliderItems } from "../data/sliderItems.js";
 
-
 export class shopController {
     constructor() {}
 
@@ -20,7 +19,6 @@ export class shopController {
     shopCartGet(req, res) {
         res.render(path.join(viewsPath, "cart.ejs"), {});
     }
-
 
     itemIdAddPost(req, res) {
         res.send("Route for add the current item to the shop cart ");

@@ -1,5 +1,5 @@
 import path from "path";
-import { productList } from "../data/productList.js"; 
+import { productList } from "../data/productList.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 

@@ -69,11 +69,3 @@ export const productList = [
 productList.forEach((product, index) => {
     product.id = (index + 1).toString();
 });
-
-// O es mejor utilizar .map?
-// .map((product, index) => {
-//   return {
-//     id: (index + 1).toString(),
-//     ...product
-//   };
-// });
