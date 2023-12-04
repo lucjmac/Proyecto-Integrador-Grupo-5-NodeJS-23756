@@ -1,5 +1,4 @@
 import path from "path";
-//import { renderAdmin } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 

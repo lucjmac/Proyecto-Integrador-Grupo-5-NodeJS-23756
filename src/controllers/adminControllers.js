@@ -1,5 +1,5 @@
 import path from "path";
-//import { renderAdmin } from "../Services/renderPage.js";
+import { productList } from "../data/productList.js"; 
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -7,7 +7,9 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        res.render(path.join(viewsPath, "admin.ejs"), {});
+        res.render(path.join(viewsPath, "admin.ejs"), {
+            productList: productList,
+        });
     }
 
     adminCreateGet(req, res) {

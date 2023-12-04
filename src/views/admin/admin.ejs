@@ -9,6 +9,7 @@
         <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
     </head>
     <body>
+        <!-- Header -->
         <%- include('../partials/hAdm') %>
         <!-- Inicio Main -->
         <main>
@@ -44,21 +45,14 @@
                 </article>
                 <!-- Inicio Lista de Productos -->
                 <article class="list_item">
+                    <% productList.forEach((product) => { %>
                     <div class="list-item_content">
-                        <div class="list-item_text">ID</div>
-                        <div class="list-item_text">Código</div>
-                        <div class="list-item_text">Nombre del Producto</div>
-                        <div class="list-item_text">Categoria</div>
-                        <div class="list-item_text"></div>
-                        <div class="list-item_text"></div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">1</div>
-                        <div class="list-item_text">STW001001</div>
-                        <div class="list-item_text">Baby Yoda Blueball</div>
-                        <div class="list-item_text">STAR WARS</div>
+                        <div class="list-item_text"><%= product.id %></div>
+                        <div class="list-item_text"><%= product.code %></div>
+                        <div class="list-item_text"><%= product.name %></div>
+                        <div class="list-item_text"><%= product.collection %></div>
                         <div class="list-item_text">
-                            <a class="edit_link" href="/admin/edit/1">
+                            <a class="edit_link" href="/admin/edit/id:">
                                 <img
                                     src="/assets/img/icons/edit_pencil.svg"
                                     alt="Edit Pencil Icon"
@@ -66,370 +60,21 @@
                             </a>
                         </div>
                         <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
+                            <a class="delete_link" href="#">
                                 <img
                                     src="/assets/img/icons/delete_trash.svg"
                                     alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">2</div>
-                        <div class="list-item_text">STW001002</div>
-                        <div class="list-item_text">Boba Fett Fighter</div>
-                        <div class="list-item_text">STAR WARS</div>
-                        <div class="list-item_text">
-                            <a class="edit_link" href="/admin/edit/1">
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
                                 />
                             </a>
                         </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
                     </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">3</div>
-                        <div class="list-item_text">STW001003</div>
-                        <div class="list-item_text">
-                            Luke Skylwalker & Grogu
-                        </div>
-                        <div class="list-item_text">STAR WARS</div>
-                        <div class="list-item_text">
-                            <a class="edit_link" href="/admin/edit/1">
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">4</div>
-                        <div class="list-item_text">STW001004</div>
-                        <div class="list-item_text">
-                            Stormtrooper Lightsaber
-                        </div>
-                        <div class="list-item_text">STAR WARS</div>
-                        <div class="list-item_text">
-                            <a class="edit_link" href="/admin/edit/1">
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">5</div>
-                        <div class="list-item_text">PKM001001</div>
-                        <div class="list-item_text">Charmander Smiley</div>
-                        <div class="list-item_text">POKEMON</div>
-                        <div class="list-item_text">
-                            <a class="edit_link" href="/admin/edit/1">
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">6</div>
-                        <div class="list-item_text">PKM001002</div>
-                        <div class="list-item_text">Dragonite Hi!</div>
-                        <div class="list-item_text">POKEMON</div>
-                        <div class="list-item_text">
-                            <a class="edit_link" href="/admin/edit/1">
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">7</div>
-                        <div class="list-item_text">PKM001003</div>
-                        <div class="list-item_text">Pidgeotto Flying</div>
-                        <div class="list-item_text">POKEMON</div>
-                        <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                class="edit_link"
-                                href="/admin/edit/1"
-                            >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">8</div>
-                        <div class="list-item_text">PKM001004</div>
-                        <div class="list-item_text">Pikachu Smiley</div>
-                        <div class="list-item_text">POKEMON</div>
-                        <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                class="edit_link"
-                                href="/admin/edit/1"
-                            >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">9</div>
-                        <div class="list-item_text">PKM001005</div>
-                        <div class="list-item_text">Vulpix Fancy</div>
-                        <div class="list-item_text">POKEMON</div>
-                        <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                class="edit_link"
-                                href="/admin/edit/1"
-                            >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">10</div>
-                        <div class="list-item_text">HPT001001</div>
-                        <div class="list-item_text">Harry Potter & Hegwid</div>
-                        <div class="list-item_text">HARRY POTTER</div>
-                        <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                class="edit_link"
-                                href="/admin/edit/1"
-                            >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">11</div>
-                        <div class="list-item_text">HPT001002</div>
-                        <div class="list-item_text">Herminione Ball Dress</div>
-                        <div class="list-item_text">HARRY POTTER</div>
-                        <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                class="edit_link"
-                                href="/admin/edit/1"
-                            >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">12</div>
-                        <div class="list-item_text">HPT001003</div>
-                        <div class="list-item_text">
-                            Luna Lovegood Lion Mask
-                        </div>
-                        <div class="list-item_text">HARRY POTTER</div>
-                        <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                class="edit_link"
-                                href="/admin/edit/1"
-                            >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
-                    <div class="list-item_content">
-                        <div class="list-item_text">13</div>
-                        <div class="list-item_text">HPT001004</div>
-                        <div class="list-item_text">Snape Patronus</div>
-                        <div class="list-item_text">HARRY POTTER</div>
-                        <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                class="edit_link"
-                                href="/edit"
-                            >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
-                            </a>
-                        </div>
-                        <div class="list-item_text">
-                            <button
-                                class="delete_link"
-                                type="submit"
-                                onclick=""
-                            >
-                                <img
-                                    src="/assets/img/icons/delete_trash.svg"
-                                    alt="Trash Icon"
-                                />
-                            </button>
-                        </div>
-                    </div>
+                    <% }); %>
                 </article>
                 <!-- Fin Lista de Productos -->
             </section>
         </main>
         <!-- Fin Main -->
-
+        <!-- Footer -->
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     </body>

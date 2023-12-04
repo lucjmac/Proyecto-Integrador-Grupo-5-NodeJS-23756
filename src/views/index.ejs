@@ -6,11 +6,7 @@
         <title>Home | Funkoshop</title>
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/style-index.css" />
-        <link
-            rel="shortcut icon"
-            href="/assets/img/branding/isotype.svg"
-            type="image/x-icon"
-        />
+        <link rel="shortcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
     </head>
     <body>
         <!-- Header -->
@@ -34,23 +30,21 @@
             <% indexCollections.forEach((item) => { %>
             <section class="collection container">
                 <article class="collection_content">
-                    <h3 class="collection_title">
-                        <%= item.collectionTitle %>
-                    </h3>
+                    <h3 class="collection_title"><%= item.collectionTitle %></h3>
                     <p class="collection_text"><%= item.description %></p>
                     <a class="collection_link" href="/shop">VER COLECCIÓN</a>
-                    <picture class="collection_cover">
-                        <img
-                            src="<%=item && item.imageSrc %>"
-                            alt="<%= item &&item.imageAlt %>"
-                        />
-                    </picture>
                 </article>
+                <picture class="collection_cover">
+                    <img
+                        src="<%=item && item.imageSrc %>"
+                        alt="<%= item &&item.imageAlt %>"
+                    />
+                </picture>
             </section>
             <% }); %>
             <!-- Fin Section Star Wars, Pokemon y Harry Potter -->
             <!-- Section Ultimos Lanzamientos -->
-            <%- include('partials/slider.ejs') %>
+            <%- include('partials/slider') %>
             <!-- Fin Main -->
             <!-- Footer -->
             <%- include('partials/fShop') %>

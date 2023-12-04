@@ -1,7 +1,8 @@
 import path from "path";
-//import { renderIndexShop } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views/shop";
+import { sliderItems } from "../data/sliderItems.js";
+
 
 export class shopController {
     constructor() {}
@@ -11,8 +12,9 @@ export class shopController {
     }
 
     itemIdGet(req, res) {
-        ///T0D0 POR ITEM!
-        res.render(path.join(viewsPath, "item.ejs"), {});
+        res.render(path.join(viewsPath, "item.ejs"), {
+            sliderItems: sliderItems,
+        });
     }
 
     shopCartGet(req, res) {
