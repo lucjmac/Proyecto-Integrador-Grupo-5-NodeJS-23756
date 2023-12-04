@@ -12,10 +12,12 @@ const root = path.resolve();
 const PORT = process.env.PORT;
 
 //template engine
-app.set("view engine", "ejs").set("views", path.join(root, "src", "views"));
+app.set("view engine", "ejs")
+    .set("views", path.join(root, "src", "views"));
 
 //Parsers
-app.use(express.json()).use(express.urlencoded({ extended: true }));
+app.use(express.json())
+    .use(express.urlencoded({ extended: true }));
 
 //Static files
 app.use(express.static("public"));
