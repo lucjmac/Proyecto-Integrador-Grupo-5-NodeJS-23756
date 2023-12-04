@@ -55,7 +55,7 @@
                             type="text"
                             id="product_name"
                             name="product_name"
-                            value="Kakashi el ninja"
+                            value="<%= productData?.name %>"
                         />
                     </div>
 
@@ -66,7 +66,7 @@
                             id=""
                             cols="30"
                             rows="10"
-                        ></textarea>
+                        ><%= productData?.description %></textarea>
                     </div>
                 </fieldset>
 
@@ -79,7 +79,7 @@
                                 id="sku"
                                 name="sku"
                                 type="text"
-                                value=""
+                                value="<%= productData?.sku %>"
                             />
                         </div>
 
@@ -90,7 +90,7 @@
                                 id="price"
                                 name="price"
                                 type="text"
-                                value=""
+                                value="<%= productData?.price %>"
                             />
                         </div>
 
@@ -101,7 +101,7 @@
                                 id="stock"
                                 name="stock"
                                 type="text"
-                                value=""
+                                value="<%= productData?.stock %>"
                             />
                         </div>
                     </div>
@@ -116,32 +116,24 @@
                                 id="descuento"
                                 name="descuento"
                                 type="text"
-                                value=""
+                                value="<%= productData?.descuento %>"
                             />
                         </div>
                         <div class="form-sub-container">
                             <label for="cuotas"
-                                >Cuotas
+                                >Cuotas:</label>
                                 <select
                                     class="cuota-select"
                                     name="cuotas"
                                     id="cuotas"
                                 >
-                                    <option value="">
-                                        1 Cuota sin interés
-                                    </option>
-                                    <option value="">
-                                        2 Cuotas sin interés
-                                    </option>
-                                    <option value="">
-                                        3 Cuotas sin interés
-                                    </option>
-                                    <option value="">
-                                        3 Cuotas sin interés
-                                    </option>
-                                    <option value="">
-                                        6 Cuotas sin interés
-                                    </option>
+                                <option value="<%= productData?.cuotas %>" selected>
+                                    <%= productData?.cuotas %> Cuotas sin interés
+                                </option>
+                                <option value="1">1 Cuota sin interés</option>
+                                <option value="2">2 Cuotas sin interés</option>
+                                <option value="3">3 Cuotas sin interés</option>
+                                <option value="6">6 Cuotas sin interés</option>
                                 </select>
                             </label>
                         </div>
@@ -155,7 +147,7 @@
                             id="imagenes"
                             name="imagenes"
                             type="file"
-                            value=""
+                            value="<%= productData?.imagenes %>"
                         />
                     </div>
                 </fieldset>
