@@ -19,12 +19,12 @@ export class shopController {
         res.render(path.join(viewsPath, "cart.ejs"), {});
     }
 
-    /*
+
     itemIdAddPost(req, res) {
         res.send("Route for add the current item to the shop cart ");
     }
 
     shopCartPost(req, res) {
         res.send("Route for go to checkout page");
-    }*/
+    }
 }

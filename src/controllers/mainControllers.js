@@ -1,5 +1,6 @@
 import path from "path";
-//import { renderIndexShop } from "../Services/renderPage.js";
+import { indexCollections } from "../data/indexCollections.js";
+import { sliderItems } from "../data/sliderItems.js";
 
 const viewsPath = path.resolve() + "/src/views";
 
@@ -8,7 +9,8 @@ export class mainController {
 
     homeGet(req, res) {
         res.render(path.join(viewsPath, "index.ejs"), {
-                 data:'T0D0 ARRAY'
+            indexCollections: indexCollections,
+            sliderItems: sliderItems,
         });
     }
 
@@ -16,12 +18,11 @@ export class mainController {
         res.render(path.join(viewsPath, "/shop/contact.ejs"), {});
     }
 
-    /*
     aboutGet(req, res) {
         res.send("Route for About View");
     }
 
     faqsGet(req, res) {
         res.send("Route for Faqs View");
-    }*/
+    }
 }
