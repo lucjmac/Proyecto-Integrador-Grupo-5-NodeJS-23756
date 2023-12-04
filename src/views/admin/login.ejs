@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/assets/css/style.css" rel="stylesheet" />
+        <link href="/assets/css/style-create.css" rel="stylesheet" />
+        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
+        <title>Login | Funkoshop</title>
+    </head>
+    <body>
+ <%- include('../partials/hAdm') %>
+<!-- Inicio Main -->
+<main>
+    <div class="container-login">
+        <div class="creacion">INGRESAR A MI CUENTA</div>
+        <form class="account" method="post" action="">
+            <div class="account_input">
+                <label class="tamano account_email" for="account_email"
+                    >Email:</label
+                ><input
+                    class="linea email"
+                    id="account_email"
+                    name="email"
+                    type="email"
+                    placeholder="johndoe@correo.com"
+                />
+            </div>
+            <div class="account_input">
+                <label class="tamano account_password" for="password"
+                    >Contraseña:</label
+                >
+                <input
+                    class="linea password"
+                    id="password"
+                    name="password"
+                    type="password"
+                    pattern="[a-z0-5]{8,}"
+                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;"
+                    required
+                />
+            </div>
+            <div class="account_sign">
+                <button class="account_sign-button boton" type="submit">
+                    Ingresar
+                </button>
+                <label class="account_sign-check" for="checkbox">
+                    <input
+                        class="checkbox"
+                        type="checkbox"
+                        name="checkbox"
+                        id="checkbox"
+                    />
+                    Recordarme
+                </label>
+            </div>
+            <a class="account_forgot" href="#">Olvidé mi contraseña</a>
+        </form>
+    </div>
+</main>
+
+
+<%- include('../partials/fAdm') %>
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+</html>

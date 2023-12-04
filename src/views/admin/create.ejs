@@ -4,14 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Create | Funkoshop</title>
-        <link rel="stylesheet" href="../../assets/css/style.css" />
-        <link rel="stylesheet" href="../../assets/css/style-create.css" />
-        <link rel="stylesheet" href="../../assets/css/style-edit.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="../../assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="/assets/css/style-create.css" />
+        <link rel="stylesheet" href="/assets/css/style-edit.css" rel="stylesheet" />
+        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
     </head>
     <body>
-        <!--Header generado con pug-->
-        <!--Creacion-->
+        <%- include('../partials/hAdm') %>
+        <!-- Inicio Main -->
         <div class="container-create">
             <div class="creacion">CREAR NUEVO ITEM</div>
             <form class="form-container" action="">
@@ -177,8 +177,8 @@
                 </div>
             </form>
         </div>
-        <!--Fin Creacion-->
-        <!--Footer generado con pug-->
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    </body>
+            <!--Fin Creacion-->
+    <%- include('../partials/fAdm') %>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
 </html>

@@ -1,5 +1,5 @@
 import path from "path";
-import { renderIndexShop } from "../Services/renderPage.js";
+//import { renderIndexShop } from "../Services/renderPage.js";
 
 const viewsPath = path.resolve() + "/src/views";
 
@@ -7,20 +7,21 @@ export class mainController {
     constructor() {}
 
     homeGet(req, res) {
-        const filePath = path.join(viewsPath, "index.html");
-        renderIndexShop(filePath, req, res);
+        res.render(path.join(viewsPath, "index.ejs"), {
+                 data:'T0D0 ARRAY'
+        });
     }
 
     contactGet(req, res) {
-        const filePath = path.join(viewsPath, "shop", "contact.html");
-        renderIndexShop(filePath, req, res);
+        res.render(path.join(viewsPath, "/shop/contact.ejs"), {});
     }
 
+    /*
     aboutGet(req, res) {
         res.send("Route for About View");
     }
 
     faqsGet(req, res) {
         res.send("Route for Faqs View");
-    }
+    }*/
 }

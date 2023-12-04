@@ -4,12 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Registro | Funkoshop</title>
-        <link href="../../assets/css/style.css" rel="stylesheet" />
-        <link rel="stylesheet" href="../../assets//css//style-register.css" />
-        <link rel="shorcut icon" href="../../assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link href="/assets/css/style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/assets//css/style-register.css" />
+        <link rel="shorcut icon" href="./assets/img/branding/isotype.svg" type="image/x-icon" />
     </head>
     <body>
-        <!--Header generado con pug-->
+        <%- include('../partials/hAdm') %>
+        <!-- Inicio Main -->
+
         <main>
             <section>
                 <div class="title-wrapper">
@@ -64,6 +66,11 @@
                 </form>
             </section>
         </main>
-        <!--Footer generado con pug-->
-    </body>
-</html>
+        
+         <!-- Fin Main -->
+
+         <%- include('../partials/fAdm') %>
+         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+     </body>
+ </html>
+ 

@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | Funkoshop</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/style-index.css" />
-    <link rel="shorcut icon" href="../../assets/img/branding/isotype.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style-index.css" />
+    <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
   </head>
   <body>
-    <!--Header generado con pug-->
+
+    <%- include('partials/hShop') %>
+
     <!--Inicio Section Hero-->
     <section class="hero">
       <article class="hero_content container">
@@ -17,7 +19,7 @@
           <h3 class="hero_title">Nuevos Ingresos</h3>
           <p class="hero_text">Descubrí el próximo Funko Pop de tu colección</p>
         </div>
-        <a class="hero_link" href="./views/shop/shop.html">SHOP</a>
+        <a class="hero_link" href="/">SHOP</a>
       </article>
     </section>
     <!--Fin Section Hero-->
@@ -30,13 +32,13 @@
           <p class="collection_text">
             Disfruta de una saga que sigue agregando personajes a su colección.
           </p>
-          <a class="collection_link" href="./views/shop/shop.html">
+          <a class="collection_link" href="/views/shop/shop.html">
             VER COLECCIÓN
           </a>
         </article>
         <picture class="collection_cover">
           <img
-            src="./assets/img/star-wars/baby-yoda-1.webp"
+            src="/assets/img/star-wars/baby-yoda-1.webp"
             alt="Funko Baby Yoda"
           />
         </picture>
@@ -50,12 +52,12 @@
             Atrapa todos los que puedas y disfruta de una colección llena de
             amigos.
           </p>
-          <a class="collection_link" href="./views/shop/shop.html">
+          <a class="collection_link" href="/views/shop/shop.html">
             VER COLECCIÓN
           </a>
         </article>
         <picture class="collection_cover">
-          <img src="./assets/img/pokemon/vulpix-1.webp" alt="Funko Vulpix" />
+          <img src="/assets/img/pokemon/vulpix-1.webp" alt="Funko Vulpix" />
         </picture>
       </section>
       <!--Fin Section Pokemon-->
@@ -66,13 +68,13 @@
           <p class="collection_text">
             Revive los recuerdos de una saga llena de magia y encanto.
           </p>
-          <a class="collection_link" href="./views/shop/shop.html">
+          <a class="collection_link" href="/views/shop/shop.html">
             VER COLECCIÓN
           </a>
         </article>
         <picture class="collection_cover">
           <img
-            src="./assets/img/harry-potter/snape-patronus-1.webp"
+            src="/assets/img/harry-potter/snape-patronus-1.webp"
             alt="Funko Snape Patronus"
           />
         </picture>
@@ -85,17 +87,17 @@
           <ul class="slider_items glide__slides">
             <li class="slider_item glide__slide">
               <article class="card-item">
-                <a class="card-item_link" href="./views/shop/shop.html">
+                <a class="card-item_link" href="/views/shop/shop.html">
                   <picture class="card-item_cover">
                     <span class="card-item_tag">NUEVO</span>
                     <img
                       class="card-item_img-front"
-                      src="./assets/img/star-wars/trooper-1.webp"
+                      src="/assets/img/star-wars/trooper-1.webp"
                       alt="Funko Stormtrooper"
                     />
                     <img
                       class="card-item_img-back"
-                      src="./assets/img/star-wars/trooper-box.webp"
+                      src="/assets/img/star-wars/trooper-box.webp"
                       alt="Funko Stormtrooper Box"
                     />
                   </picture>
@@ -110,17 +112,17 @@
             </li>
             <li class="slider_item glide__slide">
               <article class="card_item">
-                <a class="card-item_link" href="./views/shop/shop.html">
+                <a class="card-item_link" href="/views/shop/shop.html">
                   <picture class="card-item_cover">
                     <span class="card-item_tag">NUEVO</span>
                     <img
                       class="card-item_img-front"
-                      src="./assets/img/pokemon/pidgeotto-1.webp"
+                      src="/assets/img/pokemon/pidgeotto-1.webp"
                       alt="Funko Pidgeotto"
                     />
                     <img
                       class="card-item_img-back"
-                      src="./assets/img/pokemon/pidgeotto-box.webp"
+                      src="/assets/img/pokemon/pidgeotto-box.webp"
                       alt="Funko Pidgeotto Box"
                     />
                   </picture>
@@ -135,17 +137,17 @@
             </li>
             <li class="slider_item glide__slide">
               <article class="index_newitem_container">
-                <a href="./views/shop/shop.html">
+                <a href="/views/shop/shop.html">
                   <picture class="card-item_cover">
                     <span class="card-item_tag">NUEVO</span>
                     <img
                       class="card-item_img-front"
-                      src="./assets/img/harry-potter/luna-1.webp"
+                      src="/assets/img/harry-potter/luna-1.webp"
                       alt="Funko Luna Lovegood Lion Mask"
                     />
                     <img
                       class="card-item_img-back"
-                      src="./assets/img/harry-potter/luna-box.webp"
+                      src="/assets/img/harry-potter/luna-box.webp"
                       alt="Funko Luna Lovegood Lion Mask Box"
                     />
                   </picture>
@@ -172,10 +174,12 @@
       <!--Fin Section Ultimos Lanzamientos-->
     </main>
     <!--Fin Main-->
-    <!--Footer generado con pug-->
+
+    <%- include('partials/fShop') %>
+
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-    <script src="./assets/js/slider.js"></script>
-    <script src="./assets/js/core.js"></script>
+    <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/core.js"></script>
   </body>
 </html>

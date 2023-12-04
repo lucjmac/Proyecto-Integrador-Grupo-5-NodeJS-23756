@@ -6,16 +6,12 @@ const shopControllers = new shopController();
 
 router
     .get("/", shopControllers.shopGet)
-
-
-    .get("/item/:id", shopControllers.itemIdGet)
-
-    .post("/item/:id/add", shopControllers.itemIdAddPost)
-    
-
     .get("/cart", shopControllers.shopCartGet)
+    .get("/item/:id", shopControllers.itemIdGet);
 
-    .post("/cart", shopControllers.shopCartPost);
+    /*
+    .post("/item/:id/add", shopControllers.itemIdAddPost)
+    .post("/cart", shopControllers.shopCartPost);*/
     
 
 export default router;

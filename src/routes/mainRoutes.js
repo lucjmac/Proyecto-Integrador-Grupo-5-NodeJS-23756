@@ -6,11 +6,10 @@ const mainControllers = new mainController();
 
 router
     .get("/", mainControllers.homeGet)
+    .get("/contact", mainControllers.contactGet);
 
-    .get("/contact", mainControllers.contactGet)
-
+    /*
     .get("/about", mainControllers.aboutGet)
-
-    .get("/faqs", mainControllers.faqsGet);
+    .get("/faqs", mainControllers.faqsGet)*/
 
 export default router;
