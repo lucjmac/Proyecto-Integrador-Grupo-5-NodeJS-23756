@@ -25,9 +25,9 @@
                             id="categoria"
                         >
                             <option>Seleccionar</option>
-                            <option value="star-wars">Figuras</option>
-                            <option value="pokemon">Llaveros</option>
-                            <option value="harry-potter">Remeras</option>
+                            <option value="figuras" <%= productData?.categoria === 'figuras' ? 'selected' : '' %>>Figuras</option>
+                            <option value="llaveros" <%= productData?.categoria === 'llaveros' ? 'selected' : '' %>>Llaveros</option>
+                            <option value="remeras" <%= productData?.categoria === 'remeras' ? 'selected' : '' %>>Remeras</option>
                         </select>
 
                         <label for="licencia"
@@ -38,11 +38,9 @@
                                 id="licencia"
                             >
                                 <option>Seleccionar</option>
-                                <option value="star-wars">STAR WARS</option>
-                                <option value="pokemon">POKEMON</option>
-                                <option value="harry-potter">
-                                    HARRY POTTER
-                                </option>
+                                <option value="star-wars" <%= productData?.licencia === 'star-wars' ? 'selected' : '' %>>STAR WARS</option>
+                                <option value="pokemon" <%= productData?.licencia === 'pokemon' ? 'selected' : '' %>>POKEMON</option>
+                                <option value="harry-potter" <%= productData?.licencia === 'harry-potter' ? 'selected' : '' %>>HARRY POTTER</option>
                             </select>
                         </label>
                     </div>
