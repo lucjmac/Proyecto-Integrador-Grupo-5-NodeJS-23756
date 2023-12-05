@@ -1,6 +1,5 @@
 import path from "path";
 import { indexCollections } from "../data/indexCollections.js";
-import { shopCollections } from "../data/shopCollections.js";
 import { sliderItems } from "../data/sliderItems.js";
 
 const viewsPath = path.resolve() + "/src/views";
@@ -11,7 +10,6 @@ export class mainController {
     homeGet(req, res) {
         res.render(path.join(viewsPath, "index.ejs"), {
             indexCollections: indexCollections,
-            shopCollections: shopCollections,
             sliderItems: sliderItems,
         });
     }

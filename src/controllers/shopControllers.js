@@ -2,12 +2,15 @@ import path from "path";
 
 const viewsPath = path.resolve() + "/src/views/shop";
 import { sliderItems } from "../data/sliderItems.js";
+import { shopCollections } from "../data/shopCollections.js";
 
 export class shopController {
     constructor() {}
 
     shopGet(req, res) {
-        res.render(path.join(viewsPath, "shop.ejs"), {});
+        res.render(path.join(viewsPath, "shop.ejs"), {
+            shopCollections:shopCollections,
+        });
     }
 
     itemIdGet(req, res) {

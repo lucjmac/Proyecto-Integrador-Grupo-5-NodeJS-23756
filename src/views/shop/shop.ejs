@@ -74,200 +74,81 @@
 
     <!--Inicio Seccion Principal-->
     <div class="container-wrapper">
-    <div class="principal-wrapper">
-      <div class="principal-sub-wrapper">
+        <div class="principal-wrapper">
+            <div class="principal-sub-wrapper">
 
-          <!-- <div class="card">
-          <div class="card-title">
-            <div class="card-item_tag">Nuevo</div>
-          </div>
 
-          <div class="card-item_link">
-            <picture class="card-item_cover">
-              <img src="/assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
-            </picture>
-          </div>
-          <div class="card-item_content">
-            <div class="card-item_licence">STAR WARS</div>
-            <div class="card-item_name">STORMTROOMPER LIGHTSABER</div>
-            <div class="card-item_price">$ 1799,9</div>
-            <div class="card-payment">
-              <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-            </div>
-          </div>
-          </div> -->
+                <% shopCollections.forEach((product) => { %>
+                      <div class="card">
+                          <div class="card-title">
+                              <div class="card-item_tag">Nuevo</div>
+                          </div>
 
-       
-          <% shopCollections.forEach((product) => { %>
-                <div class="card">
-                    <div class="card-title">
-                      
-                        <div class="card-item_tag">Nuevo</div>
-                    </div>
+                          <div class="card-item_link">
+                              <picture class="card-item_cover">
+                                  <img src="<%= product.img_front %>" alt="<%= product.product_name %>" />
+                              </picture>
+                          </div>
+                          <div class="card-item_content">
+                              <div class="card-item_licence"><%= product.licence_name %></div>
+                              <div class="card-item_name"><%= product.product_name %></div>
+                              <div class="card-item_price">$ <%= product.product_price.toFixed(2) %></div>
+                              <div class="card-payment">
+                                  <div class="card-item_promo"><%= product.dues %> CUOTAS SIN INTER&Eacute;S</div>
+                              </div>
+                          </div>
+                      </div>
+                <% }); %>
+
+                <!-- <% shopCollections.forEach((product) => { %>
+                          <div class="card">
+                              <div class="card-title">
+                                  <div class="card-item_tag">Nuevo</div>
+                              </div>
+
+                              <div class="card-item_link">
+                                  <picture class="card-item_cover">
+                                      <img src="<%= product.img_front %>" alt="<%= product.product_name %>" />
+                                  </picture>
+                              </div>
+                              <div class="card-item_content">
+                                  <div class="card-item_licence"><%= product.licence_name %></div>
+                                  <div class="card-item_name"><%= product.product_name %></div>
+                                  <div class="card-item_price">$ <%= product.product_price.toFixed(2) %></div>
+                                  <div class="card-payment">
+                                      <div class="card-item_promo"><%= product.dues %> CUOTAS SIN INTER&Eacute;S</div>
+                                  </div>
+                              </div>
+                          </div>
+                <% }); %>
+
+                <% shopCollections.forEach((product) => { %>
+                      <div class="card">
+                          <div class="card-title">
+                              <div class="card-item_tag">Nuevo</div>
+                          </div>
+
+                          <div class="card-item_link">
+                              <picture class="card-item_cover">
+                                  <img src="<%= product.img_front %>" alt="<%= product.product_name %>" />
+                              </picture>
+                          </div>
+                          <div class="card-item_content">
+                              <div class="card-item_licence"><%= product.licence_name %></div>
+                              <div class="card-item_name"><%= product.product_name %></div>
+                              <div class="card-item_price">$ <%= product.product_price.toFixed(2) %></div>
+                              <div class="card-payment">
+                                  <div class="card-item_promo"><%= product.dues %> CUOTAS SIN INTER&Eacute;S</div>
+                              </div>
+                          </div>
+                      </div>
+                <% }); %> -->
+
             
-                    <div class="card-item_link">
-                        <picture class="card-item_cover">
-                            <img src="<%= product.img_front %>" alt="<%= product.product_name %>" />
-                        </picture>
-                    </div>
-                    <div class="card-item_content">
-                        <div class="card-item_licence"><%= product.licence_name %></div>
-                        <div class="card-item_name"><%= product.product_name %></div>
-                        <div class="card-item_price">$ <%= product.product_price.toFixed(2) %></div>
-                        <div class="card-payment">
-                            <div class="card-item_promo"><%= product.dues %> CUOTAS SIN INTER&Eacute;S</div>
-                        </div>
-                    </div>
-                </div>
-          <% }); %>
-
-            <!-- <div class="card">
-              <div class="card-title">
-                <div class="card-item_tag">Nuevo</div>
-              </div>
-
-              <div class="card-image">
-                <picture class="card-item_cover">
-                  <img src="/assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
-                </picture>
-              </div>
-              <div class="card-item_content">
-                <div class="card-item_licence">HARRY POTTER</div>
-                <div class="card-item_name">LUNA LOVEGOOD LION MASK</div>
-                <div class="card-item_price">$ 1799,9</div>
-                <div class="card-payment">
-                  <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-                </div>
-              </div>
+                    <!--Loops otras cards! ...-->
             </div>
-
-
-            <div class="card">
-              <div class="card-title">
-                <div class="card-item_tag">Nuevo</div>
-              </div>
-    
-              <div class="card-item_link">
-                <picture class="card-item_cover">
-                  <img src="/assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
-                </picture>
-              </div>
-              <div class="card-item_content">
-                <div class="card-item_licence">STAR WARS</div>
-                <div class="card-item_name">STORMTROOMPER LIGHTSABER</div>
-                <div class="card-item_price">$ 1799,9</div>
-                <div class="card-payment">
-                  <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-                </div>
-              </div>
-              </div>
-    
-              <div class="card">
-                <div class="card-title">
-                  <div class="card-item_tag">Nuevo</div>
-                </div>
-    
-                <div class="card-image">
-                  <picture class="card-item_cover">
-                    <img src="/assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
-                  </picture>
-                </div>
-                <div class="card-item_content">
-                  <div class="card-item_licence">POKEMON</div>
-                  <div class="card-item_name">PIDGEOTTO</div>
-                  <div class="card-item_price">$ 1799,9</div>
-                  <div class="card-payment">
-                    <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-                  </div>
-                </div>
-              </div>
-    
-                <div class="card">
-                  <div class="card-title">
-                    <div class="card-item_tag">Nuevo</div>
-                  </div>
-    
-                  <div class="card-image">
-                    <picture class="card-item_cover">
-                      <img src="/assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
-                    </picture>
-                  </div>
-                  <div class="card-item_content">
-                    <div class="card-item_licence">HARRY POTTER</div>
-                    <div class="card-item_name">LUNA LOVEGOOD LION MASK</div>
-                    <div class="card-item_price">$ 1799,9</div>
-                    <div class="card-payment">
-                      <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-                    </div>
-                  </div>
-                </div>
-
-                
-
-                <div class="card">
-                  <div class="card-title">
-                    <div class="card-item_tag">Nuevo</div>
-                  </div>
-        
-                  <div class="card-item_link">
-                    <picture class="card-item_cover">
-                      <img src="/assets/img/star-wars/trooper-1.webp" alt="Funko Stormtrooper" />
-                    </picture>
-                  </div>
-                  <div class="card-item_content">
-                    <div class="card-item_licence">STAR WARS</div>
-                    <div class="card-item_name">STORMTROOMPER LIGHTSABER</div>
-                    <div class="card-item_price">$ 1799,9</div>
-                    <div class="card-payment">
-                      <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-                    </div>
-                  </div>
-                  </div>
-        
-                  <div class="card">
-                    <div class="card-title">
-                      <div class="card-item_tag">Nuevo</div>
-                    </div>
-        
-                    <div class="card-image">
-                      <picture class="card-item_cover">
-                        <img src="/assets/img/pokemon/pidgeotto-1.webp" alt="Funko Pidgeotto" />
-                      </picture>
-                    </div>
-                    <div class="card-item_content">
-                      <div class="card-item_licence">POKEMON</div>
-                      <div class="card-item_name">PIDGEOTTO</div>
-                      <div class="card-item_price">$ 1799,9</div>
-                      <div class="card-payment">
-                        <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-                      </div>
-                    </div>
-                  </div>
-        
-                    <div class="card">
-                      <div class="card-title">
-                        <div class="card-item_tag">Nuevo</div>
-                      </div>
-        
-                      <div class="card-image">
-                        <picture class="card-item_cover">
-                          <img src="/assets/img/harry-potter/luna-1.webp" alt="Funko Luna Lovegood Lion Mask" />
-                        </picture>
-                      </div>
-                      <div class="card-item_content">
-                        <div class="card-item_licence">HARRY POTTER</div>
-                        <div class="card-item_name">LUNA LOVEGOOD LION MASK</div>
-                        <div class="card-item_price">$ 1799,9</div>
-                        <div class="card-payment">
-                          <div class="card-item_promo">3 CUOTAS SIN INTER&Eacute;S</div>
-                        </div>
-                      </div>
-                    </div> -->
-                <!--Loops otras cards! ...-->
-          </div>
-          </div>
-        </div>
-     </div>
+        </div>        
+    </div>
         <!--Fin Seccion Principal-->
   </main>
   <div class="pagination-wrapper">
