@@ -1,17 +1,11 @@
 Participantes:
 
-■ Irene	Vargas
-
-■ Ceferino	Fritz
-
-■ Carlos	Peña
-
-■ Agustina	de Anso
+■ CarlosPeña
 
 ■ Belen	Dominguez
 
 ■ Luisa Fernanda
 
-■ Lucas 	Macias
+■ Lucas Macias
 
 ■ Jadir Rojas
