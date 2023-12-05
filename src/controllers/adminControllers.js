@@ -1,5 +1,6 @@
 import path from "path";
 import { productList } from "../data/productList.js";
+import { getProductDataById } from "../data/getProductDataById.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -21,8 +22,15 @@ export class adminController {
     }
 
     adminEditIdGet(req, res) {
-        //T0D0 BUSCAR POR ID
-        res.render(path.join(viewsPath, "edit.ejs"), {});
+       // Recuperar datos del producto por ID y pasarlos a la vista
+       const productId = req.params.id; 
+       const productData = getProductDataById(productId); 
+
+       console.log(productData);
+       
+       res.render(path.join(viewsPath, "edit.ejs"), {
+           productData: productData,
+       });
     }
 
     adminEditIdPut(req, res) {
