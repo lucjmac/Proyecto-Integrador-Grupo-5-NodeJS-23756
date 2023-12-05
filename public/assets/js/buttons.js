@@ -48,6 +48,9 @@
 
 // Tercera funcion de Luisa, reemplaza document.querySelector por document.getElementById
 
+function disableSubstractButton(subtract, quantity) {
+  subtract.toggleAttribute("disabled", quantity <= 0);
+}
 document.addEventListener("DOMContentLoaded", () => {
   function setupQuantityControls() {
     const quatityWrapper = document.querySelectorAll(
@@ -60,14 +63,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const quantity = wrapper.querySelector("#quantity");
 
       if (add && subtract && quantity) {
-        add.addEventListener(
-          "click",
-          () => (quantity.value = Number(quantity.value) + 1)
-        );
+        add.addEventListener("click", () => {
+          quantity.value = Number(quantity.value) + 1;
+          disableSubstractButton(subtract, quantity.value);
+        });
         subtract.addEventListener("click", () => {
           if (quantity.value > 0) {
             quantity.value = Number(quantity.value) - 1;
           }
+          disableSubstractButton(subtract, quantity.value);
+        });
+        quantity.addEventListener("change", () => {
+          if (quantity.value < 0) {
+            quantity.value = 0;
+          }
+          disableSubstractButton(subtract, quantity.value);
         });
       }
     });

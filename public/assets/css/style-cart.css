@@ -115,6 +115,12 @@ main {
   color: var(--dark-grey);
 }
 
+.item-quantity,
+.item-total {
+  flex-basis: 10%;
+  text-align: center;
+}
+
 .cart-summary-wrapper {
   max-width: 45%;
   margin-left: auto;

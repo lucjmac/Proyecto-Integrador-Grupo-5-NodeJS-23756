@@ -31,12 +31,14 @@
               <div class="item-description">
                 <h3 class="item-title"><%= item.title %></h3>
                 <p class="item-category"><%= item.collectionTitle %></p>
-                <p class="item-price">Precio: $ <%= item.price %></p>
+                <p class="item-price">
+                  Precio: $ <span><%= item.price %></span>
+                </p>
               </div>
             </div>
 
             <div class="item-quantity quantity-action-wrapper">
-              <input type="text" id="quantity" placeholder="0" />
+              <input type="number" id="quantity" value="0" />
               <div class="quantity-action">
                 <button id="add">
                   <img
@@ -54,7 +56,7 @@
             </div>
 
             <div class="item-total">
-              <p class="item-total-price">$3599,98</p>
+              <p class="item-total-price">$0.00</p>
             </div>
 
             <button class="delete-button" aria-label="Eliminar articulo">
@@ -101,5 +103,6 @@
     <script src="/assets/js/slider.js"></script>
     <script src="/assets/js/core.js"></script>
     <script src="/assets/js/buttons.js"></script>
+    <script src="/assets/js/calculateTotal.js"></script>
   </body>
 </html>
