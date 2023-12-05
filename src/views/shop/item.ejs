@@ -1,80 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Item | Funkoshop</title>
-        <link href="/assets/css/style.css" rel="stylesheet" />
-        <link href="/assets/css/style-item.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
-    </head>
-    <body>
-        <!-- Header -->
-        <%- include('../partials/hShop') %>
-        <main>
-            <!--Inicio Section superior-->
-            <section class="figure">
-                <div class="figure_container">
-                    <picture class="figure_picture">
-                        <img
-                            class="figure_img"
-                            src="/assets/img/star-wars/baby-yoda-1.webp"
-                            alt="Funko Baby Yoda"
-                        />
-                    </picture>
-                    <article class="figure_content">
-                        <p class="figure_licence">STAR WARS</p>
-                        <h3 class="figure_title">BABY YODA BLUEBALL</h3>
-                        <p class="figure_text">
-                            Figura coleccionable de Baby Yoda (Grogu) - The
-                            Mandalorian Saga, edición limitada.
-                        </p>
-                        <p class="figure_price">$ 1799,99</p>
-                        <div class="item__cart">
-                            <input
-                                class="item__input"
-                                type="text"
-                                name="quantity"
-                                id="quantity"
-                                placeholder="0"
-                            />
-                            <div class="container__buttons">
-                                <button
-                                    id="add"
-                                    class="item__quantity"
-                                    type="button"
-                                >
-                                    +
-                                </button>
-                                <button
-                                    id="subtract"
-                                    class="item__quantity"
-                                    type="button"
-                                >
-                                    -
-                                </button>
-                            </div>
-                            <button class="submit" type="submit">
-                                Agregar al Carrito
-                            </button>
-                        </div>
-                        <p class="figure_link">
-                            <a href="#">Ver métodos de pago</a> - 3 CUOTAS SIN
-                            INTERES
-                        </p>
-                    </article>
-                </div>
-            </section>
-            <!--Fin Section superior-->
-        <!-- Section Ultimos Lanzamientos -->
-        <%- include('../partials/slider') %>
-        </main>
-        <!-- Footer -->
-        <%- include('../partials/fShop') %>
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-        <script src="/assets/js/buttons.js"></script>
-        <script src="/assets/js/slider.js"></script>
-        <script src="/assets/js/core.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Item | Funkoshop</title>
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/style-item.css" rel="stylesheet" />
+    <link
+      rel="shorcut icon"
+      href="/assets/img/branding/isotype.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('../partials/hShop') %>
+    <main>
+      <!--Inicio Section superior-->
+      <section class="figure">
+        <div class="figure_container">
+          <picture class="figure_picture">
+            <img
+              class="figure_img"
+              src="/assets/img/star-wars/baby-yoda-1.webp"
+              alt="Funko Baby Yoda"
+            />
+          </picture>
+          <article class="figure_content">
+            <p class="figure_licence">STAR WARS</p>
+            <h3 class="figure_title">BABY YODA BLUEBALL</h3>
+            <p class="figure_text">
+              Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga,
+              edición limitada.
+            </p>
+            <p class="figure_price">$ 1799,99</p>
+            <div class="item__cart quantity-action-wrapper">
+              <input
+                class="item__input"
+                type="text"
+                name="quantity"
+                id="quantity"
+                placeholder="0"
+              />
+              <div class="container__buttons">
+                <button id="add" class="item__quantity" type="button">+</button>
+                <button id="subtract" class="item__quantity" type="button">
+                  -
+                </button>
+              </div>
+              <button class="submit" type="submit">Agregar al Carrito</button>
+            </div>
+            <p class="figure_link">
+              <a href="#">Ver métodos de pago</a> - 3 CUOTAS SIN INTERES
+            </p>
+          </article>
+        </div>
+      </section>
+      <!--Fin Section superior-->
+      <!-- Section Ultimos Lanzamientos -->
+      <%- include('../partials/slider') %>
+    </main>
+    <!-- Footer -->
+    <%- include('../partials/fShop') %>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="/assets/js/buttons.js"></script>
+    <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/core.js"></script>
+  </body>
 </html>

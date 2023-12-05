@@ -31,6 +31,7 @@
 
   --light-grey: #b9b9b9;
   --light-grey-variant2: #747474;
+  --light-grey-variant3: #c9c9c9;
 
   --dark-bg-solid: #30343f;
   --light-bg-solid: #fafaff;
@@ -46,6 +47,11 @@
   --font-medium: 1.8rem;
   --font-small: 1.6rem;
   --font-xsmall: 1.4rem;
+
+  /* Font weight */
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
 
   /* Spacings */
   --spacing-128: 12.8rem;
@@ -327,7 +333,7 @@ footer .navbar_link:hover {
   cursor: pointer;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: var(--primary-900);
 }
 /* Media query para pantallas menores a 768px */
@@ -384,11 +390,10 @@ footer .navbar_link:hover {
   .glide__arrow--left {
     left: 1.6rem;
   }
-  
+
   .glide__arrow--right {
     right: 1.6rem;
   }
-  
 
   .glide__arrow {
     top: 45%;
@@ -502,11 +507,11 @@ footer .navbar_link:hover {
   }
 
   .glide__arrow--left {
-    left: .8rem;
+    left: 0.8rem;
   }
-  
+
   .glide__arrow--right {
-    right: .8rem;
+    right: 0.8rem;
   }
 
   .footer .navbar {
