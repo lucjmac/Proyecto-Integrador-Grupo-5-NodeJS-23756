@@ -25,7 +25,7 @@ export const productList = [
         collection: "POKEMON",
     },
     {
-        code: "STW001002",
+        code: "PKM001002",
         name: "Dragonite Hi!",
         collection: "POKEMON",
     },

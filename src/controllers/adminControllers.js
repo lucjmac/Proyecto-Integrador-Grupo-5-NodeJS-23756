@@ -1,6 +1,6 @@
 import path from "path";
 import { productList } from "../data/productList.js";
-import { getProductDataById } from "../Service/getProductDataById.js";
+import { getProductDataById } from "../service/getProductDataById.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -8,9 +8,26 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        res.render(path.join(viewsPath, "admin.ejs"), {
-            productList: productList,
-        });
+        const searchInput = req.query.searchInput; // Obtén el valor de searchInput de la consulta HTTP
+    
+        // Filtra productList en base a searchInput
+        const filteredProductList = productList.filter((product) =>
+            !searchInput || searchInput.trim() === '' || product.name.includes(searchInput)
+        );
+    
+        if (filteredProductList.length === 0) {
+            res.render(path.join(viewsPath, "admin.ejs"), {
+                productList: productList,
+                searchInput: searchInput,
+                noResults: true
+            });
+        } else {
+            res.render(path.join(viewsPath, "admin.ejs"), {
+                productList: filteredProductList,
+                searchInput: searchInput,
+                noResults: false
+            });
+        }
     }
 
     adminCreateGet(req, res) {

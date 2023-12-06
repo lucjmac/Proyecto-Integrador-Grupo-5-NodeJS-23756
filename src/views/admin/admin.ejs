@@ -6,7 +6,11 @@
         <title>Admin | Funkoshop</title>
         <link href="/assets/css/style.css" rel="stylesheet" />
         <link href="/assets/css/style-admin.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link
+            rel="shorcut icon"
+            href="/assets/img/branding/isotype.svg"
+            type="image/x-icon"
+        />
     </head>
     <body>
         <!-- Header -->
@@ -27,6 +31,7 @@
                         class="search_input"
                         type="text"
                         placeholder="código, nombre o categoria"
+                        onkeyup="filterProducts(this.value)"
                     />
                 </label>
             </article>
@@ -44,21 +49,25 @@
                     </div>
                 </article>
                 <!-- Inicio Lista de Productos -->
-                <article class="list_item">
-                    <div class="list-item_content">
-                        <div class="list-item_text">ID</div>
-                        <div class="list-item_text">Código</div>
-                        <div class="list-item_text">Nombre del Producto</div>
-                        <div class="list-item_text">Categoria</div>
-                        <div class="list-item_text"></div>
-                        <div class="list-item_text"></div>
+                <article class="list_item-header">
+                    <div class="list-item_content-header">
+                        <div class="list-item_text-header">ID</div>
+                        <div class="list-item_text-header">Código</div>
+                        <div class="list-item_text-header">Nombre del Producto</div>
+                        <div class="llist-item_text-header">Categoria</div>
+                        <div class="list-item_text-header"></div>
+                        <div class="list-item_text-header"></div>
                     </div>
-                    <% productList.forEach((product) => { %>
+                </article>
+                <article class="list_item">
+                    <% productList.forEach((product) => { if (!searchInput || searchInput.trim() === '') { %>
                     <div class="list-item_content">
                         <div class="list-item_text"><%= product.id %></div>
                         <div class="list-item_text"><%= product.code %></div>
                         <div class="list-item_text"><%= product.name %></div>
-                        <div class="list-item_text"><%= product.collection %></div>
+                        <div class="list-item_text">
+                            <%= product.collection %>
+                        </div>
                         <div class="list-item_text">
                             <a class="edit_link" href="/admin/edit/id:">
                                 <img
@@ -76,7 +85,7 @@
                             </a>
                         </div>
                     </div>
-                    <% }); %>
+                    <% } %> <% }); %>
                 </article>
                 <!-- Fin Lista de Productos -->
             </section>
@@ -85,5 +94,6 @@
         <!-- Footer -->
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+        <script src="/assets/js/adminSearch.js"></script>
     </body>
 </html>
