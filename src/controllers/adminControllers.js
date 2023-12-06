@@ -8,24 +8,26 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        const searchInput = req.query.searchInput; // Obtén el valor de searchInput de la consulta HTTP
-    
-        // Filtra productList en base a searchInput
-        const filteredProductList = productList.filter((product) =>
-            !searchInput || searchInput.trim() === '' || product.name.includes(searchInput)
+        const searchInput = req.query.searchInput;
+
+        const filteredProductList = productList.filter(
+            (product) =>
+                !searchInput ||
+                searchInput.trim() === "" ||
+                product.name.includes(searchInput)
         );
-    
+
         if (filteredProductList.length === 0) {
             res.render(path.join(viewsPath, "admin.ejs"), {
                 productList: productList,
                 searchInput: searchInput,
-                noResults: true
+                noResults: true,
             });
         } else {
             res.render(path.join(viewsPath, "admin.ejs"), {
                 productList: filteredProductList,
                 searchInput: searchInput,
-                noResults: false
+                noResults: false,
             });
         }
     }
@@ -42,11 +44,17 @@ export class adminController {
         // Recuperar datos del producto por ID y pasarlos a la vista
         const productId = req.params.id;
         const productData = getProductDataById(productId);
-
-        console.log(productData);
+        // console.log(productData);
+        const productName = req.params.name;
+        const productCode = req.params.code;
+        const productCollection = req.params.collection;
 
         res.render(path.join(viewsPath, "edit.ejs"), {
             productData: productData,
+            productId,
+            productName,
+            productCode,
+            productCollection,
         });
     }
 
