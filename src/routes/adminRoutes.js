@@ -10,8 +10,8 @@ router
     .get("/create", adminControllers.adminCreateGet)
     .post("/create", adminControllers.adminCreatePost)
 
-    .get("/edit/:productId/:productName/:productCode/:productCollection", adminControllers.adminEditIdGet)
-    .put("/edit/:productId/:productName/:productCode/:productCollection", adminControllers.adminEditIdPut)
-    .delete("/edit/:productId/:productName/:productCode/:productCollection", adminControllers.adminEditIdDelete);
+    .get("/edit/:code", adminControllers.adminEditIdGet)
+    .put("/edit/:code", adminControllers.adminEditIdPut)
+    .delete("/edit/:code", adminControllers.adminEditIdDelete);
 
 export default router;

@@ -1,6 +1,7 @@
 import path from "path";
 import { productList } from "../data/productList.js";
-import { getProductDataById } from "../service/getProductDataById.js";
+import { getProductByCode } from "../service/getPorductByCode.js";
+// import { getProductDataById } from "../service/getProductDataById.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -41,20 +42,18 @@ export class adminController {
     }
 
     adminEditIdGet(req, res) {
-        // Recuperar datos del producto por ID y pasarlos a la vista
-        const productId = req.params.id;
-        const productData = getProductDataById(productId);
-        // console.log(productData);
-        const productName = req.params.name;
+        // // Recuperar datos del producto por ID y pasarlos a la vista
+        // const productId = req.params.id;
+        // const productData = getProductDataById(productId);
+        // // console.log(productData);
+        // const productCode = req.params.code;
         const productCode = req.params.code;
-        const productCollection = req.params.collection;
+        const product = getProductByCode(productCode);
 
         res.render(path.join(viewsPath, "edit.ejs"), {
-            productData: productData,
-            productId,
-            productName,
             productCode,
-            productCollection,
+            product,
+            // productData: productData,
         });
     }
 

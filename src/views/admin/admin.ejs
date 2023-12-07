@@ -66,14 +66,10 @@
                         <div class="list-item_text"><%= product.name %></div>
                         <div class="list-item_text"><%= product.collection %></div>
                         <div class="list-item_text">
-                            <a
-                                class="edit_link"
-                                href="/admin/edit/<%= product.id %>/<%= product.name %>/<%= product.code %>/<%= product.collection %>"
+                            <a class="edit_link"
+                                href="/admin/edit/<%= product.code %>"
                             >
-                                <img
-                                    src="/assets/img/icons/edit_pencil.svg"
-                                    alt="Edit Pencil Icon"
-                                />
+                                <img src="/assets/img/icons/edit_pencil.svg" alt="Edit Pencil Icon" />
                             </a>
                         </div>
                         <div class="list-item_text">
