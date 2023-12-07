@@ -59,11 +59,9 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="code">SKU:</label>
                             <input
-                                class="code"
-                                id="code"
                                 name="code"
                                 type="text"
-                                value="<%= product.code %>"
+                                value="<%= product ? product.code : '' %>"
                             />
                         </div>
                         <div class="form-sub-container input-wrapper">
