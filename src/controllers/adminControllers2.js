@@ -1,6 +1,7 @@
 import path from "path";
 import { productList } from "../data/productList.js";
-import { getProductByCode } from "../service/getPorductByCode.js";
+// import { getProductByCode } from "../service/getPorductByCode.js";
+import { getProductDataById } from "../service/getProductDataById.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -8,37 +9,29 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-      
-        const { filteredProductList, searchInput, noResults } = req;
+        const searchInput = req.query.searchInput;
 
-        res.render(path.join(viewsPath, "admin.ejs"), {
-            productList: filteredProductList || productList,
-            searchInput: searchInput,
-            noResults: noResults,
-        });
-/*
-        const searchInput = req.query.searchInput; 
-    
-        const filteredProductList = productList.filter((product) =>
-            !searchInput || searchInput.trim() === '' || product.name.includes(searchInput)
+        const filteredProductList = productList.filter(
+            (product) =>
+                !searchInput ||
+                searchInput.trim() === "" ||
+                product.name.includes(searchInput)
         );
-    
+
         if (filteredProductList.length === 0) {
             res.render(path.join(viewsPath, "admin.ejs"), {
                 productList: productList,
                 searchInput: searchInput,
-                noResults: true
+                noResults: true,
             });
         } else {
             res.render(path.join(viewsPath, "admin.ejs"), {
                 productList: filteredProductList,
                 searchInput: searchInput,
-                noResults: false
+                noResults: false,
             });
         }
-*/
     }
-
 
     adminCreateGet(req, res) {
         res.render(path.join(viewsPath, "create.ejs"), {});
@@ -49,19 +42,19 @@ export class adminController {
     }
 
     adminEditIdGet(req, res) {
+        // Recuperar datos del producto por ID y pasarlos a la vista
+        const productId = req.params.id;
+        const productData = getProductDataById(productId);
+
+        console.log(productData);
+
         const productCode = req.params.code;
-        const product = getProductByCode(productCode);
 
         res.render(path.join(viewsPath, "edit.ejs"), {
-            productList,
-            productCode,
-            product,
-            name: product ? product.name : "",
-            collection: product ? product.collection : "",
-            
+            productData: productData,
         });
     }
-    
+
     adminEditIdPut(req, res) {
         res.send("Route for edit/:id put");
     }

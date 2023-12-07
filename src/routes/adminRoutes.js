@@ -1,11 +1,12 @@
 import express from "express";
 import { adminController } from "../controllers/adminControllers.js";
+import { productFilterAdminSearch } from "../middlewares/productFilterAdminSearch.js"; 
 
 const router = express.Router();
 const adminControllers = new adminController();
 
 router
-    .get("/", adminControllers.adminGet)
+    .get("/", productFilterAdminSearch, adminControllers.adminGet)
 
     .get("/create", adminControllers.adminCreateGet)
     .post("/create", adminControllers.adminCreatePost)

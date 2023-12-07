@@ -19,49 +19,62 @@
                         <label class="label-select" for="categoria"
                             >Categoría
                         </label>
-                        <select class="categoria-select" name="categoria" id="categoria">
+                        <select
+                            class="categoria-select"
+                            name="categoria"
+                            id="categoria"
+                        >
                             <option>Seleccionar</option>
-                            <option value="figuras">Figuras</option>
-                            <option value="llaveros">Llaveros</option>
-                            <option value="remeras">Remeras</option>
+                            <option value="figuras" <%= productData?.categoria === 'figuras' ? 'selected' : '' %>>Figuras</option>
+                            <option value="llaveros" <%= productData?.categoria === 'llaveros' ? 'selected' : '' %>>Llaveros</option>
+                            <option value="remeras" <%= productData?.categoria === 'remeras' ? 'selected' : '' %>>Remeras</option>
                         </select>
-                        <label for="collection">Licencia</label>
-                        <select class="licencia-select" name="collection" id="collection">
-                            <option><%= collection %></option>
-                            <option value="star-wars" <% if (collection === 'star-wars') { %>selected<% } %>>STAR WARS</option>
-                            <option value="pokemon" <% if (collection === 'pokemon') { %>selected<% } %>>POKEMON</option>
-                            <option value="harry-potter" <% if (collection === 'harry-potter') { %>selected<% } %>>HARRY POTTER</option>
-                        </select>
+                        <label for="licencia"
+                            >Licencia
+                            <select
+                                class="licencia-select"
+                                name="licencia"
+                                id="licencia"
+                            >
+                                <option>Seleccionar</option>
+                                <option value="star-wars" <%= productData?.licencia === 'star-wars' ? 'selected' : '' %>>STAR WARS</option>
+                                <option value="pokemon" <%= productData?.licencia === 'pokemon' ? 'selected' : '' %>>POKEMON</option>
+                                <option value="harry-potter" <%= productData?.licencia === 'harry-potter' ? 'selected' : '' %>>HARRY POTTER</option>
+                            </select>
+                        </label>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="form-sub-container input-wrapper">
-                        <label for="name">Nombre del producto:</label>
+                        <label for="product_name">Nombre del producto:</label>
                         <input
                             type="text"
-                            id="name"
-                            name="name"
-                            value="<%= name %>"
+                            id="product_name"
+                            name="product_name"
+                            value="<%= productData?.name %>"
                         />
                     </div>
                     <div class="form-sub-container">
                         <textarea
                             class="product_description"
-                            name="description"
-                            id="description"
+                            name=""
+                            id=""
                             cols="30"
                             rows="10"
-                        ></textarea>
+                        ><%= productData?.description %></textarea>
                     </div>
                 </fieldset>
+
                 <fieldset>
                     <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
-                            <label for="code">SKU:</label>
+                            <label for="sku">SKU:</label>
                             <input
-                                name="code"
+                                class=""
+                                id="sku"
+                                name="sku"
                                 type="text"
-                                value="<%= product ? product.code : '' %>"
+                                value="<%= productData?.sku %>"
                             />
                         </div>
                         <div class="form-sub-container input-wrapper">
@@ -71,7 +84,7 @@
                                 id="price"
                                 name="price"
                                 type="text"
-                                value="price"
+                                value="<%= productData?.price %>"
                             />
                         </div>
                         <div class="form-sub-container input-wrapper">
@@ -81,7 +94,7 @@
                                 id="stock"
                                 name="stock"
                                 type="text"
-                                value="stock"
+                                value="<%= productData?.stock %>"
                             />
                         </div>
                     </div>
@@ -89,13 +102,13 @@
                 <fieldset>
                     <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
-                            <label for="discount">Descuento: </label>
+                            <label for="descuento">Descuento: </label>
                             <input
                                 class=""
-                                id="discount"
-                                name="discount"
+                                id="descuento"
+                                name="descuento"
                                 type="text"
-                                value="discount"
+                                value="<%= productData?.descuento %>"
                             />
                         </div>
                         <div class="form-sub-container">
@@ -106,7 +119,9 @@
                                     name="cuotas"
                                     id="cuotas"
                                 >
-                                <option value="cuotas" selected>Cuotas sin interés</option>
+                                <option value="<%= productData?.cuotas %>" selected>
+                                    <%= productData?.cuotas %> Cuotas sin interés
+                                </option>
                                 <option value="1">1 Cuota sin interés</option>
                                 <option value="2">2 Cuotas sin interés</option>
                                 <option value="3">3 Cuotas sin interés</option>
@@ -118,13 +133,13 @@
                 </fieldset>
                 <fieldset>
                     <div class="form-sub-container">
-                        <label for="imgFront">Imágenes:</label>
+                        <label for="imagenes">Imágenes:</label>
                         <input
                             class=""
-                            id="imgFront"
-                            name="imgFront"
+                            id="imagenes"
+                            name="imagenes"
                             type="file"
-                            value="imgFront"
+                            value="imagenes"
                         />
                     </div>
                     <div class="form-sub-container">
@@ -138,14 +153,9 @@
                         />
                     </div>
                 </fieldset>
-                <fieldset>
-                    <div class="form-sub-container" id="gallery-container">
-                        <div class="card-gallery">T0D0</div>
-                    </div>
-                    <div class="form-sub-container" id="gallery-container">
-                        <div class="card-gallery">T0D0</div>
-                    </div>
-                </fieldset> 
+                <div class="form-sub-container" id="gallery-container">
+                    <div class="card-gallery">T0D0</div>
+                </div>
                 <div class="form-sub-container">
                     <button
                         class="btn-primary"
@@ -161,6 +171,6 @@
         <!-- Fin Main -->
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="/assets/js/editToAdmin.js"></script>
+        <script src="/assets/js/editAdmin.js"></script>
     </body>
 </html>
