@@ -1,23 +1,35 @@
-// Verificar si product.code está definido antes de asignar el valor a productCode
-if (typeof product !== 'undefined' && typeof product.code !== 'undefined') {
-    // Asignar el valor de product.code a productCode
+if (typeof product !== "undefined" && typeof product.code !== "undefined") {
     var productCode = product.code;
 
-    // Obtener el elemento del select
-    var selectElement = document.getElementById("categoria");
+    var selectElement = document.getElementById("code");
 
-    // Recorrer todas las opciones del select
     for (var i = 0; i < selectElement.options.length; i++) {
         var optionElement = selectElement.options[i];
 
-        // Comparar el valor de productCode con el valor de la opción
         if (optionElement.value === productCode) {
-            // Establecer la opción como seleccionada
             optionElement.selected = true;
+
+            var selectedProduct = productList.find(function (product) {
+                return product.code === productCode;
+            });
+
+            if (typeof selectedProduct !== "undefined") {
+                var categoryElement = document.getElementById("category");
+                var collectionElement = document.getElementById("collection");
+                var nameElement = document.getElementById("name");
+                var descriptionElement = document.getElementById("description");
+                var priceElement = document.getElementById("price");
+                var stockElement = document.getElementById("stock");
+                var discountElement = document.getElementById("discount");
+                var cuotasElement = document.getElementById("cuotas");
+                var imgfrontElement = document.getElementById("imgfront");
+                var imgbackElement = document.getElementById("imgback");
+
+                collectionElement.value = selectedProduct.collection;
+                nameElement.value = selectedProduct.name;
+            }
         }
     }
 } else {
-    // Manejar el caso en el que product.code no está definido o no tiene un valor válido
     console.error("product.code no está definido o no tiene un valor válido");
-    // Aquí puedes agregar el código para manejar este caso según tus necesidades
 }

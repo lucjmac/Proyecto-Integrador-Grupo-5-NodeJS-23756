@@ -42,20 +42,31 @@ export class adminController {
     }
 
     adminEditIdGet(req, res) {
-        // // Recuperar datos del producto por ID y pasarlos a la vista
-        // const productId = req.params.id;
-        // const productData = getProductDataById(productId);
-        // // console.log(productData);
-        // const productCode = req.params.code;
         const productCode = req.params.code;
         const product = getProductByCode(productCode);
 
         res.render(path.join(viewsPath, "edit.ejs"), {
+            productList,
             productCode,
             product,
-            // productData: productData,
+            name: product ? product.name : "",
+            collection: product ? product.collection : "",
+            
         });
     }
+    
+    // adminEditIdGet(req, res) {
+    //     // Recuperar datos del producto por ID y pasarlos a la vista
+    //     const productId = req.params.id;
+    //     const productData = getProductDataById(productId);
+    //     // console.log(productData);
+    //     const productCode = req.params.code;
+        
+
+    //     res.render(path.join(viewsPath, "edit.ejs"), {
+    //         productData: productData,
+    //     });
+    // }
 
     adminEditIdPut(req, res) {
         res.send("Route for edit/:id put");

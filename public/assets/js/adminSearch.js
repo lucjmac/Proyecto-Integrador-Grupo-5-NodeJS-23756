@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".list_item");
-    container.setAttribute("data-original-html", container.innerHTML);
+    container.setAttribute("original-html", container.innerHTML);
 
     const searchInput = document.getElementById("search_input");
     searchInput.addEventListener("input", () => {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function filterProducts(searchValue) {
     const container = document.querySelector(".list_item");
-    const originalHTML = container.getAttribute("data-original-html");
+    const originalHTML = container.getAttribute("original-html");
 
     if (!searchValue || searchValue.trim() === "") {
         container.innerHTML = originalHTML;

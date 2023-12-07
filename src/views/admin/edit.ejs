@@ -25,19 +25,13 @@
                             <option value="llaveros">Llaveros</option>
                             <option value="remeras">Remeras</option>
                         </select>
-                        <label for="collection"
-                        >Licencia
-                        <select
-                                class="licencia-select"
-                                name="collection"
-                                id="collection"
-                            >
-                                <option>Seleccionar</option>
-                                <option value="star-wars" >STAR WARS</option>
-                                <option value="pokemon" >POKEMON</option>
-                                <option value="harry-potter" >HARRY POTTER</option>
-                            </select>
-                        </label>
+                        <label for="collection">Licencia</label>
+                        <select class="licencia-select" name="collection" id="collection">
+                            <option><%= collection %></option>
+                            <option value="star-wars" <% if (collection === 'star-wars') { %>selected<% } %>>STAR WARS</option>
+                            <option value="pokemon" <% if (collection === 'pokemon') { %>selected<% } %>>POKEMON</option>
+                            <option value="harry-potter" <% if (collection === 'harry-potter') { %>selected<% } %>>HARRY POTTER</option>
+                        </select>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -47,7 +41,7 @@
                             type="text"
                             id="name"
                             name="name"
-                            value="name"
+                            value="<%= name %>"
                         />
                     </div>
                     <div class="form-sub-container">
@@ -146,10 +140,14 @@
                         />
                     </div>
                 </fieldset>
-                <div class="form-sub-container" id="gallery-container">
-                    <div class="card-gallery">T0D0</div>
-                </div>
-
+                <fieldset>
+                    <div class="form-sub-container" id="gallery-container">
+                        <div class="card-gallery">T0D0</div>
+                    </div>
+                    <div class="form-sub-container" id="gallery-container">
+                        <div class="card-gallery">T0D0</div>
+                    </div>
+                </fieldset> 
                 <div class="form-sub-container">
                     <button
                         class="btn-primary"
