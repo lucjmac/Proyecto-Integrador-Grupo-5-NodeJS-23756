@@ -8,9 +8,8 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        const searchInput = req.query.searchInput; // Obtén el valor de searchInput de la consulta HTTP
+        const searchInput = req.query.searchInput; 
     
-        // Filtra productList en base a searchInput
         const filteredProductList = productList.filter((product) =>
             !searchInput || searchInput.trim() === '' || product.name.includes(searchInput)
         );
