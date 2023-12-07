@@ -19,13 +19,7 @@
                         <label class="label-select" for="categoria"
                             >Categoría
                         </label>
-                        <select class="categoria-select" name="categoria" id="categoria">
-                            <option>Seleccionar</option>
-                            <option value="figuras">Figuras</option>
-                            <option value="llaveros">Llaveros</option>
-                            <option value="remeras">Remeras</option>
-                        </select>
-                        <!-- <select
+                        <select
                             class="categoria-select"
                             name="categoria"
                             id="categoria"
@@ -34,21 +28,8 @@
                             <option value="figuras" <%= productData?.categoria === 'figuras' ? 'selected' : '' %>>Figuras</option>
                             <option value="llaveros" <%= productData?.categoria === 'llaveros' ? 'selected' : '' %>>Llaveros</option>
                             <option value="remeras" <%= productData?.categoria === 'remeras' ? 'selected' : '' %>>Remeras</option>
-                        </select> -->
-                        <label for="collection"
-                        >Licencia
-                        <select
-                                class="licencia-select"
-                                name="collection"
-                                id="collection"
-                            >
-                                <option>Seleccionar</option>
-                                <option value="star-wars" >STAR WARS</option>
-                                <option value="pokemon" >POKEMON</option>
-                                <option value="harry-potter" >HARRY POTTER</option>
-                            </select>
-                        </label>
-                        <!-- <label for="licencia"
+                        </select>
+                        <label for="licencia"
                             >Licencia
                             <select
                                 class="licencia-select"
@@ -60,20 +41,11 @@
                                 <option value="pokemon" <%= productData?.licencia === 'pokemon' ? 'selected' : '' %>>POKEMON</option>
                                 <option value="harry-potter" <%= productData?.licencia === 'harry-potter' ? 'selected' : '' %>>HARRY POTTER</option>
                             </select>
-                        </label> -->
+                        </label>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="form-sub-container input-wrapper">
-                        <label for="name">Nombre del producto:</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value="name"
-                        />
-                    </div>
-                    <!-- <div class="form-sub-container input-wrapper">
                         <label for="product_name">Nombre del producto:</label>
                         <input
                             type="text"
@@ -81,17 +53,8 @@
                             name="product_name"
                             value="<%= productData?.name %>"
                         />
-                    </div> -->
-                    <div class="form-sub-container">
-                        <textarea
-                            class="product_description"
-                            name="description"
-                            id="description"
-                            cols="30"
-                            rows="10"
-                        ></textarea>
                     </div>
-                    <!-- <div class="form-sub-container">
+                    <div class="form-sub-container">
                         <textarea
                             class="product_description"
                             name=""
@@ -99,22 +62,11 @@
                             cols="30"
                             rows="10"
                         ><%= productData?.description %></textarea>
-                    </div> -->
+                    </div>
                 </fieldset>
 
                 <fieldset>
                     <div class="form-container-selects">
-                        <div class="form-sub-container input-wrapper">
-                            <label for="code">SKU:</label>
-                            <input
-                                class="code"
-                                id="code"
-                                name="code"
-                                type="text"
-                                value="code"
-                            />
-                        </div>
-                    <!-- <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
                             <label for="sku">SKU:</label>
                             <input
@@ -124,18 +76,8 @@
                                 type="text"
                                 value="<%= productData?.sku %>"
                             />
-                        </div> -->
-                        <div class="form-sub-container input-wrapper">
-                            <label for="price">Precio: </label>
-                            <input
-                                class=""
-                                id="price"
-                                name="price"
-                                type="text"
-                                value="price"
-                            />
                         </div>
-                        <!-- <div class="form-sub-container input-wrapper">
+                        <div class="form-sub-container input-wrapper">
                             <label for="price">Precio: </label>
                             <input
                                 class=""
@@ -144,18 +86,8 @@
                                 type="text"
                                 value="<%= productData?.price %>"
                             />
-                        </div> -->
-                        <div class="form-sub-container input-wrapper">
-                            <label for="stock">Stock: </label>
-                            <input
-                                class=""
-                                id="stock"
-                                name="stock"
-                                type="text"
-                                value="stock"
-                            />
                         </div>
-                        <!-- <div class="form-sub-container input-wrapper">
+                        <div class="form-sub-container input-wrapper">
                             <label for="stock">Stock: </label>
                             <input
                                 class=""
@@ -164,22 +96,11 @@
                                 type="text"
                                 value="<%= productData?.stock %>"
                             />
-                        </div> -->
+                        </div>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="form-container-selects">
-                        <div class="form-sub-container input-wrapper">
-                            <label for="discount">Descuento: </label>
-                            <input
-                                class=""
-                                id="discount"
-                                name="discount"
-                                type="text"
-                                value="discount"
-                            />
-                        </div>
-                    <!-- <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
                             <label for="descuento">Descuento: </label>
                             <input
@@ -189,24 +110,8 @@
                                 type="text"
                                 value="<%= productData?.descuento %>"
                             />
-                        </div> -->
-                        <div class="form-sub-container">
-                            <label for="cuotas"
-                                >Cuotas:</label>
-                                <select
-                                    class="cuota-select"
-                                    name="cuotas"
-                                    id="cuotas"
-                                >
-                                <option value="cuotas" selected>Cuotas sin interés</option>
-                                <option value="1">1 Cuota sin interés</option>
-                                <option value="2">2 Cuotas sin interés</option>
-                                <option value="3">3 Cuotas sin interés</option>
-                                <option value="6">6 Cuotas sin interés</option>
-                                </select>
-                            </label>
                         </div>
-                        <!-- <div class="form-sub-container">
+                        <div class="form-sub-container">
                             <label for="cuotas"
                                 >Cuotas:</label>
                                 <select
@@ -223,21 +128,11 @@
                                 <option value="6">6 Cuotas sin interés</option>
                                 </select>
                             </label>
-                        </div> -->
+                        </div>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="form-sub-container">
-                        <label for="imgFront">Imágenes:</label>
-                        <input
-                            class=""
-                            id="imgFront"
-                            name="imgFront"
-                            type="file"
-                            value="imgFront"
-                        />
-                    </div>
-                    <!-- <div class="form-sub-container">
                         <label for="imagenes">Imágenes:</label>
                         <input
                             class=""
@@ -246,7 +141,7 @@
                             type="file"
                             value="imagenes"
                         />
-                    </div> -->
+                    </div>
                     <div class="form-sub-container">
                         <label for="imgBack">Imágenes:</label>
                         <input
