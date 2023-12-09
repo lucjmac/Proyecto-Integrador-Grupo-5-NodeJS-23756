@@ -8,7 +8,6 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-      
         const { filteredProductList, searchInput, noResults } = req;
 
         res.render(path.join(viewsPath, "admin.ejs"), {
@@ -16,7 +15,7 @@ export class adminController {
             searchInput: searchInput,
             noResults: noResults,
         });
-/*
+        /*
         const searchInput = req.query.searchInput; 
     
         const filteredProductList = productList.filter((product) =>
@@ -39,7 +38,6 @@ export class adminController {
 */
     }
 
-
     adminCreateGet(req, res) {
         res.render(path.join(viewsPath, "create.ejs"), {});
     }
@@ -58,10 +56,9 @@ export class adminController {
             product,
             name: product ? product.name : "",
             collection: product ? product.collection : "",
-            
         });
     }
-    
+
     adminEditIdPut(req, res) {
         res.send("Route for edit/:id put");
     }
