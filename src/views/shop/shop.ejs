@@ -120,7 +120,7 @@
         <div class="principal-wrapper">
           <div class="principal-sub-wrapper">
             <% shopCollections.forEach((product) => { %>
-            <div class="card">
+            <a class="card" href="shop/item/<%= product.product_id %>">
               <div class="card-title">
                 <div class="card-item_tag">Nuevo</div>
               </div>
@@ -145,7 +145,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
             <% }); %>
           </div>
         </div>
