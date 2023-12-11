@@ -59,6 +59,15 @@ const cartService = {
       console.log("Error al realizar conexion con BBDD: " + error);
     }
   },
+  delete: async (productId) => {
+    try {
+      const query = "delete from cart  WHERE id_product = ?";
+      const result = await conn.query(query, [productId.productId]);
+      return result;
+    } catch (error) {
+      console.log("Error al realizar conexion con BBDD: " + error);
+    }
+  },
 };
 
 export default cartService;
