@@ -7,18 +7,18 @@
                 <article class="card-item">
                     <a
                         class="card-item_link"
-                        href="/shop/item/:id<%= item.product_id %>" 
+                        href="/shop/item/<%= item.id_name %>" 
                     >
                         <picture class="card-item_cover">
                             <span class="card-item_tag">NUEVO</span>
                             <img
                                 class="card-item_img-front"
-                                src="<%= item.image_Front %>"
+                                src="<%= item.imgage_Front %>"
                                 alt="<%= item.product_description %>"
                             />
                             <img
                                 class="card-item_img-back"
-                                src="<%= item.image_Back %>"
+                                src="<%= item.imgage_Back %>"
                                 alt="<%= item.product_description %>"
                             />
                         </picture>
