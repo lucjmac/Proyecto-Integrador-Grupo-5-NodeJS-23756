@@ -30,7 +30,7 @@
         <ul class="cart-product-items">
           <% cartItems.forEach((item, index) => { %>
           <li class="product-item card-background">
-            <div class="item-detail">
+            <a class="item-detail" href="/shop/item/<%= item.product_id %>">
               <img
                 src="<%= item.image_Front %>"
                 alt="<%= item.product_name %>"
@@ -42,7 +42,7 @@
                   Precio: $ <span><%= item.price %></span>
                 </p>
               </div>
-            </div>
+            </a>
 
             <div
               id="quantity-<%= item.product_id %>"
