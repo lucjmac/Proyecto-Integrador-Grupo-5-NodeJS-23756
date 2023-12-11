@@ -32,9 +32,38 @@ export class shopController {
   }
 
   async shopCartGet(req, res) {
-    const cartItems = await cartService.consulta();
-    console.log("cartItems", cartItems);
-    res.render(path.join(viewsPath, "cart.ejs"), { cartItems });
+    const [cart] = await cartService.consulta();
+    console.log("cart", cart);
+    const productIds = cart.map((item) => {
+      return item.id_product;
+    });
+
+    let [cartItems] = await getProduct.consultaVarios(productIds);
+
+    // console.log("cartItems", cartItems);
+    const cartItemsLicences = cartItems.map((item) => {
+      return item.licence_id;
+    });
+
+    const [licences] = await getProduct.consultaLicenceVarios(
+      cartItemsLicences
+    );
+
+    cartItems = cartItems.map((item) => {
+      const getLicence = licences.find(
+        (licence) => licence.id === item.licence_id
+      );
+
+      return {
+        ...item,
+        licence: getLicence.licence_name,
+      };
+    });
+
+    res.render(path.join(viewsPath, "cart.ejs"), {
+      cartItems,
+      cart,
+    });
   }
 
   async itemIdAddPost(req, res) {

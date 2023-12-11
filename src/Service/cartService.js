@@ -8,9 +8,9 @@ const cartService = {
   consulta: async () => {
     try {
       const query = "select * from sql10668848.cart";
-      const consulta = await conn.query(query);
+      const resultados = await conn.query(query);
 
-      return consulta;
+      return resultados;
     } catch (error) {
       console.log("Error al realizar conexion con BBDD: " + error);
     }

@@ -21,6 +21,21 @@ const getProduct = {
       console.log("Error al realizar conexion con BBDD: " + error);
     }
   },
+  consultaVarios: async (arrayIds) => {
+    try {
+      const query = `
+        SELECT *
+        FROM product
+        WHERE product_id IN (${arrayIds.join(", ")});
+      `;
+
+      const consulta = await conn.query(query);
+
+      return consulta;
+    } catch (error) {
+      console.log("Error al realizar conexion con BBDD: " + error);
+    }
+  },
   consultaCategory: async (id) => {
     try {
       console.log("Consulta a la tabla " + id);
@@ -32,10 +47,40 @@ const getProduct = {
       console.log("Error al realizar conexion con BBDD: " + error);
     }
   },
+  consultaCategoryVarios: async (arrayIds) => {
+    try {
+      const query = `
+        SELECT *
+        FROM category
+        WHERE id IN (${arrayIds.join(", ")});
+      `;
+      // const query = `SELECT *  FROM category WHERE id  = ${id}`;
+      const consulta = await conn.query(query);
+
+      return consulta;
+    } catch (error) {
+      console.log("Error al realizar conexion con BBDD: " + error);
+    }
+  },
   consultaLicence: async (id) => {
     try {
       console.log("Consulta a la tabla " + id);
       const query = `SELECT *  FROM licence WHERE id  = ${id}`;
+      const consulta = await conn.query(query);
+
+      return consulta;
+    } catch (error) {
+      console.log("Error al realizar conexion con BBDD: " + error);
+    }
+  },
+  consultaLicenceVarios: async (arrayIds) => {
+    try {
+      const query = `
+      SELECT *
+      FROM licence
+      WHERE id IN (${arrayIds.join(", ")});
+    `;
+      // const query = `SELECT *  FROM licence WHERE id  = ${id}`;
       const consulta = await conn.query(query);
 
       return consulta;
