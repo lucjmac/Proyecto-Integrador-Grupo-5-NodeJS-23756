@@ -17,7 +17,9 @@ const getProduct = {
 
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD getProduct.consulta: " + error
+      );
     }
   },
   consultaVarios: async (arrayIds) => {
@@ -27,12 +29,15 @@ const getProduct = {
         FROM product
         WHERE product_id IN (${arrayIds.join(", ")});
       `;
-
+      console.log(arrayIds, "arrayIds");
       const consulta = await conn.query(query);
-
+      console.log(consulta, "p");
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD getProduct.consultaVarios: " +
+          error
+      );
     }
   },
   consultaCategory: async (id) => {
@@ -43,7 +48,10 @@ const getProduct = {
 
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD getProduct.consultaCategory: " +
+          error
+      );
     }
   },
   consultaCategoryVarios: async (arrayIds) => {
@@ -58,7 +66,10 @@ const getProduct = {
 
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD getProduct.consultaCategoryVarios: " +
+          error
+      );
     }
   },
   consultaLicence: async (id) => {
@@ -69,7 +80,10 @@ const getProduct = {
 
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD getProduct.consultaLicence: " +
+          error
+      );
     }
   },
   consultaLicenceVarios: async (arrayIds) => {
@@ -84,7 +98,10 @@ const getProduct = {
 
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD getProduct.consultaLicenceVarios: " +
+          error
+      );
     }
   },
 };

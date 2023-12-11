@@ -14,6 +14,7 @@ const getCartItems = async () => {
     return item.id_product;
   });
 
+  if (productIds.length === 0) return [];
   let cartItems = await getProduct.consultaVarios(productIds);
 
   if (!cartItems || cartItems.length === 0) return [];

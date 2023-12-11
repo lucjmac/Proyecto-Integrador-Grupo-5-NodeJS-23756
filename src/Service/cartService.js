@@ -12,7 +12,9 @@ const cartService = {
 
       return resultados;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD cartService.consulta: " + error
+      );
     }
   },
   consultaCantidad: async (cartId) => {
@@ -22,7 +24,10 @@ const cartService = {
 
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD cartService.consultaCantidad: " +
+          error
+      );
     }
   },
   insertar: async (valor) => {
@@ -56,7 +61,9 @@ const cartService = {
         return consulta;
       }
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD cartService.insertar: " + error
+      );
     }
   },
   modificar: async (valor) => {
@@ -68,7 +75,9 @@ const cartService = {
 
       return consulta;
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD cartService.modificar: " + error
+      );
     }
   },
   delete: async (productId) => {
@@ -77,7 +86,9 @@ const cartService = {
       const result = await conn.query(query, [productId.productId]);
       return { success: true, result };
     } catch (error) {
-      console.log("Error al realizar conexion con BBDD: " + error);
+      console.log(
+        "Error al realizar conexion con BBDD cartService.delete: " + error
+      );
     }
   },
 };
