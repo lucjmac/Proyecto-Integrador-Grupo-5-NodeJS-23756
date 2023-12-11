@@ -42,7 +42,6 @@ const getProduct = {
   },
   consultaCategory: async (id) => {
     try {
-      console.log("Consulta a la tabla " + id);
       const query = `SELECT *  FROM category WHERE id  = ${id}`;
       const consulta = await conn.query(query);
 
@@ -74,7 +73,6 @@ const getProduct = {
   },
   consultaLicence: async (id) => {
     try {
-      console.log("Consulta a la tabla " + id);
       const query = `SELECT *  FROM licence WHERE id  = ${id}`;
       const consulta = await conn.query(query);
 
