@@ -134,6 +134,10 @@ setItemTotal();
 setResume();
 
 const deleteItem = (productId) => {
+  const confirmDelete = confirm("Seguro desea eliminar el articulo?");
+
+  if (!confirmDelete) return;
+
   fetch(`${HOST}/shop/cart`, {
     method: "DELETE",
     headers: {
