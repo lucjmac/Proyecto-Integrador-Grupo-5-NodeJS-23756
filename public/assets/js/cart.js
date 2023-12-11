@@ -42,7 +42,11 @@ const setSubtotal = () => {
   );
 
   const totals =
-    productItemsContainer[0].children.length === 0 ? 0 : summAllItems();
+    productItemsContainer[0] &&
+    productItemsContainer[0].children &&
+    productItemsContainer[0].children.length === 0
+      ? 0
+      : summAllItems();
 
   summary.innerHTML = totals.toFixed(2);
 };
@@ -56,9 +60,15 @@ const setTotal = () => {
   );
 
   const itemsSum =
-    productItemsContainer[0].children.length === 0 ? 0 : summAllItems();
+    productItemsContainer[0] &&
+    productItemsContainer[0].children &&
+    productItemsContainer[0].children.length === 0
+      ? 0
+      : summAllItems();
 
   const shipping =
+    productItemsContainer[0] &&
+    productItemsContainer[0].children &&
     productItemsContainer[0].children.length === 0
       ? 0
       : document
@@ -91,45 +101,43 @@ const setResume = () => {
   updateMiniCart();
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  function calculateTotal() {
-    productItemWrappers.forEach((wrapper) => {
-      const price = wrapper.querySelector(".item-price span").innerHTML;
-      const add = wrapper.querySelector("#add");
-      const subtract = wrapper.querySelector("#subtract");
-      const quantity = wrapper.querySelector("#quantity");
-      const total = wrapper.querySelector(".item-total-price");
-      let totalPrice = 0;
+const calculateTotal = () => {
+  const productItemWrappers = document.querySelectorAll(".product-item");
+  productItemWrappers.forEach((wrapper) => {
+    const price = wrapper.querySelector(".item-price span").innerHTML;
+    const add = wrapper.querySelector("#add");
+    const subtract = wrapper.querySelector("#subtract");
+    const quantity = wrapper.querySelector("#quantity");
+    const total = wrapper.querySelector(".item-total-price");
+    let totalPrice = 0;
 
-      if (add && subtract && quantity) {
-        add.addEventListener("click", () => {
-          totalPrice = Number(price * quantity.value).toFixed(2);
-          total.innerHTML = `$${totalPrice}`;
+    if (add && subtract && quantity) {
+      add.addEventListener("click", () => {
+        totalPrice = Number(price * quantity.value).toFixed(2);
+        total.innerHTML = `$${totalPrice}`;
 
-          setResume();
-        });
-        subtract.addEventListener("click", () => {
-          const newTotal = Number(price * quantity.value).toFixed(2);
+        setResume();
+      });
+      subtract.addEventListener("click", () => {
+        const newTotal = Number(price * quantity.value).toFixed(2);
 
-          totalPrice = newTotal < 0 ? 0 : newTotal;
-          total.innerHTML = `$${totalPrice}`;
+        totalPrice = newTotal < 0 ? 0 : newTotal;
+        total.innerHTML = `$${totalPrice}`;
 
-          setResume();
-        });
+        setResume();
+      });
 
-        quantity.addEventListener("change", () => {
-          totalPrice = Number(price * quantity.value).toFixed(2);
-          total.innerHTML = `$${totalPrice}`;
+      quantity.addEventListener("change", () => {
+        totalPrice = Number(price * quantity.value).toFixed(2);
+        total.innerHTML = `$${totalPrice}`;
 
-          setResume();
-        });
-      }
-    });
-  }
+        setResume();
+      });
+    }
+  });
+};
 
-  calculateTotal();
-});
-
+calculateTotal();
 setItemTotal();
 setResume();
 
@@ -221,13 +229,13 @@ const deleteItem = (productId) => {
         message.innerHTML = "No hay articulos en el carrito";
         table.appendChild(message);
       }
+      setupQuantityControls();
+      calculateTotal();
     })
-
     .catch((error) => console.error("Error:", error));
 };
 
 const addToCart = async (productId) => {
-  console.log("productId", productId);
   //   TODO: sacar el user ID que este almacenado en el local storage
   const userID = 2;
   const id = Math.floor(Math.random() * 10000 + 1);
@@ -238,8 +246,8 @@ const addToCart = async (productId) => {
     localStorage.setItem("cartId", id_cart);
   }
 
-  const nose = document.querySelector(`#quantity-${productId} `);
-  const quantityInput = nose.querySelector("input");
+  const quantityInput = document.querySelector(`#quantity-${productId} input`);
+  // const quantityInput = nose.querySelector("input");
 
   setTimeout(() => {
     fetch(`${HOST}/shop/item/${productId}/add`, {
@@ -279,7 +287,7 @@ const observeElementRender = (selector, callback) => {
     }
   });
 
-  observer.observe(targetElement, config);
+  targetElement && observer.observe(targetElement, config);
 };
 
 observeElementRender(".cart-product-items ", updateElements);
