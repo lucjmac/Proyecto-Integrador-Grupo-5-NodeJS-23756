@@ -1,4 +1,4 @@
-const HOST = "http://localhost:8080";
+const HOST = window.location.origin;
 const form = document.querySelector("form.figure-form");
 const addToCartMessage = document.querySelector(
   "form.figure-form .addToCartMessage"

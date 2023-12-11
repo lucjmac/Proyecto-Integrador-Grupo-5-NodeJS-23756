@@ -1,4 +1,4 @@
-const HOST = "http://localhost:8080";
+const HOST = window.location.origin;
 const productItemWrappers = document.querySelectorAll(".product-item");
 const productItemsContainer = document.querySelectorAll(".cart-product-items ");
 
