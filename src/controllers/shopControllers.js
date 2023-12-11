@@ -1,10 +1,9 @@
 import path from "path";
 import { sliderItems } from "../data/sliderItems.js";
 import { shopCollections } from "../data/shopCollections.js";
-import { cartItems } from "../data/cartItems.js";
 
 import getProduct from "../Service/getProductDataById.js";
-import cartService from "../Service/addToCart.js";
+import cartService from "../Service/cartService.js";
 
 const viewsPath = path.resolve() + "/src/views/shop";
 
@@ -32,7 +31,9 @@ export class shopController {
     });
   }
 
-  shopCartGet(req, res) {
+  async shopCartGet(req, res) {
+    const cartItems = await cartService.consulta();
+    console.log("cartItems", cartItems);
     res.render(path.join(viewsPath, "cart.ejs"), { cartItems });
   }
 

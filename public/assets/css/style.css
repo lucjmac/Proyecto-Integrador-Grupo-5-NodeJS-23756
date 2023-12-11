@@ -204,12 +204,12 @@ header .navbar_link:hover {
   align-items: center;
   bottom: 67%;
   position: absolute;
-  border: 2px solid red;
+  border: 2px solid var(--primary-solid);
   padding: 0.5rem 1rem;
   border-radius: 50%;
   font-size: 12px;
   left: 50%;
-  background: red;
+  background: var(--primary-solid);
 }
 
 /* Slider */
