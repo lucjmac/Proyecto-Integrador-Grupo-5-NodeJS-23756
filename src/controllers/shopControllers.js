@@ -14,26 +14,35 @@ const getCartItems = async () => {
     return item.id_product;
   });
 
-  let [cartItems] = await getProduct.consultaVarios(productIds);
+  let cartItems = await getProduct.consultaVarios(productIds);
 
-  const cartItemsLicences = cartItems.map((item) => {
+  if (!cartItems || cartItems.length === 0) return [];
+
+  const cartItemsLicences = cartItems[0].map((item) => {
     return item.licence_id;
   });
 
-  const [licences] = await getProduct.consultaLicenceVarios(cartItemsLicences);
+  const licences = await getProduct.consultaLicenceVarios(cartItemsLicences);
 
-  cartItems = cartItems.map((item) => {
-    const getLicence = licences.find(
-      (licence) => licence.id === item.licence_id
-    );
+  if (licences) {
+    cartItems = cartItems[0].map((item) => {
+      const getLicence = licences[0].find(
+        (licence) => licence.id === item.licence_id
+      );
 
-    return {
-      ...item,
-      licence: getLicence.licence_name,
-    };
-  });
+      const cartItem = cart.find(
+        (cartItem) => cartItem.id_product === item.product_id
+      );
 
-  return { cartItems, cart };
+      return {
+        ...item,
+        selectedQty: cartItem.quantity,
+        licence: getLicence.licence_name,
+      };
+    });
+  }
+
+  return { cartItems };
 };
 
 export class shopController {
@@ -61,30 +70,34 @@ export class shopController {
   }
 
   async shopCartGet(req, res) {
-    const { cartItems, cart } = await getCartItems();
+    const { cartItems } = await getCartItems();
 
     res.render(path.join(viewsPath, "cart.ejs"), {
       cartItems,
-      cart,
     });
   }
 
   async itemIdAddPost(req, res) {
-    await cartService.insertar(req.body);
+    const { isCart } = req.body;
+    if (isCart) {
+      await cartService.modificar(req.body);
+    } else {
+      await cartService.insertar(req.body);
+    }
     const [response] = await cartService.consultaCantidad(req.body.id_cart);
 
     res.json({ response });
   }
   async shopCartDelete(req, res) {
-    await cartService.delete(req.body);
+    try {
+      await cartService.delete(req.body);
 
-    const { cartItems, cart } = await getCartItems();
-    console.log("cartItems", cartItems);
+      const { cartItems } = await getCartItems();
 
-    res.render(path.join(viewsPath, "cart.ejs"), {
-      cartItems,
-      cart,
-    });
+      res.json({ cartItems: cartItems || [] });
+    } catch (error) {
+      console.error("Error in shopCartDelete:", error);
+    }
   }
   shopCartPost(req, res) {
     res.send("Route for go to checkout page");

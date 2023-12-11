@@ -59,11 +59,23 @@ const cartService = {
       console.log("Error al realizar conexion con BBDD: " + error);
     }
   },
+  modificar: async (valor) => {
+    const { product_id, quantity } = valor;
+
+    try {
+      const query = "UPDATE cart SET quantity = ? WHERE id_product = ?";
+      const consulta = await conn.query(query, [quantity, product_id]);
+
+      return consulta;
+    } catch (error) {
+      console.log("Error al realizar conexion con BBDD: " + error);
+    }
+  },
   delete: async (productId) => {
     try {
       const query = "delete from cart  WHERE id_product = ?";
       const result = await conn.query(query, [productId.productId]);
-      return result;
+      return { success: true, result };
     } catch (error) {
       console.log("Error al realizar conexion con BBDD: " + error);
     }

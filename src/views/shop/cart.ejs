@@ -23,6 +23,10 @@
           <p class="cart-header-title">Total</p>
           <span class="cart-empty-header"></span>
         </div>
+
+        <% if( !cartItems ) { %>
+        <p>No hay articulos en el carrito</p>
+        <% } else { %>
         <ul class="cart-product-items">
           <% cartItems.forEach((item, index) => { %>
           <li class="product-item card-background">
@@ -40,20 +44,27 @@
               </div>
             </div>
 
-            <div class="item-quantity quantity-action-wrapper">
+            <div
+              id="quantity-<%= item.product_id %>"
+              class="item-quantity quantity-action-wrapper"
+            >
               <input
                 type="number"
                 id="quantity"
-                value="<%= cart[index].quantity %>"
+                value="<%= item.selectedQty %>"
+                onchange="addToCart(<%= item.product_id %>)"
               />
               <div class="quantity-action">
-                <button id="add">
+                <button id="add" onclick="addToCart(<%= item.product_id %>)">
                   <img
                     src="../../assets/img/icons/plus-icon.svg"
                     alt="icono agregar"
                   />
                 </button>
-                <button id="subtract">
+                <button
+                  id="subtract"
+                  onclick="addToCart(<%= item.product_id %>)"
+                >
                   <img
                     src="../../assets/img/icons/minus-icon.svg"
                     alt="icono quitar"
@@ -79,6 +90,7 @@
           </li>
           <% }); %>
         </ul>
+        <% } %>
       </div>
 
       <div class="cart-summary-wrapper">
