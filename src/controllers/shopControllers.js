@@ -4,6 +4,7 @@ import { shopCollections } from "../data/shopCollections.js";
 import { cartItems } from "../data/cartItems.js";
 
 import getProduct from "../Service/getProductDataById.js";
+import cartService from "../Service/addToCart.js";
 
 const viewsPath = path.resolve() + "/src/views/shop";
 
@@ -18,18 +19,16 @@ export class shopController {
 
   async itemIdGet(req, res) {
     const id = req.params.id;
-    const product = await getProduct.consulta(id);
-    const { category_id, licence_id } = product[0][0];
+    const [product] = await getProduct.consulta(id);
+    const { category_id, licence_id } = product[0];
     const category = await getProduct.consultaCategory(category_id);
-    const licence = await getProduct.consultaLicence(licence_id);
-    console.log("qqq", product[0][0]);
-    console.log("category", category);
-    console.log("licence", licence);
+    const [licence] = await getProduct.consultaLicence(licence_id);
+
     res.render(path.join(viewsPath, "item.ejs"), {
       sliderItems: sliderItems,
-      product: product[0][0],
+      product: product[0],
       category,
-      licence: licence[0][0],
+      licence: licence[0],
     });
   }
 
@@ -37,8 +36,11 @@ export class shopController {
     res.render(path.join(viewsPath, "cart.ejs"), { cartItems });
   }
 
-  itemIdAddPost(req, res) {
-    res.send("Route for add the current item to the shop cart ");
+  async itemIdAddPost(req, res) {
+    await cartService.insertar(req.body);
+    const [response] = await cartService.consultaCantidad(req.body.id_cart);
+
+    res.json({ response });
   }
 
   shopCartPost(req, res) {

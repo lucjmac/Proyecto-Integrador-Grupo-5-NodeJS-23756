@@ -17,7 +17,12 @@
     <%- include('../partials/hShop') %>
     <main>
       <!--Inicio Section superior-->
-      <section class="figure">
+      <form class="figure figure-form">
+        <input
+          type="hidden"
+          name="product_id"
+          value="<%= product.product_id %>"
+        />
         <div class="figure_container">
           <picture class="figure_picture">
             <img
@@ -34,7 +39,7 @@
             <div class="item__cart quantity-action-wrapper">
               <input
                 class="item__input"
-                type="text"
+                type="number"
                 name="quantity"
                 id="quantity"
                 placeholder="0"
@@ -53,7 +58,7 @@
             </p>
           </article>
         </div>
-      </section>
+      </form>
       <!--Fin Section superior-->
       <!-- Section Ultimos Lanzamientos -->
       <%- include('../partials/slider') %>
@@ -64,5 +69,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script src="/assets/js/buttons.js"></script>
     <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/cart.js"></script>
   </body>
 </html>
