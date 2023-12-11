@@ -1,4 +1,5 @@
 import path from "path";
+import { conn } from "../config/conn.js";
 import { indexCollections } from "../data/indexCollections.js";
 import { sliderItems } from "../data/sliderItems.js";
 
@@ -7,11 +8,41 @@ const viewsPath = path.resolve() + "/src/views";
 export class mainController {
     constructor() {}
 
-    homeGet(req, res) {
-        res.render(path.join(viewsPath, "index.ejs"), {
-            indexCollections: indexCollections,
-            sliderItems: sliderItems,
-        });
+    async homeGet(req, res) {
+        try {
+            const indexCollections = await conn.query(
+                "SELECT id, licence_name, licence_description, licence_alt FROM licence"
+            );
+            const sliderItems = await conn.query(
+                "SELECT product_id, product_name, product_description, image_Front, image_Back, licence_id, price, dues FROM product"
+            );
+
+            const itemsWithModifiedData = sliderItems.map((item) => {
+                const licence = indexCollections.find(
+                    (collection) => collection.id === item.licence_id
+                );
+                const modifiedItem = { ...item };
+
+                modifiedItem.link = `/item/${item.product_name}`;
+                modifiedItem.licence_id = licence ? licence.licence_name : "";
+                modifiedItem.duesText =
+                    item.dues === 1
+                        ? "cuota sin interés"
+                        : `${item.dues} cuotas sin interés`;
+
+                return modifiedItem;
+            });
+
+            res.render(path.join(viewsPath, "index.ejs"), {
+                indexCollections: indexCollections,
+                sliderItems: itemsWithModifiedData,
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(
+                "Error al obtener los datos de la base de datos"
+            );
+        }
     }
 
     contactGet(req, res) {

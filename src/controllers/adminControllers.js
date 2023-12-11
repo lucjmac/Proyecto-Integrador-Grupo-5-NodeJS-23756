@@ -15,27 +15,6 @@ export class adminController {
             searchInput: searchInput,
             noResults: noResults,
         });
-        /*
-        const searchInput = req.query.searchInput; 
-    
-        const filteredProductList = productList.filter((product) =>
-            !searchInput || searchInput.trim() === '' || product.name.includes(searchInput)
-        );
-    
-        if (filteredProductList.length === 0) {
-            res.render(path.join(viewsPath, "admin.ejs"), {
-                productList: productList,
-                searchInput: searchInput,
-                noResults: true
-            });
-        } else {
-            res.render(path.join(viewsPath, "admin.ejs"), {
-                productList: filteredProductList,
-                searchInput: searchInput,
-                noResults: false
-            });
-        }
-*/
     }
 
     adminCreateGet(req, res) {

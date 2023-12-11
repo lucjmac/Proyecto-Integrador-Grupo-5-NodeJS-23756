@@ -9,28 +9,27 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        const searchInput = req.query.searchInput;
-
-        const filteredProductList = productList.filter(
-            (product) =>
-                !searchInput ||
-                searchInput.trim() === "" ||
-                product.name.includes(searchInput)
+        /*
+        const searchInput = req.query.searchInput; 
+    
+        const filteredProductList = productList.filter((product) =>
+            !searchInput || searchInput.trim() === '' || product.name.includes(searchInput)
         );
-
+    
         if (filteredProductList.length === 0) {
             res.render(path.join(viewsPath, "admin.ejs"), {
                 productList: productList,
                 searchInput: searchInput,
-                noResults: true,
+                noResults: true
             });
         } else {
             res.render(path.join(viewsPath, "admin.ejs"), {
                 productList: filteredProductList,
                 searchInput: searchInput,
-                noResults: false,
+                noResults: false
             });
         }
+*/
     }
 
     adminCreateGet(req, res) {

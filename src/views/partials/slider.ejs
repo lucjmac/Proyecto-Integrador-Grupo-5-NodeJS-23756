@@ -5,25 +5,38 @@
             <% sliderItems.forEach((item) => { %>
             <li class="slider_item glide__slide">
                 <article class="card-item">
-                    <a class="card-item_link" href="<%= item.link %>">
+                    <a
+                        class="card-item_link"
+                        href="/item/<%= item.product_name %>"
+                    >
                         <picture class="card-item_cover">
-                            <span class="card-item_tag"><%= item.tag %></span>
+                            <span class="card-item_tag">NUEVO</span>
                             <img
                                 class="card-item_img-front"
-                                src="<%= item.imgFront %>"
-                                alt="<%= item.name %>"
+                                src="<%= item.imgage_Front %>"
+                                alt="<%= item.product_description %>"
                             />
                             <img
                                 class="card-item_img-back"
-                                src="<%= item.imgBack %>"
-                                alt="<%= item.name %>"
+                                src="<%= item.imgage_Back %>"
+                                alt="<%= item.product_description %>"
                             />
                         </picture>
                         <div class="card-item_content">
-                            <p class="card-item_licence"><%= item.licence %></p>
-                            <h4 class="card-item_name"><%= item.name %></h4>
+                            <p class="card-item_licence">
+                                <% const licence =
+                                indexCollections.find(collection =>
+                                collection.id === item.licence_id); %> <%=
+                                licence ? licence.licence_name : '' %>
+                            </p>
+                            <h4 class="card-item_name">
+                                <%= item.product_name %>
+                            </h4>
                             <p class="card-item_price"><%= item.price %></p>
-                            <p class="card-item_promo"><%= item.promo %></p>
+                            <p class="card-item_promo">
+                                <%= item.dues === 1 ? 'cuota sin interés' :
+                                item.dues + ' cuotas sin interés' %>
+                            </p>
                         </div>
                     </a>
                 </article>
