@@ -64,7 +64,9 @@
   display: flex;
   flex-direction: column;
 }
-
+.container__buttons button {
+  cursor: pointer;
+}
 .item__quantity {
   background-color: #585858;
   color: var(--light-bg-solid);
@@ -82,6 +84,11 @@
   border: none;
   font-size: var(--font-medium);
   cursor: pointer;
+}
+
+.submit[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .figure_link {

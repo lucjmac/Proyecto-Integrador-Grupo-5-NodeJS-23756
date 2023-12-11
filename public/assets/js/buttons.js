@@ -48,9 +48,10 @@
 
 // Tercera funcion de Luisa, reemplaza document.querySelector por document.getElementById
 
-function disableSubstractButton(subtract, quantity) {
-  subtract.toggleAttribute("disabled", quantity <= 0);
+function disableButton(button, quantity) {
+  button.toggleAttribute("disabled", quantity <= 0);
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   function setupQuantityControls() {
     const quatityWrapper = document.querySelectorAll(
@@ -61,23 +62,30 @@ document.addEventListener("DOMContentLoaded", () => {
       const add = wrapper.querySelector("#add");
       const subtract = wrapper.querySelector("#subtract");
       const quantity = wrapper.querySelector("#quantity");
+      const submit = wrapper.querySelector(".submit");
+
+      disableButton(subtract, quantity.value);
+      submit && disableButton(submit, quantity.value);
 
       if (add && subtract && quantity) {
         add.addEventListener("click", () => {
           quantity.value = Number(quantity.value) + 1;
-          disableSubstractButton(subtract, quantity.value);
+          disableButton(subtract, quantity.value);
+          submit && disableButton(submit, quantity.value);
         });
         subtract.addEventListener("click", () => {
           if (quantity.value > 0) {
             quantity.value = Number(quantity.value) - 1;
           }
-          disableSubstractButton(subtract, quantity.value);
+          disableButton(subtract, quantity.value);
+          submit && disableButton(submit, quantity.value);
         });
         quantity.addEventListener("change", () => {
           if (quantity.value < 0) {
             quantity.value = 0;
           }
-          disableSubstractButton(subtract, quantity.value);
+          disableButton(subtract, quantity.value);
+          submit && disableButton(submit, quantity.value);
         });
       }
     });
