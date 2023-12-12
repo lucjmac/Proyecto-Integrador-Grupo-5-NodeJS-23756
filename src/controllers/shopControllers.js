@@ -7,13 +7,20 @@ const viewsPath = path.resolve() + "/src/views/shop";
 
 export class shopController {
     constructor() {}
-
     shopGet(req, res) {
-        const licenceName = req.query.licence_name;
-        console.log('licenceName:', licenceName); 
+        const licenceId = req.query.licence_id;
+    
+        //! hay que linkear la cont licenceData con la BD
+        const licenceData = [
+            { id: 1, licence_name: 'POKEMON INDIGO' },
+            { id: 2, licence_name: 'STAR WARS & THE MANDALORIAN' },
+            { id: 3, licence_name: 'HARRY POTTER' },
+        ];
+    
         res.render(path.join(viewsPath, "shop.ejs"), {
             shopCollections: shopCollections,
-            licenceName: licenceName
+            licenceId: licenceId,
+            licenceData: licenceData
         });
     }
 
