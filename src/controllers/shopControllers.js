@@ -1,5 +1,5 @@
 import path from "path";
-import { sliderItems } from "../data/sliderItems.js";
+import { indexSliderService } from "../service/indexSliderService.js";
 import { shopCollections } from "../data/shopCollections.js";
 import { cartItems } from "../data/cartItems.js";
 
@@ -25,8 +25,34 @@ export class shopController {
     }
 
     itemIdGet(req, res) {
-        res.render(path.join(viewsPath, "item.ejs"), {
-            sliderItems: sliderItems,
+        const productId = +req.params.id;
+    
+        const product = shopCollections.find(item => item.product_id === productId);
+    
+        if (!product) {
+            return res.status(404).send("Producto no encontrado");
+        }
+    
+        let licence;
+
+        if (typeof licenceId !== 'undefined') {
+            shopCollections.forEach((product) => {
+                if (product.licence_id.toString() === licenceId.toString()) {
+                    licence = licenceData.find(licence => licence.id.toString() === product.licence_id.toString());
+                }
+            });
+        }
+    
+        indexSliderService().then(sliderData => {
+            res.render(path.join(viewsPath, "item.ejs"), {
+                indexCollections: sliderData.indexCollections,
+                sliderItems: sliderData.sliderItems,
+                shopCollections: shopCollections,
+                product: product,
+                licence: licence
+            });
+        }).catch(error => {
+            console.error("Error al obtener los datos del slider:", error);
         });
     }
 
