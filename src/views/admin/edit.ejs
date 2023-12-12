@@ -57,11 +57,13 @@
                 <fieldset>
                     <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
-                            <label for="code">SKU:</label>
+                            <label for="sku">SKU:</label>
                             <input
-                                name="code"
+                                class="product_sku"
+                                id="sku"
+                                name="sku"
                                 type="text"
-                                value="<%= product ? product.code : '' %>"
+                                value="<%= code %>"
                             />
                         </div>
                         <div class="form-sub-container input-wrapper">
@@ -161,6 +163,6 @@
         <!-- Fin Main -->
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="/assets/js/editToAdmin.js"></script>
+        <script src="/assets/js/adminToEdit.js"></script>
     </body>
 </html>

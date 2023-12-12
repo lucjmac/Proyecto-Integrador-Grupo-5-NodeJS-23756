@@ -1,6 +1,6 @@
 import path from "path";
 import { productList } from "../data/productList.js";
-import { getProductByCode } from "../service/getPorductByCode.js";
+import { getProductByIdAdminToEdit } from "../service/getProductByIdAdminToEdit.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -26,13 +26,14 @@ export class adminController {
     }
 
     adminEditIdGet(req, res) {
-        const productCode = req.params.code;
-        const product = getProductByCode(productCode);
+        const productId = req.params.id;
+        const product = getProductByIdAdminToEdit(productId);
 
         res.render(path.join(viewsPath, "edit.ejs"), {
             productList,
-            productCode,
+            productId,
             product,
+            code: product ? product.code : "",
             name: product ? product.name : "",
             collection: product ? product.collection : "",
         });

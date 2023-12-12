@@ -11,8 +11,8 @@ router
     .get("/create", adminControllers.adminCreateGet)
     .post("/create", adminControllers.adminCreatePost)
 
-    .get("/edit/:code", adminControllers.adminEditIdGet)
-    .put("/edit/:code", adminControllers.adminEditIdPut)
-    .delete("/edit/:code", adminControllers.adminEditIdDelete);
+    .get("/edit/:id", adminControllers.adminEditIdGet)
+    .put("/edit/:id", adminControllers.adminEditIdPut)
+    .delete("/edit/:id", adminControllers.adminEditIdDelete);
 
 export default router;
