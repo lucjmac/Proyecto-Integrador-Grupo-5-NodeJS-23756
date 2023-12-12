@@ -14,8 +14,8 @@ export class mainController {
                     "Error al obtener los datos de la base de datos"
                 );
             });
-
-        res.render(path.join(viewsPath, "index.ejs"), {
+            
+            res.render(path.join(viewsPath, "index.ejs"), {
             indexCollections: indexCollections,
             sliderItems: sliderItems,
         });

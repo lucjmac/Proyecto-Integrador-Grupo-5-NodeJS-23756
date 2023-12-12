@@ -9,20 +9,65 @@ export class shopController {
     constructor() {}
     shopGet(req, res) {
         const licenceId = req.query.licence_id;
-    
+        
         //! hay que linkear la cont licenceData con la BD
         const licenceData = [
             { id: 1, licence_name: 'POKEMON INDIGO' },
             { id: 2, licence_name: 'STAR WARS & THE MANDALORIAN' },
             { id: 3, licence_name: 'HARRY POTTER' },
         ];
-    
+        
         res.render(path.join(viewsPath, "shop.ejs"), {
             shopCollections: shopCollections,
             licenceId: licenceId,
             licenceData: licenceData
         });
     }
+
+    // async shopGet(req, res) {
+    //     const licenceId = req.query.licence_id;
+    
+    //     const connection = await conn.getConnection();
+    
+    //     try {
+    //         const licenceData = await queryFromDatabase(
+    //             connection,
+    //             "SELECT * FROM licence"
+    //         );
+    //         console.log("Datos de licencia:", licenceData);
+    
+    //         res.render(path.join(viewsPath, "shop.ejs"), {
+    //             shopCollections: shopCollections,
+    //             licenceId: licenceId,
+    //             licenceData: licenceData,
+    //         });
+    //     } catch (err) {
+    //         console.error("Error al obtener los datos de licencia:", err);
+    //     } finally {
+    //         connection.end(function (err) {
+    //             if (err) {
+    //                 console.error(
+    //                     "Error al cerrar la conexión a la base de datos:",
+    //                     err
+    //                 );
+    //             } else {
+    //                 console.log("Conexión cerrada exitosamente");
+    //             }
+    //         });
+    //     }
+    // }
+    
+    // async queryFromDatabase(connection, query) {
+    //     return new Promise((resolve, reject) => {
+    //         connection.query(query, function (err, results) {
+    //             if (err) {
+    //                 reject(err);
+    //             } else {
+    //                 resolve(results);
+    //             }
+    //         });
+    //     });
+    // }
 
     itemIdGet(req, res) {
         const productId = +req.params.id;
