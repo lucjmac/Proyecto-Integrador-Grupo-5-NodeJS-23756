@@ -118,38 +118,31 @@
       <!--Inicio Seccion Principal-->
       <div class="container-wrapper">
         <div class="principal-wrapper">
-          <div class="principal-sub-wrapper">
-            <% shopCollections.forEach((product) => { %>
-            <div class="card">
-              <div class="card-title">
-                <div class="card-item_tag">Nuevo</div>
-              </div>
-
-              <div class="card-item_link">
-                <picture class="card-item_cover">
-                  <img
-                    src="<%= product.img_front %>"
-                    alt="<%= product.product_name %>"
-                  />
-                </picture>
-              </div>
-              <div class="card-item_content">
-                <div class="card-item_licence"><%= product.licence_name %></div>
-                <div class="card-item_name"><%= product.product_name %></div>
-                <div class="card-item_price">
-                  $ <%= product.product_price.toFixed(2) %>
-                </div>
-                <div class="card-payment">
-                  <div class="card-item_promo">
-                    <%= product.dues %> CUOTAS SIN INTER&Eacute;S
-                  </div>
-                </div>
-              </div>
+            <div class="principal-sub-wrapper">
+              <% shopCollections.forEach((product) => {
+                if (product.licence_name === licenceName.toString()) { %>
+                    <a class="card" href="/shop/item/<%= product.product_id %>">
+                        <div class="card-title">
+                            <div class="card-item_tag">Nuevo</div>
+                        </div>
+                        <div class="card-item_link">
+                            <picture class="card-item_cover">
+                                <img src="<%= product.img_front %>" alt="<%= product.product_name %>" />
+                            </picture>
+                        </div>
+                        <div class="card-item_content">
+                            <div class="card-item_licence"><%= product.licence_id %></div>
+                            <div class="card-item_name"><%= product.product_name %></div>
+                            <div class="card-item_price">$ <%= product.product_price.toFixed(2) %></div>
+                            <div class="card-payment">
+                                <div class="card-item_promo"><%= product.dues %> CUOTAS SIN INTER&Eacute;S</div>
+                            </div>
+                        </div>
+                    </a>
+                <% } }); %>
             </div>
-            <% }); %>
-          </div>
         </div>
-      </div>
+    </div>
       <!--Fin Seccion Principal-->
     </main>
     <div class="pagination-wrapper">

@@ -15,6 +15,8 @@ export class mainController {
                 );
             });
 
+            console.log('indexCollections:', indexCollections);
+
         res.render(path.join(viewsPath, "index.ejs"), {
             indexCollections: indexCollections,
             sliderItems: sliderItems,

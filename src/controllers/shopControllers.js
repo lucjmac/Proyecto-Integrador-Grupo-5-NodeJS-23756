@@ -9,8 +9,11 @@ export class shopController {
     constructor() {}
 
     shopGet(req, res) {
+        const licenceName = req.query.licence_name;
+        console.log('licenceName:', licenceName); 
         res.render(path.join(viewsPath, "shop.ejs"), {
             shopCollections: shopCollections,
+            licenceName: licenceName
         });
     }
 
