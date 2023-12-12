@@ -7,19 +7,18 @@ export class mainController {
     constructor() {}
 
     async homeGet(req, res) {
-        try {
-            const { indexCollections, sliderItems } = await indexSliderService();
-
-            res.render(path.join(viewsPath, "index.ejs"), {
-                indexCollections: indexCollections,
-                sliderItems: sliderItems,
+        const { indexCollections, sliderItems } =
+            await indexSliderService().catch((error) => {
+                console.error("Error al obtener los datos del slider:", error);
+                res.status(500).send(
+                    "Error al obtener los datos de la base de datos"
+                );
             });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send(
-                "Error al obtener los datos de la base de datos"
-            );
-        }
+
+        res.render(path.join(viewsPath, "index.ejs"), {
+            indexCollections: indexCollections,
+            sliderItems: sliderItems,
+        });
     }
 
     contactGet(req, res) {
