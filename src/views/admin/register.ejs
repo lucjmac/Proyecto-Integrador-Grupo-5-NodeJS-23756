@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Registro | Funkoshop</title>
-        <link href="/assets/css/style.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/assets//css/style-register.css" />
-        <link rel="shorcut icon" href="./assets/img/branding/isotype.svg" type="image/x-icon" />
-    </head>
-    <body>
-        <%- include('../partials/hAdm') %>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro | Funkoshop</title>
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets//css/style-register.css" />
+    <link rel="shorcut icon" href="./assets/img/branding/isotype.svg" type="image/x-icon" />
+</head>
+
+<body>
+    <%- include('../partials/hAdm') %>
 
         <!-- Inicio Main -->
         <main>
@@ -22,53 +24,43 @@
                     </p>
                 </div>
 
-                <form>
+                <form action="/auth/register" method="post">
                     <div class="input-wrapper">
-                        <label for="name"
-                            >Nombre:
-                            <input id="name" type="text" placeholder="Jhon"
-                        /></label>
-                        <label for="lastname"
-                            >Apellido:
-                            <input id="lastname" type="text" placeholder="Doe"
-                        /></label>
-                        <label for="email"
-                            >Email:
-                            <input
-                                id="email"
-                                type="email"
-                                placeholder="jhondoe@correo.com"
-                        /></label>
-                        <label for="password"
-                            >Contraseña:<input
-                                id="password"
-                                type="password"
-                                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;"
-                        /></label>
-                        <label for="repeat-password"
-                            >Repita Contraseña:<input
-                                id="repeat-password"
-                                type="password"
-                                placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;"
-                        /></label>
+                        <label for="name">Nombre:
+                            <input id="name" type="text" name="name" placeholder="Jhon" />
+                        </label>
+                        <label for="lastname">Apellido:
+                            <input id="lastname" type="text" name="lastname" placeholder="Doe" />
+                        </label>
+                        <label for="email">Email:
+                            <input id="email" type="email" name="email" placeholder="jhondoe@correo.com" />
+                        </label>
+                        <label for="password">Contraseña:
+                            <input id="password" type="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" />
+                        </label>
+                        <label for="repeat-password">Repita Contraseña:
+                            <input id="repeat-password" type="password" name="repeat-password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" />
+                        </label>
                     </div>
                     <div class="submit-wrapper">
                         <button class="btn-primary" type="submit">
                             Registrar
                         </button>
-                        <label for="terms"
-                            ><input type="checkbox" name="" id="terms" /> Acepto
-                            <a class="terms-link" href="#"
-                                >Términos y Condiciones</a
-                            >
+                        <label for="terms">
+                            <input type="checkbox" name="terms" id="terms" /> Acepto
+                            <a class="terms-link" href="#">Términos y Condiciones</a>
                         </label>
                     </div>
                 </form>
+                
+
+
             </section>
         </main>
         <!-- Fin Main -->
 
         <%- include('../partials/fAdm') %>
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    </body>
+            <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
 </html>

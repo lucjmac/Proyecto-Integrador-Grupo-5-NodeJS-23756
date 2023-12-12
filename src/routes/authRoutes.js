@@ -1,8 +1,9 @@
+
 import express from "express";
-import { authController } from "../controllers/authControllers.js";
+import { AuthController } from "../controllers/authControllers.js";
 
 const router = express.Router();
-const authControllers = new authController();
+const authControllers = new AuthController();
 
 router
     .get("/login", authControllers.authLoginGet)
