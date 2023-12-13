@@ -8,12 +8,24 @@ export class adminController {
     constructor() {}
 
     adminGet(req, res) {
-        const { filteredProductList, searchInput, noResults } = req;
-
+        const searchInput = req.query.searchInput;
+    
+        const filteredProductList = productList.filter(
+            (product) =>
+                !searchInput || 
+                searchInput.trim() === "" || 
+                product.name.includes(searchInput) 
+        );
+    
+        req.filteredProductList = filteredProductList;
+        req.searchInput = searchInput;
+        req.noResults = filteredProductList.length === 0;
+    
+        
         res.render(path.join(viewsPath, "admin.ejs"), {
             productList: filteredProductList || productList,
             searchInput: searchInput,
-            noResults: noResults,
+            noResults: req.noResults,
         });
     }
 
