@@ -1,5 +1,4 @@
 import path from "path";
-import bcrypt from "bcrypt";
 import authService from "../Service/authService.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
@@ -18,9 +17,9 @@ export class AuthController {
   async authLoginPost(req, res) {
     try {
       // Maneja la lógica de inicio de sesión
-      const { name, password } = req.body;
-      const result = await authService.login(name, password);
-
+      const {email, password} = req.body;
+      const result = await authService.login(email, password);
+  
       if (result.success) {
         res.redirect("/admin"); // Redirige a la página de administración
       } else {
@@ -41,15 +40,12 @@ export class AuthController {
       if (password !== repeatPassword) {
         return res.render(path.join(viewsPath, "register.ejs"), { error: "Las contraseñas no coinciden" });
       }
+    
+      // Realiza el registro en la base de datos
+      const result = await authService.register({ username: name, lastname: lastname, password: password, email });
 
-      // Encripta la contraseña antes de almacenarla
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      // Realiza el registro en la base de datos con la contraseña encriptada
-      const result = await authService.register({ username: name, password: hashedPassword, email });
-
-      if (result.affectedRows > 0) {
-        res.redirect("/auth/login");
+      if (result[0].affectedRows > 0) {
+        res.redirect("/auth/login"); // Redirige a la página de login
       } else {
         res.render(path.join(viewsPath, "register.ejs"), { error: "Error al registrar el usuario" });
       }

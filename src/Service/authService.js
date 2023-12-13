@@ -1,5 +1,5 @@
-import bcrypt from "bcrypt";
-import conn from "../config/conn.js";
+import { conn } from "../config/conn.js";
+
 
 const authService = {
   register: async (userData) => {
@@ -8,10 +8,8 @@ const authService = {
         throw new Error("La contraseña no está definida.");
       }
 
-      const hashedPassword = await bcrypt.hash(userData.password, 10);
-
-      const query = "INSERT INTO USER (name, lastname, email, password) VALUES (?, ?, ?, ?)";
-      const values = [userData.name, userData.lastname, userData.email, hashedPassword];
+      const query = "INSERT INTO user (name, lastname, email, password) VALUES (?, ?, ?, ?)";
+      const values = [userData.username, userData.lastname, userData.email, userData.password];
 
       const result = await conn.query(query, values);
       return result;
@@ -23,23 +21,24 @@ const authService = {
 
   login: async (email, password) => {
     try {
-      const query = "SELECT * FROM USER WHERE email = ?";
+      const query = "SELECT user_id, name, lastname, email, password FROM user WHERE email = ?";
       const values = [email];
-      const user = await conn.query(query, values);
 
-      if (user.length > 0) {
-        const passwordMatch = await bcrypt.compare(password, user[0].password);
+      const result = await conn.query(query, values);
+      const user = result[0][0]; // Extraer el primer usuario de la lista
 
-        if (passwordMatch) {
-          return { success: true, user: user[0] };
-        } else {
-          return { success: false, message: "Credenciales incorrectas" };
-        }
+      if (!user || result.length === 0) {
+        throw new Error("Usuario no encontrado");
+      }
+
+      // Comparar la contraseña ingresada con la contraseña almacenada
+      if (password === user.password) {
+        return { success: true, user: user };
       } else {
-        return { success: false, message: "Credenciales incorrectas" };
+        throw new Error("Contraseña incorrecta");
       }
     } catch (error) {
-      console.log("Error al iniciar sesión: " + error);
+      console.log("Error al iniciar sesión:", error);
       throw error;
     }
   },
