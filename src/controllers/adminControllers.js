@@ -1,7 +1,6 @@
 import path from "path";
 import { conn } from "../config/conn.js";
-// import { productList } from "../data/productList.js";
-// import { getProductByIdAdminToEdit } from "../service/getProductByIdAdminToEdit.js";
+import * as productList from "../data/productList.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -10,28 +9,33 @@ export class adminController {
 
     async adminGet(req, res) {
         const searchInput = req.query.searchInput;
-    
+
         try {
             const [productResults] = await conn.query("SELECT * FROM product");
             const productList = productResults;
-    
+
             for (const product of productList) {
-                const [licenceResults] = await conn.query("SELECT licence_name FROM licence WHERE id = ?", [product.licence_id]);
+                const [licenceResults] = await conn.query(
+                    "SELECT licence_name FROM licence WHERE id = ?",
+                    [product.licence_id]
+                );
                 const licence = licenceResults[0];
-                product.licence_name = licence ? licence.licence_name : "Unknown Licence";
+                product.licence_name = licence
+                    ? licence.licence_name
+                    : "Unknown Licence";
             }
-    
+
             const filteredProductList = productList.filter(
                 (product) =>
                     !searchInput ||
                     searchInput.trim() === "" ||
                     product.name.includes(searchInput)
             );
-    
+
             req.filteredProductList = filteredProductList;
             req.searchInput = searchInput;
             req.noResults = filteredProductList.length === 0;
-    
+
             res.render(path.join(viewsPath, "admin.ejs"), {
                 productList: filteredProductList,
                 searchInput: searchInput,
@@ -50,19 +54,27 @@ export class adminController {
         res.send("Route for create with POST in Admin View");
     }
 
-    // adminEditIdGet(req, res) {
-    //     const productId = req.params.id;
-    //     const product = getProductByIdAdminToEdit(productId);
+    adminEditIdGet(req, res) {
+        const productId = req.params.id;
 
-    //     res.render(path.join(viewsPath, "edit.ejs"), {
-    //         productList,
-    //         productId,
-    //         product,
-    //         code: product ? product.code : "",
-    //         name: product ? product.name : "",
-    //         collection: product ? product.collection : "",
-    //     });
-    // }
+        const getProductByIdAdminToEdit = (id) => {
+            const product = productList.productList.find(
+                (product) => product.id === id
+            );
+            return product || null;
+        };
+
+        const product = getProductByIdAdminToEdit(productId);
+
+        res.render(path.join(viewsPath, "edit.ejs"), {
+            productList,
+            productId,
+            product,
+            code: product ? product.code : "",
+            name: product ? product.name : "",
+            collection: product ? product.collection : "",
+        });
+    }
 
     adminEditIdPut(req, res) {
         res.send("Route for edit/:id put");
