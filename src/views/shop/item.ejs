@@ -33,8 +33,8 @@
                     </picture>
                     <article class="figure_content">
                         <p class="figure_licence">
-                            <% if (typeof item !== 'undefined') { %>
-                                <% let licence = indexCollections.find(collection => collection.id === item.licence_id); %>
+                            <% if (typeof product !== 'undefined') { %>
+                                <% let licence = indexCollections.find(collection => collection.id === product.licence_id); %>
                                 <%= licence ? licence.licence_name : '' %>
                             <% } %>
                         </p>
