@@ -1,13 +1,13 @@
 import conn from "../config/conn.js";
 
-const getIndexCollections = async () => {
+export const getIndexCollections = async () => {
     const indexCollections = await conn.query(
         "SELECT id, licence_name, licence_description, licence_image, licence_alt FROM licence"
     );
     return indexCollections[0];
 };
 
-const getSliderItems = async () => {
+export const getSliderItems = async () => {
     const sliderItems = await conn.query(
         "SELECT product_id, product_name, product_description, image_Front, image_Back, licence_id, price, dues FROM product"
     );

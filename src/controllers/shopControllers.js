@@ -1,104 +1,82 @@
 import path from "path";
+import { conn } from "../config/conn.js";
 import { indexSliderService } from "../service/indexSliderService.js";
-import { shopCollections } from "../data/shopCollections.js";
 import { cartItems } from "../data/cartItems.js";
 
 const viewsPath = path.resolve() + "/src/views/shop";
 
 export class shopController {
     constructor() {}
-    shopGet(req, res) {
+
+    async shopGet(req, res) {
         const licenceId = req.query.licence_id;
-        
-        //! hay que linkear la cont licenceData con la BD
-        const licenceData = [
-            { id: 1, licence_name: 'POKEMON INDIGO' },
-            { id: 2, licence_name: 'STAR WARS & THE MANDALORIAN' },
-            { id: 3, licence_name: 'HARRY POTTER' },
-        ];
-        
-        res.render(path.join(viewsPath, "shop.ejs"), {
-            shopCollections: shopCollections,
-            licenceId: licenceId,
-            licenceData: licenceData
-        });
+
+        try {
+            const [licenceRows] = await conn.query(
+                "SELECT * FROM licence WHERE id = ?",
+                [licenceId]
+            );
+
+            const [productRows] = await conn.query(
+                "SELECT * FROM product WHERE licence_id = ?",
+                [licenceId]
+            );
+
+            res.render(path.join(viewsPath, "shop.ejs"), {
+                licenceData: licenceRows,
+                shopCollections: productRows,
+                licenceId: licenceId,
+            });
+        } catch (error) {
+            console.error("Error al consultar los productos:", error);
+        }
     }
 
-    // async shopGet(req, res) {
-    //     const licenceId = req.query.licence_id;
-    
-    //     const connection = await conn.getConnection();
-    
-    //     try {
-    //         const licenceData = await queryFromDatabase(
-    //             connection,
-    //             "SELECT * FROM licence"
-    //         );
-    //         console.log("Datos de licencia:", licenceData);
-    
-    //         res.render(path.join(viewsPath, "shop.ejs"), {
-    //             shopCollections: shopCollections,
-    //             licenceId: licenceId,
-    //             licenceData: licenceData,
-    //         });
-    //     } catch (err) {
-    //         console.error("Error al obtener los datos de licencia:", err);
-    //     } finally {
-    //         connection.end(function (err) {
-    //             if (err) {
-    //                 console.error(
-    //                     "Error al cerrar la conexión a la base de datos:",
-    //                     err
-    //                 );
-    //             } else {
-    //                 console.log("Conexión cerrada exitosamente");
-    //             }
-    //         });
-    //     }
-    // }
-    
-    // async queryFromDatabase(connection, query) {
-    //     return new Promise((resolve, reject) => {
-    //         connection.query(query, function (err, results) {
-    //             if (err) {
-    //                 reject(err);
-    //             } else {
-    //                 resolve(results);
-    //             }
-    //         });
-    //     });
-    // }
-
-    itemIdGet(req, res) {
-        const productId = +req.params.id;
-    
-        const product = shopCollections.find(item => item.product_id === productId);
-    
-        if (!product) {
-            return res.status(404).send("Producto no encontrado");
-        }
-    
-        let licence;
-
-        if (typeof licenceId !== 'undefined') {
-            shopCollections.forEach((product) => {
-                if (product.licence_id.toString() === licenceId.toString()) {
-                    licence = licenceData.find(licence => licence.id.toString() === product.licence_id.toString());
+    async itemIdGet(req, res) {
+        try {
+            const productId = Number(req.params.id);
+            const licenceId = req.params.licenceId;
+            
+            console.log("productId:", productId);
+            console.log("licenceId:", licenceId);
+            
+            const [rows] = await conn.query(
+                "SELECT * FROM product WHERE product_id = ?",
+                [productId]
+            );
+            
+            if (rows.length === 0) {
+                return res.status(404).send("Producto no encontrado");
+            }
+            
+            const product = rows[0];
+            
+            let licence;
+            
+            if (typeof licenceId !== "undefined") {
+                const [licenceRows] = await conn.query(
+                    "SELECT * FROM licence WHERE id = ?",
+                    [licenceId]
+                );
+                
+                if (licenceRows.length > 0) {
+                    licence = licenceRows[0];
                 }
-            });
-        }
-    
-        indexSliderService().then(sliderData => {
+            }
+            
+            const sliderData = await indexSliderService();
+            
             res.render(path.join(viewsPath, "item.ejs"), {
                 indexCollections: sliderData.indexCollections,
                 sliderItems: sliderData.sliderItems,
-                shopCollections: shopCollections,
                 product: product,
-                licence: licence
+                licence: licence,
+                licenceId: licenceId,
             });
-        }).catch(error => {
-            console.error("Error al obtener los datos del slider:", error);
-        });
+        } catch (error) {
+            console.error("Error al obtener los datos:", error);
+            res.status(500).send("Error al obtener los datos");
+        }
     }
 
     shopCartGet(req, res) {

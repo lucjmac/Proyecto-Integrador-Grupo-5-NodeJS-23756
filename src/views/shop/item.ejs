@@ -34,7 +34,7 @@
                     <article class="figure_content">
                         <p class="figure_licence">
                             <% if (typeof item !== 'undefined') { %>
-                                <% const licence = indexCollections.find(collection => collection.id === item.licence_id); %>
+                                <% let licence = indexCollections.find(collection => collection.id === item.licence_id); %>
                                 <%= licence ? licence.licence_name : '' %>
                             <% } %>
                         </p>
