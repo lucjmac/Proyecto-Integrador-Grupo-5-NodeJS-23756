@@ -25,20 +25,20 @@ function filterProducts(searchValue) {
     const productList = document.querySelectorAll(".list-item_content");
 
     const filteredProducts = Array.from(productList).filter((product) => {
-        const code = product
+        const sku = product
             .querySelector(".list-item_text:nth-child(2)")
             .textContent.toLowerCase();
         const name = product
             .querySelector(".list-item_text:nth-child(3)")
             .textContent.toLowerCase();
-        const collection = product
+        const licence = product
             .querySelector(".list-item_text:nth-child(4)")
             .textContent.toLowerCase();
         
         return (
-            code.includes(searchValue) ||
+            sku.includes(searchValue) ||
             name.includes(searchValue) ||
-            collection.includes(searchValue)
+            licence.includes(searchValue)
         );
     });
 

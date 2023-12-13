@@ -61,10 +61,10 @@
                     <% productList.forEach((product) => { if (!searchInput ||
                     searchInput.trim() === '') { %>
                     <div class="list-item_content">
-                        <div class="list-item_text"><%= product.id %></div>
-                        <div class="list-item_text"><%= product.code %></div>
-                        <div class="list-item_text"><%= product.name %></div>
-                        <div class="list-item_text"><%= product.collection %></div>
+                        <div class="list-item_text"><%= product.product_id %></div>
+                        <div class="list-item_text"><%= product.sku %></div>
+                        <div class="list-item_text"><%= product.product_name %></div>
+                        <div class="list-item_text"><%= product.licence_id %></div>
                         <div class="list-item_text">
                             <a class="edit_link"
                                 href="/admin/edit/<%= product.id %>"

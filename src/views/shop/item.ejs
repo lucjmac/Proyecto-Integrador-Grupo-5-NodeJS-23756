@@ -33,10 +33,10 @@
                     </picture>
                     <article class="figure_content">
                         <p class="figure_licence">
-                            <% if (typeof product !== 'undefined') { %>
-                                <% let licence = indexCollections.find(collection => collection.id === product.licence_id); %>
-                                <%= licence ? licence.licence_name : '' %>
-                            <% } %>
+                            <% if (typeof product !== 'undefined') { %> <% let
+                            licence = indexCollections.find(collection =>
+                            collection.id === product.licence_id); %> <%=
+                            licence ? licence.licence_name : '' %> <% } %>
                         </p>
                         <h3 class="figure_title">
                             <%= product.product_name %>
@@ -74,8 +74,8 @@
                             </button>
                         </div>
                         <p class="figure_link">
-                            <a href="#">Ver métodos de pago</a> - <%=
-                            product.dues %> CUOTAS SIN INTERES
+                            <a href="#">Ver métodos de pago</a> 
+                            <%= product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %>
                         </p>
                         <p class="addToCartMessage"></p>
                     </article>

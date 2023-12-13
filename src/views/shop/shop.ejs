@@ -151,8 +151,7 @@
                                 </div>
                                 <div class="card-payment">
                                     <div class="card-item_promo">
-                                        <%= product.dues %> CUOTAS SIN
-                                        INTER&Eacute;S
+                                        <%= product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %>
                                     </div>
                                 </div>
                             </div>
