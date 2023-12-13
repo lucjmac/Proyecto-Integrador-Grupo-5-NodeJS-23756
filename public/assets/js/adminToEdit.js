@@ -1,7 +1,7 @@
-if (typeof product !== "undefined" && typeof product.id !== "undefined") {
-    var productId = product.id;
+if (typeof product !== "undefined" && typeof product.product_id !== "undefined") {
+    const productId = product.product_id;
 
-    var selectElement = document.getElementById("code");
+    const selectElement = document.getElementById("code");
 
     for (var i = 0; i < selectElement.options.length; i++) {
         var optionElement = selectElement.options[i];
@@ -10,25 +10,34 @@ if (typeof product !== "undefined" && typeof product.id !== "undefined") {
             optionElement.selected = true;
 
             var selectedProduct = productList.find(function (product) {
-                return product.id === productId;
+                return product.product_id === productId;
             });
 
             if (typeof selectedProduct !== "undefined") {
-                var codeElement = document.getElementById("code");
+                var skuElement = document.getElementById("sku");
                 var categoryElement = document.getElementById("category");
-                var collectionElement = document.getElementById("collection");
+                var licenceElement = document.getElementById("licence");
                 var nameElement = document.getElementById("name");
                 var descriptionElement = document.getElementById("description");
                 var priceElement = document.getElementById("price");
                 var stockElement = document.getElementById("stock");
                 var discountElement = document.getElementById("discount");
-                var cuotasElement = document.getElementById("cuotas");
+                var duesElement = document.getElementById("dues");
                 var imgfrontElement = document.getElementById("imgfront");
                 var imgbackElement = document.getElementById("imgback");
 
-                codeElement.value = selectedProduct.code;
-                collectionElement.value = selectedProduct.collection;
+                skuElement.value = selectedProduct.sku;
+                categoryElement.value = selectedProduct.category;
+                licenceElement.value = selectedProduct.licence;
                 nameElement.value = selectedProduct.name;
+                descriptionElement.value = selectedProduct.description;
+                priceElement.value = selectedProduct.price;
+                stockElement.value = selectedProduct.stock;
+                discountElement.value = selectedProduct.discount;
+                duesElement.value = selectedProduct.dues;
+                imgfrontElement.value = selectedProduct.imgfront;
+                imgbackElement.value = selectedProduct.imgback;
+
             }
         }
     }

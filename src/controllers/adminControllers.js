@@ -1,7 +1,5 @@
 import path from "path";
 import { conn } from "../config/conn.js";
-import * as productList from "../data/productList.js";
-
 const viewsPath = path.resolve() + "/src/views/admin";
 
 export class adminController {
@@ -54,26 +52,39 @@ export class adminController {
         res.send("Route for create with POST in Admin View");
     }
 
-    adminEditIdGet(req, res) {
+    async adminEditIdGet(req, res) {
         const productId = req.params.id;
-
-        const getProductByIdAdminToEdit = (id) => {
-            const product = productList.productList.find(
-                (product) => product.id === id
-            );
-            return product || null;
-        };
-
-        const product = getProductByIdAdminToEdit(productId);
-
-        res.render(path.join(viewsPath, "edit.ejs"), {
-            productList,
-            productId,
-            product,
-            code: product ? product.code : "",
-            name: product ? product.name : "",
-            collection: product ? product.collection : "",
-        });
+    
+        try {
+            const query = "SELECT * FROM product WHERE product_id = ?";
+            const [rows] = await conn.query(query, [productId]);
+    
+            if (rows.length === 0) {
+                return res.status(404).send("Product not found");
+            }
+    
+            const product = rows[0];
+    
+            res.render(path.join(viewsPath, "edit.ejs"), {
+                productId,
+                product,
+                category_id: product.category,
+                sku: product.sku,
+                product_name: product.name,
+                licence_id: product.licence,
+                product_description: product.description,
+                price: product.price,
+                stock: product.stock,
+                discount: product.discount,
+                dues: product.dues,
+                image_Front: product.imgfront,
+                image_Back: product.imgback,
+                category_id: product.category,
+            });
+        } catch (error) {
+            console.error("Error retrieving product from database:", error);
+            res.status(500).send("Internal Server Error");
+        }
     }
 
     adminEditIdPut(req, res) {
