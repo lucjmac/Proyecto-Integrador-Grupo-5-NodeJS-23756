@@ -6,11 +6,7 @@
         <title>Shop | Funkoshop</title>
         <link href="/assets/css/style.css" rel="stylesheet" />
         <link href="/assets/css/style-shop.css" rel="stylesheet" />
-        <link
-            rel="shorcut icon"
-            href="/assets/img/branding/isotype.svg"
-            type="image/x-icon"
-        />
+        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
     </head>
     <body>
         <%- include('../partials/hShop') %>
@@ -123,17 +119,15 @@
             <div class="container-wrapper">
                 <div class="principal-wrapper">
                     <div class="principal-sub-wrapper">
-                        <% shopCollections.forEach((product) => { if
-                        (product.licence_id.toString() === licenceId.toString())
-                        { const licence = licenceData.find(licence =>
-                        licence.id.toString() ===
-                        product.licence_id.toString()); if (licence) { %>
+                        <% shopCollections.forEach((product) => { %>
                         <a
                             class="card"
                             href="/shop/item/<%= product.product_name %>"
                         >
                             <div class="card-title">
+                                <% if (product.isNew) { %>
                                 <div class="card-item_tag">Nuevo</div>
+                                <% } %>
                             </div>
                             <div class="card-item_link">
                                 <picture class="card-item_cover">
@@ -144,9 +138,11 @@
                                 </picture>
                             </div>
                             <div class="card-item_content">
+                                <% if (product.licence) { %>
                                 <div class="card-item_licence">
-                                    <%= licence.licence_name %>
+                                    <%= product.licence.licence_name %>
                                 </div>
+                                <% } %>
                                 <div class="card-item_name">
                                     <%= product.product_name %>
                                 </div>
@@ -161,7 +157,7 @@
                                 </div>
                             </div>
                         </a>
-                        <% } } }); %>
+                        <% }); %>
                     </div>
                 </div>
             </div>
