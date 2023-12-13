@@ -21,9 +21,8 @@ export class adminController {
         req.searchInput = searchInput;
         req.noResults = filteredProductList.length === 0;
     
-        
         res.render(path.join(viewsPath, "admin.ejs"), {
-            productList: filteredProductList || productList,
+            productList: filteredProductList,
             searchInput: searchInput,
             noResults: req.noResults,
         });
