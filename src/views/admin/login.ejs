@@ -14,7 +14,7 @@
         <main>
             <div class="container-login">
                 <div class="creacion">INGRESAR A MI CUENTA</div>
-                <form class="account" method="post" action="">
+                <form class="account" method="post" action="/auth/login">
                     <div class="account_input">
                         <label class="tamano account_email" for="account_email"
                             >Email:</label
@@ -35,7 +35,6 @@
                             id="password"
                             name="password"
                             type="password"
-                            pattern="[a-z0-5]{8,}"
                             placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;"
                             required
                         />
@@ -60,5 +59,6 @@
         </main>
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+       
     </body>
 </html>
