@@ -2,9 +2,6 @@ import path from "path";
 
 import { conn } from "../config/conn.js";
 import { indexSliderService } from "../service/indexSliderService.js";
-import { cartItems } from "../data/cartItems.js";
-import { sliderItems } from "../data/sliderItems.js";
-import { shopCollections } from "../data/shopCollections.js";
 import getProduct from "../Service/getProductDataById.js";
 import cartService from "../Service/cartService.js";
 /*T0D0 CHECK*/
@@ -137,45 +134,45 @@ export class shopController {
     const [licence] = await getProduct.consultaLicence(licence_id);
     */
 
-    res.render(path.join(viewsPath, "item.ejs"), {
-      sliderItems: sliderItems,
-      product: product[0],
-      category,
-      licence: licence[0],
-    });
-  }
+  //   res.render(path.join(viewsPath, "item.ejs"), {
+  //     sliderItems: sliderItems,
+  //     product: product[0],
+  //     category,
+  //     licence: licence[0],
+  //   });
+  // }
 
-  async shopCartGet(req, res) {
-    const { cartItems } = await getCartItems();
+  // async shopCartGet(req, res) {
+  //   const { cartItems } = await getCartItems();
 
-    res.render(path.join(viewsPath, "cart.ejs"), {
-      cartItems,
-    });
-  }
+  //   res.render(path.join(viewsPath, "cart.ejs"), {
+  //     cartItems,
+  //   });
+  // }
 
-  async itemIdAddPost(req, res) {
-    const { isCart } = req.body;
-    if (isCart) {
-      await cartService.modificar(req.body);
-    } else {
-      await cartService.insertar(req.body);
-    }
-    const [response] = await cartService.consultaCantidad(req.body.id_cart);
+  // async itemIdAddPost(req, res) {
+  //   const { isCart } = req.body;
+  //   if (isCart) {
+  //     await cartService.modificar(req.body);
+  //   } else {
+  //     await cartService.insertar(req.body);
+  //   }
+  //   const [response] = await cartService.consultaCantidad(req.body.id_cart);
 
-    res.json({ response });
-  }
-  async shopCartDelete(req, res) {
-    try {
-      await cartService.delete(req.body);
+  //   res.json({ response });
+  // }
+  // async shopCartDelete(req, res) {
+  //   try {
+  //     await cartService.delete(req.body);
 
-      const { cartItems } = await getCartItems();
+  //     const { cartItems } = await getCartItems();
 
-      res.json({ cartItems: cartItems || [] });
-    } catch (error) {
-      console.error("Error in shopCartDelete:", error);
-    }
-  }
-  shopCartPost(req, res) {
-    res.send("Route for go to checkout page");
-  }
+  //     res.json({ cartItems: cartItems || [] });
+  //   } catch (error) {
+  //     console.error("Error in shopCartDelete:", error);
+  //   }
+  // }
+  // shopCartPost(req, res) {
+  //   res.send("Route for go to checkout page");
+  // }
 }

@@ -6,7 +6,11 @@
         <title>Admin | Funkoshop</title>
         <link href="/assets/css/style.css" rel="stylesheet" />
         <link href="/assets/css/style-admin.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link
+            rel="shorcut icon"
+            href="/assets/img/branding/isotype.svg"
+            type="image/x-icon"
+        />
     </head>
     <body>
         <!-- Header -->
@@ -58,22 +62,47 @@
                 </article>
                 <article class="list_item">
                     <% productList.forEach((product) => { %>
-                        <div class="list-item_content">
-                            <div class="list-item_text"><%= product.product_id %></div>
-                            <div class="list-item_text"><%= product.sku %></div>
-                            <div class="list-item_text"><%= product.product_name %></div>
-                            <div class="list-item_text"><%= product.licence_name %></div>
-                            <div class="list-item_text">
-                                <a class="edit_link" href="/admin/edit/<%= product.product_id %>">
-                                    <img src="/assets/img/icons/edit_pencil.svg" alt="Edit Pencil Icon" />
-                                </a>
-                            </div>
-                            <div class="list-item_text">
-                                <a class="delete_link" href="#">
-                                    <img src="/assets/img/icons/delete_trash.svg" alt="Trash Icon" />
-                                </a>
-                            </div>
+                    <div class="list-item_content">
+                        <div class="list-item_text">
+                            <%= product.product_id %>
                         </div>
+                        <div class="list-item_text"><%= product.sku %></div>
+                        <div class="list-item_text">
+                            <%= product.product_name %>
+                        </div>
+                        <div class="list-item_text">
+                            <%= product.licence_name %>
+                        </div>
+                        <div class="list-item_text">
+                            <a
+                                class="edit_link"
+                                href="/admin/edit/<%= product.product_id %>"
+                            >
+                                <img
+                                    src="/assets/img/icons/edit_pencil.svg"
+                                    alt="Edit Pencil Icon"
+                                />
+                            </a>
+                        </div>
+                        <div class="list-item_text">
+                            <form
+                                action="/admin/delete/<%= product.product_id %>"
+                                method="POST"
+                            >
+                                <input
+                                    type="hidden"
+                                    name="_method"
+                                    value=""
+                                />
+                                <button type="submit">
+                                    <img
+                                        src="/assets/img/icons/delete_trash.svg"
+                                        alt="Trash Icon"
+                                    />
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                     <% }); %>
                 </article>
                 <!-- Fin Lista de Productos -->

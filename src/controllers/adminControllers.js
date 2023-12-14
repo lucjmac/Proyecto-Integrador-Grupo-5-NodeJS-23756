@@ -1,6 +1,9 @@
 import path from "path";
 import { conn } from "../config/conn.js";
-import { getFilteredProductList , getProductById } from "../service/adminService.js";
+import {
+    getFilteredProductList,
+    getProductById,
+} from "../service/adminService.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -51,7 +54,28 @@ export class adminController {
         res.send("Route for edit/:id put");
     }
 
-    adminEditIdDelete(req, res) {
-        res.send("Route for edit/:id delete");
+    async adminEditIdDelete(req, res) {
+        try {
+            const productId = req.params.id;
+            const method = req.body._method;
+
+            if (req.method === "POST" && req.body._method === "DELETE") {
+                const deleteQuery = `DELETE FROM product WHERE product_id = ?`;
+
+                conn.query(deleteQuery, [productId], (err, results) => {
+                    if (err) {
+                        console.error(err);
+                        res.status(500).send("Error al borrar el producto");
+                    } else {
+                        res.send("Producto borrado exitosamente");
+                    }
+                });
+            } else {
+                res.status(400).send("Solicitud inválida");
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Error al borrar el producto");
+        }
     }
 }
