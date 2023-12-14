@@ -1,75 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Item | Funkoshop</title>
-    <link href="/assets/css/style.css" rel="stylesheet" />
-    <link href="/assets/css/style-item.css" rel="stylesheet" />
-    <link
-      rel="shorcut icon"
-      href="/assets/img/branding/isotype.svg"
-      type="image/x-icon"
-    />
-  </head>
-  <body>
-    <!-- Header -->
-    <%- include('../partials/hShop') %>
-    <main>
-      <!--Inicio Section superior-->
-      <form class="figure figure-form">
-        <input
-          type="hidden"
-          name="product_id"
-          value="<%= product.product_id %>"
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Item | Funkoshop</title>
+        <link href="/assets/css/style.css" rel="stylesheet" />
+        <link href="/assets/css/style-item.css" rel="stylesheet" />
+        <link
+            rel="shorcut icon"
+            href="/assets/img/branding/isotype.svg"
+            type="image/x-icon"
         />
-        <div class="figure_container">
-          <picture class="figure_picture">
-            <img
-              class="figure_img"
-              src="<%= product.image_Front %>"
-              alt="<%= product.product_name %>"
-            />
-          </picture>
-          <article class="figure_content">
-            <p class="figure_licence"><%= licence.licence_name %></p>
-            <h3 class="figure_title"><%= product.product_name %></h3>
-            <p class="figure_text"><%= product.product_description %></p>
-            <p class="figure_price">$ <%= product.price %></p>
-            <div class="item__cart quantity-action-wrapper">
-              <input
-                class="item__input"
-                type="number"
-                name="quantity"
-                id="quantity"
-                placeholder="0"
-              />
-              <div class="container__buttons">
-                <button id="add" class="item__quantity" type="button">+</button>
-                <button id="subtract" class="item__quantity" type="button">
-                  -
-                </button>
-              </div>
-              <button class="submit" type="submit">Agregar al Carrito</button>
-            </div>
-            <p class="figure_link">
-              <a href="#">Ver métodos de pago</a> - <%= product.dues %> CUOTAS
-              SIN INTERES
-            </p>
-            <p class="addToCartMessage"></p>
-          </article>
-        </div>
-      </form>
-      <!--Fin Section superior-->
-      <!-- Section Ultimos Lanzamientos -->
-      <%- include('../partials/slider') %>
-    </main>
-    <!-- Footer -->
-    <%- include('../partials/fShop') %>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-    <script src="/assets/js/buttons.js"></script>
-    <script src="/assets/js/slider.js"></script>
-    <script src="/assets/js/item.js"></script>
-  </body>
+    </head>
+    <body>
+        <!-- Header -->
+        <%- include('../partials/hShop') %>
+        <main>
+            <!--Inicio Section superior-->
+            <form class="figure figure-form">
+                <input
+                    type="hidden"
+                    name="product_id"
+                    value="<%= product.product_id %>"
+                />
+                <div class="figure_container">
+                    <picture class="figure_picture">
+                        <img
+                            class="figure_img"
+                            src="<%= product.image_Front %>"
+                            alt="<%= product.product_name %>"
+                        />
+                    </picture>
+                    <article class="figure_content">
+                        <p class="figure_licence">
+                            <% if (typeof product !== 'undefined') { %> <% let
+                            licence = indexCollections.find(collection =>
+                            collection.id === product.licence_id); %> <%=
+                            licence ? licence.licence_name : '' %> <% } %>
+                        </p>
+                        <h3 class="figure_title">
+                            <%= product.product_name %>
+                        </h3>
+                        <p class="figure_text">
+                            <%= product.product_description %>
+                        </p>
+                        <p class="figure_price">$ <%= product.price %></p>
+                        <div class="item__cart quantity-action-wrapper">
+                            <input
+                                class="item__input"
+                                type="number"
+                                name="quantity"
+                                id="quantity"
+                                placeholder="0"
+                            />
+                            <div class="container__buttons">
+                                <button
+                                    id="add"
+                                    class="item__quantity"
+                                    type="button"
+                                >
+                                    +
+                                </button>
+                                <button
+                                    id="subtract"
+                                    class="item__quantity"
+                                    type="button"
+                                >
+                                    -
+                                </button>
+                            </div>
+                            <button class="submit" type="submit">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                        <p class="figure_link">
+                            <a href="#">Ver métodos de pago</a> 
+                            <%= product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %>
+                        </p>
+                        <p class="addToCartMessage"></p>
+                    </article>
+                </div>
+            </form>
+            <!--Fin Section superior-->
+            <!-- Section Ultimos Lanzamientos -->
+            <%- include('../partials/slider') %>
+        </main>
+        <!-- Footer -->
+        <%- include('../partials/fShop') %>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+        <script src="/assets/js/buttons.js"></script>
+        <script src="/assets/js/slider.js"></script>
+        <script src="/assets/js/item.js"></script>
+    </body>
 </html>

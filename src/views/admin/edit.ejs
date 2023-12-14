@@ -16,21 +16,21 @@
             <form class="form-container" action="">
                 <fieldset>
                     <div class="form-sub-container">
-                        <label class="label-select" for="categoria"
+                        <label class="label-select" for="category"
                             >Categoría
                         </label>
-                        <select class="categoria-select" name="categoria" id="categoria">
-                            <option>Seleccionar</option>
-                            <option value="figuras">Figuras</option>
-                            <option value="llaveros">Llaveros</option>
-                            <option value="remeras">Remeras</option>
+                        <select class="categoria-select" name="category" id="category">
+                            <option><%= product && product.category_id %></option>
+                            <option value="1" <% if (category_id && category_id === '1') { %>selected<% } %>>Figuras</option>
+                            <option value="2" <% if (category_id && category_id === '2') { %>selected<% } %>>Llaveros</option>
+                            <option value="3" <% if (category_id && category_id === '3') { %>selected<% } %>>Remeras</option>
                         </select>
-                        <label for="collection">Licencia</label>
-                        <select class="licencia-select" name="collection" id="collection">
-                            <option><%= collection %></option>
-                            <option value="star-wars" <% if (collection === 'star-wars') { %>selected<% } %>>STAR WARS</option>
-                            <option value="pokemon" <% if (collection === 'pokemon') { %>selected<% } %>>POKEMON</option>
-                            <option value="harry-potter" <% if (collection === 'harry-potter') { %>selected<% } %>>HARRY POTTER</option>
+                        <label for="licence">Collection</label>
+                        <select class="licencia-select" name="licence" id="licence">
+                            <option><%= product && product.licence_id %></option>
+                            <option value="1" <% if (licence_id === '1') { %>selected<% } %>>STAR WARS & THE MANDALORIAN</option>
+                            <option value="2" <% if (licence_id=== '2') { %>selected<% } %>>POKEMON INDIGO</option>
+                            <option value="3" <% if (licence_id === '3') { %>selected<% } %>>HARRY POTTER</option>
                         </select>
                     </div>
                 </fieldset>
@@ -41,7 +41,7 @@
                             type="text"
                             id="name"
                             name="name"
-                            value="<%= name %>"
+                            value="<%= product && product.product_name %>"
                         />
                     </div>
                     <div class="form-sub-container">
@@ -51,17 +51,19 @@
                             id="description"
                             cols="30"
                             rows="10"
-                        ></textarea>
+                        ><%= product && product.product_description %></textarea>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
-                            <label for="code">SKU:</label>
+                            <label for="sku">SKU:</label>
                             <input
-                                name="code"
+                                class="product_sku"
+                                id="sku"
+                                name="sku"
                                 type="text"
-                                value="<%= product ? product.code : '' %>"
+                                value="<%= product && product.sku %>"
                             />
                         </div>
                         <div class="form-sub-container input-wrapper">
@@ -71,7 +73,7 @@
                                 id="price"
                                 name="price"
                                 type="text"
-                                value="price"
+                                value="<%= product && product.price %>"
                             />
                         </div>
                         <div class="form-sub-container input-wrapper">
@@ -81,7 +83,7 @@
                                 id="stock"
                                 name="stock"
                                 type="text"
-                                value="stock"
+                                value="<%= product && product.stock %>"
                             />
                         </div>
                     </div>
@@ -95,22 +97,22 @@
                                 id="discount"
                                 name="discount"
                                 type="text"
-                                value="discount"
+                                value="<%= product && product.discount %>"
                             />
                         </div>
                         <div class="form-sub-container">
-                            <label for="cuotas"
+                            <label for="dues"
                                 >Cuotas:</label>
                                 <select
                                     class="cuota-select"
-                                    name="cuotas"
-                                    id="cuotas"
+                                    name="dues"
+                                    id="dues"
                                 >
-                                <option value="cuotas" selected>Cuotas sin interés</option>
-                                <option value="1">1 Cuota sin interés</option>
-                                <option value="2">2 Cuotas sin interés</option>
-                                <option value="3">3 Cuotas sin interés</option>
-                                <option value="6">6 Cuotas sin interés</option>
+                                <option selected><%= product && product.dues %></option>
+                                <option value="1" <% if (dues === '1') { %>selected<% } %>>1 Cuota sin interés</option>
+                                <option value="2" <% if (dues === '2') { %>selected<% } %>>2 Cuotas sin interés</option>
+                                <option value="3" <% if (dues === '3') { %>selected<% } %>>3 Cuotas sin interés</option>
+                                <option value="6" <% if (dues === '6') { %>selected<% } %>>6 Cuotas sin interés</option>
                                 </select>
                             </label>
                         </div>
@@ -124,7 +126,7 @@
                             id="imgFront"
                             name="imgFront"
                             type="file"
-                            value="imgFront"
+                            value=""
                         />
                     </div>
                     <div class="form-sub-container">
@@ -134,16 +136,20 @@
                             id="imgBack"
                             name="imgBack"
                             type="file"
-                            value="imgBack"
+                            value=""
                         />
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="form-sub-container" id="gallery-container">
-                        <div class="card-gallery">T0D0</div>
+                        <div class="card-gallery">
+                            <img id="imgFront" src="<%= product && product.image_Front %>" alt="<%= product && product.product_description %>">
+                        </div>
                     </div>
                     <div class="form-sub-container" id="gallery-container">
-                        <div class="card-gallery">T0D0</div>
+                        <div class="card-gallery">
+                            <img id="imgFront" src="<%= product && product.image_Back %>" alt="<%= product && product.product_description %>">
+                        </div>
                     </div>
                 </fieldset> 
                 <div class="form-sub-container">
@@ -161,6 +167,6 @@
         <!-- Fin Main -->
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="/assets/js/editToAdmin.js"></script>
+        <script src="/assets/js/adminToEdit.js"></script>
     </body>
 </html>
