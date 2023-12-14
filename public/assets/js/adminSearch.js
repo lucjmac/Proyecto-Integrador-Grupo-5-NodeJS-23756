@@ -34,7 +34,7 @@ function filterProducts(searchValue) {
         const licence = product
             .querySelector(".list-item_text:nth-child(4)")
             .textContent.toLowerCase();
-        
+
         return (
             sku.includes(searchValue) ||
             name.includes(searchValue) ||
@@ -54,10 +54,17 @@ function filterProducts(searchValue) {
     }
 
     const visibleProducts = document.querySelectorAll(".list-item_content");
-    if (visibleProducts.length === 0) {
-        const noResultsMessage = document.createElement("div");
-        noResultsMessage.classList.add("no-results");
-        noResultsMessage.textContent = "No se encontraron resultados";
-        container.appendChild(noResultsMessage);
+    const noResultsMessage = document.querySelector(".no-results");
+    if (visibleProducts.length === 0 && searchValue.length > 0) {
+        if (!noResultsMessage) {
+            const newNoResultsMessage = document.createElement("div");
+            newNoResultsMessage.classList.add("no-results");
+            newNoResultsMessage.textContent = "No se encontraron resultados";
+            container.appendChild(newNoResultsMessage);
+        }
+    } else {
+        if (noResultsMessage) {
+            container.removeChild(noResultsMessage);
+        }
     }
 }
