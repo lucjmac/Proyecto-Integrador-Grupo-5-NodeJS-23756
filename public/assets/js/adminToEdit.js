@@ -27,17 +27,16 @@ if (typeof product !== "undefined" && typeof product.product_id !== "undefined")
                 var imgbackElement = document.getElementById("imgback");
 
                 skuElement.value = selectedProduct.sku;
-                categoryElement.value = selectedProduct.category;
-                licenceElement.value = selectedProduct.licence;
-                nameElement.value = selectedProduct.name;
-                descriptionElement.value = selectedProduct.description;
+                categoryElement.value = selectedProduct.category_name;
+                licenceElement.value = selectedProduct.licence_name;
+                nameElement.value = selectedProduct.product_name;
+                descriptionElement.value = selectedProduct.product_description;
                 priceElement.value = selectedProduct.price;
                 stockElement.value = selectedProduct.stock;
                 discountElement.value = selectedProduct.discount;
                 duesElement.value = selectedProduct.dues;
-                imgfrontElement.value = selectedProduct.imgfront;
-                imgbackElement.value = selectedProduct.imgback;
-
+                imgfrontElement.value = selectedProduct.image_Front;
+                imgbackElement.value = selectedProduct.image_Back;
             }
         }
     }

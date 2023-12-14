@@ -56,30 +56,47 @@ export class adminController {
         const productId = req.params.id;
     
         try {
-            const query = "SELECT * FROM product WHERE product_id = ?";
-            const [rows] = await conn.query(query, [productId]);
+            const productQuery = `
+                SELECT p.*, c.category_name, l.licence_name
+                FROM product p
+                JOIN category c ON p.category_id = c.id
+                JOIN licence l ON p.licence_id = l.id
+                WHERE p.product_id = ?
+            `;
+            const [productRows] = await conn.query(productQuery, [productId]);
     
-            if (rows.length === 0) {
+            if (productRows.length === 0) {
                 return res.status(404).send("Product not found");
             }
     
-            const product = rows[0];
+            const {
+                category_name: category,
+                licence_name: licence,
+                sku,
+                product_name,
+                product_description,
+                price,
+                stock,
+                discount,
+                dues,
+                image_Front,
+                image_Back
+            } = productRows[0];
     
             res.render(path.join(viewsPath, "edit.ejs"), {
                 productId,
-                product,
-                category_id: product.category,
-                sku: product.sku,
-                product_name: product.name,
-                licence_id: product.licence,
-                product_description: product.description,
-                price: product.price,
-                stock: product.stock,
-                discount: product.discount,
-                dues: product.dues,
-                image_Front: product.imgfront,
-                image_Back: product.imgback,
-                category_id: product.category,
+                product: productRows[0],
+                category,
+                licence,
+                sku,
+                product_name,
+                product_description,
+                price,
+                stock,
+                discount,
+                dues,
+                image_Front,
+                image_Back,
             });
         } catch (error) {
             console.error("Error retrieving product from database:", error);
