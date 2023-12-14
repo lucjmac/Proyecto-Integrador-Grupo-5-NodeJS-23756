@@ -6,34 +6,40 @@
     <title>Item | Funkoshop</title>
     <link href="/assets/css/style.css" rel="stylesheet" />
     <link href="/assets/css/style-item.css" rel="stylesheet" />
-    <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
+    <link
+      rel="shorcut icon"
+      href="/assets/img/branding/isotype.svg"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <!-- Header -->
     <%- include('../partials/hShop') %>
     <main>
       <!--Inicio Section superior-->
-      <section class="figure">
+      <form class="figure figure-form">
+        <input
+          type="hidden"
+          name="product_id"
+          value="<%= product.product_id %>"
+        />
         <div class="figure_container">
           <picture class="figure_picture">
             <img
               class="figure_img"
-              src="/assets/img/star-wars/baby-yoda-1.webp"
-              alt="Funko Baby Yoda"
+              src="<%= product.image_Front %>"
+              alt="<%= product.product_name %>"
             />
           </picture>
           <article class="figure_content">
-            <p class="figure_licence">STAR WARS</p>
-            <h3 class="figure_title">BABY YODA BLUEBALL</h3>
-            <p class="figure_text">
-              Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga,
-              edición limitada.
-            </p>
-            <p class="figure_price">$ 1799,99</p>
+            <p class="figure_licence"><%= licence.licence_name %></p>
+            <h3 class="figure_title"><%= product.product_name %></h3>
+            <p class="figure_text"><%= product.product_description %></p>
+            <p class="figure_price">$ <%= product.price %></p>
             <div class="item__cart quantity-action-wrapper">
               <input
                 class="item__input"
-                type="text"
+                type="number"
                 name="quantity"
                 id="quantity"
                 placeholder="0"
@@ -47,11 +53,13 @@
               <button class="submit" type="submit">Agregar al Carrito</button>
             </div>
             <p class="figure_link">
-              <a href="#">Ver métodos de pago</a> - 3 CUOTAS SIN INTERES
+              <a href="#">Ver métodos de pago</a> - <%= product.dues %> CUOTAS
+              SIN INTERES
             </p>
+            <p class="addToCartMessage"></p>
           </article>
         </div>
-      </section>
+      </form>
       <!--Fin Section superior-->
       <!-- Section Ultimos Lanzamientos -->
       <%- include('../partials/slider') %>
@@ -62,5 +70,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
     <script src="/assets/js/buttons.js"></script>
     <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/item.js"></script>
   </body>
 </html>
