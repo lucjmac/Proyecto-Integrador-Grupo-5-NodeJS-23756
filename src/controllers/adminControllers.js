@@ -56,21 +56,26 @@ export class adminController {
 
     async adminEditIdDelete(req, res) {
         try {
-            const productId = req.params.id;
-            const method = req.body._method;
+            const productId = req.params.product_id;
 
-            if (req.method === "POST" && req.body._method === "DELETE") {
+            console.log("Product ID:", productId);
+
+            if (req.method === "DELETE") {
+                console.log("DELETE request received");
+
                 const deleteQuery = `DELETE FROM product WHERE product_id = ?`;
 
-                conn.query(deleteQuery, [productId], (err, results) => {
+                conn.query(deleteQuery, [productId], (err, result) => {
                     if (err) {
                         console.error(err);
                         res.status(500).send("Error al borrar el producto");
                     } else {
+                        console.log("Product deleted successfully");
                         res.send("Producto borrado exitosamente");
                     }
                 });
             } else {
+                console.log("Invalid request method");
                 res.status(400).send("Solicitud inválida");
             }
         } catch (error) {

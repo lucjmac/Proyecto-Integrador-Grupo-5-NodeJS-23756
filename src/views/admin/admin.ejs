@@ -55,11 +55,12 @@
                         <div class="list-item_text-header">
                             Nombre del Producto
                         </div>
-                        <div class="llist-item_text-header">Categoria</div>
+                        <div class="list-item_text-header">Categoria</div>
                         <div class="list-item_text-header"></div>
                         <div class="list-item_text-header"></div>
                     </div>
                 </article>
+
                 <article class="list_item">
                     <% productList.forEach((product) => { %>
                     <div class="list-item_content">
@@ -89,11 +90,6 @@
                                 action="/admin/delete/<%= product.product_id %>"
                                 method="POST"
                             >
-                                <input
-                                    type="hidden"
-                                    name="_method"
-                                    value=""
-                                />
                                 <button type="submit">
                                     <img
                                         src="/assets/img/icons/delete_trash.svg"
