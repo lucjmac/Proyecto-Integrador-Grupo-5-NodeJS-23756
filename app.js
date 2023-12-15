@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
-import { middlewareDelete } from "./src/middlewares/midlewareDelete.js";
 import mainRoutes from "./src/routes/mainRoutes.js";
 import shopRoutes from "./src/routes/shopRoutes.js";
 import adminRoutes from "./src/routes/adminRoutes.js";
@@ -29,8 +28,6 @@ app.use(express.json())
 //Static files
 app.use(express.static("public"));
 
-// Middleware
-app.use(middlewareDelete);
 
 //Routes
 app.use("/", mainRoutes)

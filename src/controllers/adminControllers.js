@@ -57,7 +57,7 @@ export class adminController {
         if (req.method === "DELETE") {
             try {
                 const result = await conn.query(
-                    "DELETE FROM product WHERE id = $1",
+                    "DELETE FROM product WHERE product_id = ?",
                     [productId]
                 );
     
@@ -65,7 +65,7 @@ export class adminController {
                     return res.status(404).send("Producto no encontrado");
                 }
     
-                res.status(204).send();
+                res.json({ message: "Producto eliminado exitosamente" });
             } catch (error) {
                 console.error("Error al eliminar el producto:", error);
                 res.status(500).send("Error interno del servidor");

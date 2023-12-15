@@ -43,3 +43,16 @@ if (typeof product !== "undefined" && typeof product.product_id !== "undefined")
 } else {
     console.error("product.id no está definido o no tiene un valor válido");
 }
+
+function loadImage(input, previewId) {
+    if (input.files && input.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const preview = document.getElementById(previewId);
+        preview.src = e.target.result;
+    };
+
+    reader.readAsDataURL(input.files[0]);
+    }
+}
