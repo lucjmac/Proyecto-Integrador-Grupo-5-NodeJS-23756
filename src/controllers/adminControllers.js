@@ -61,7 +61,7 @@ export class adminController {
                     [productId]
                 );
     
-                if (result.rowCount === 0) {
+                if (result.affectedRows === 0) {
                     return res.status(404).send("Producto no encontrado");
                 }
     

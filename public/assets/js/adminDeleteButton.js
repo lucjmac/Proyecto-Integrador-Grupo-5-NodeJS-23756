@@ -1,28 +1,30 @@
-const deleteButton = document.querySelectorAll('.delete_button');
+const deleteButtons = document.querySelectorAll('.delete_button');
 
-deleteButton.forEach(button => {
-    button.addEventListener('click', () => {
-        const productId = button.dataset.product_id;
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.dataset.product_id;
 
-        const confirmDelete = confirm("¿Seguro que deseas eliminar el producto?");
-        if (!confirmDelete) {
-            return; 
-        }
-
-        fetch(`/admin/delete/${productId}`, {
-            method: 'DELETE'
-        })
-        .then(response => {
-            if (response.ok) {
-                console.log('Producto eliminado exitosamente');
-
-                window.location.href = "/admin";
-            } else {
-                console.error('Error al eliminar el producto');
+            const confirmDelete = confirm("¿Seguro que deseas eliminar el producto?");
+            if (!confirmDelete) {
+                return; 
             }
-        })
-        .catch(error => {
-            console.error('Error en la solicitud DELETE:', error);
+
+            fetch(`/admin/delete/${productId}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Producto eliminado exitosamente');
+                    
+                    // Eliminar el elemento del DOM
+                    const listItem = button.closest('.list-item_content');
+                    listItem.parentNode.removeChild(listItem);
+                } else {
+                    console.error('Error al eliminar el producto');
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud DELETE:', error);
+            });
         });
     });
-});
