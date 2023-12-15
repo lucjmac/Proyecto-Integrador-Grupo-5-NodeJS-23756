@@ -16,7 +16,6 @@ const deleteButtons = document.querySelectorAll('.delete_button');
                 if (response.ok) {
                     console.log('Producto eliminado exitosamente');
                     
-                    // Eliminar el elemento del DOM
                     const listItem = button.closest('.list-item_content');
                     listItem.parentNode.removeChild(listItem);
                 } else {
