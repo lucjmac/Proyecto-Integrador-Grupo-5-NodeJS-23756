@@ -1,9 +1,6 @@
 import path from "path";
 import { conn } from "../config/conn.js";
-import {
-    getFilteredProductList,
-    getProductById,
-} from "../service/adminService.js";
+import { getFilteredProductList, getProductById } from "../Service/adminService.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -55,32 +52,26 @@ export class adminController {
     }
 
     async adminEditIdDelete(req, res) {
-        try {
-            const productId = req.params.product_id;
-
-            console.log("Product ID:", productId);
-
-            if (req.method === "DELETE") {
-                console.log("DELETE request received");
-
-                const deleteQuery = `DELETE FROM product WHERE product_id = ?`;
-
-                conn.query(deleteQuery, [productId], (err, result) => {
-                    if (err) {
-                        console.error(err);
-                        res.status(500).send("Error al borrar el producto");
-                    } else {
-                        console.log("Product deleted successfully");
-                        res.send("Producto borrado exitosamente");
-                    }
-                });
-            } else {
-                console.log("Invalid request method");
-                res.status(400).send("Solicitud inválida");
+        const productId = req.params.id;
+    
+        if (req.method === "DELETE") {
+            try {
+                const result = await conn.query(
+                    "DELETE FROM product WHERE id = $1",
+                    [productId]
+                );
+    
+                if (result.rowCount === 0) {
+                    return res.status(404).send("Producto no encontrado");
+                }
+    
+                res.status(204).send();
+            } catch (error) {
+                console.error("Error al eliminar el producto:", error);
+                res.status(500).send("Error interno del servidor");
             }
-        } catch (error) {
-            console.error(error);
-            res.status(500).send("Error al borrar el producto");
+        } else {
+            res.status(405).send("Método no permitido");
         }
     }
 }
