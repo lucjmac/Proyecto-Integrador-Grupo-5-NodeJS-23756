@@ -1,7 +1,7 @@
 if (typeof product !== "undefined" && typeof product.product_id !== "undefined") {
     const productId = product.product_id;
 
-    const selectElement = document.getElementById("code");
+    const selectElement = document.getElementById("productId");
 
     for (var i = 0; i < selectElement.options.length; i++) {
         var optionElement = selectElement.options[i];

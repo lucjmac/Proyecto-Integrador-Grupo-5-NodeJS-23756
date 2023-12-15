@@ -17,15 +17,15 @@
                 <fieldset>
                     <div class="form-sub-container">
                         <label class="label-select" for="category">Categoría</label>
-                        <select class="categoria-select" name="category" id="category">
-                            <option value=""><%= category %></option>
-                            <option value="Figuras" <% if (category === 'Figuras') { %>selected<% } %>>Figuras</option>
-                            <option value="Llaveros" <% if (category === 'Llaveros') { %>selected<% } %>>Llaveros</option>
-                            <option value="Remeras" <% if (category === 'Remeras') { %>selected<% } %>>Remeras</option>
+                            <select class="category_name" name="category" id="category">
+                                <option value="<%= category %>" hidden></option>
+                                <option value="Figuras" <% if (category === 'Figuras') { %>selected<% } %>>Figuras</option>
+                                <option value="Llaveros" <% if (category === 'Llaveros') { %>selected<% } %>>Llaveros</option>
+                                <option value="Remeras" <% if (category === 'Remeras') { %>selected<% } %>>Remeras</option>
                         </select>
                         <label for="licence">Collection</label>
-                        <select class="licencia-select" name="licence" id="licence">
-                            <option value=""><%= licence %></option>
+                        <select class="licence_name" name="licence" id="licence">
+                            <option value="<%= licence %>" hidden></option>
                             <option value="STAR WARS & THE MANDALORIAN" <% if (licence === 'STAR WARS & THE MANDALORIAN') { %>selected<% } %>>STAR WARS & THE MANDALORIAN</option>
                             <option value="POKEMON INDIGO" <% if (licence === 'POKEMON INDIGO') { %>selected<% } %>>POKEMON INDIGO</option>
                             <option value="HARRY POTTER" <% if (licence === 'HARRY POTTER') { %>selected<% } %>>HARRY POTTER</option>
@@ -36,6 +36,7 @@
                     <div class="form-sub-container input-wrapper">
                         <label for="name">Nombre del producto:</label>
                         <input
+                            class="product_name"
                             type="text"
                             id="name"
                             name="name"
@@ -57,7 +58,7 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="sku">SKU:</label>
                             <input
-                                class="product_sku"
+                                class="sku"
                                 id="sku"
                                 name="sku"
                                 type="text"
@@ -67,7 +68,7 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="price">Precio: </label>
                             <input
-                                class=""
+                                class="price"
                                 id="price"
                                 name="price"
                                 type="text"
@@ -77,7 +78,7 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="stock">Stock: </label>
                             <input
-                                class=""
+                                class="stock"
                                 id="stock"
                                 name="stock"
                                 type="text"
@@ -91,7 +92,7 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="discount">Descuento: </label>
                             <input
-                                class=""
+                                class="discount"
                                 id="discount"
                                 name="discount"
                                 type="text"
@@ -102,11 +103,11 @@
                             <label for="dues"
                                 >Cuotas:</label>
                                 <select
-                                    class="cuota-select"
+                                    class="dues"
                                     name="dues"
                                     id="dues"
                                 >
-                                <option value=""><%= product && product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %></option>
+                                <option value="<%= product && product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %>" hidden><%= product && product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %></option>
                                 <option value="1" <% if (dues === '1') { %>selected<% } %>>1 Cuota sin interés</option>
                                 <option value="2" <% if (dues === '2') { %>selected<% } %>>2 Cuotas sin interés</option>
                                 <option value="3" <% if (dues === '3') { %>selected<% } %>>3 Cuotas sin interés</option>
@@ -120,7 +121,7 @@
                     <div class="form-sub-container">
                         <label for="imgFront">Imágenes:</label>
                         <input
-                            class=""
+                            class="image_Front"
                             id="imgFront"
                             name="imgFront"
                             type="file"
@@ -130,7 +131,7 @@
                     <div class="form-sub-container">
                         <label for="imgBack">Imágenes:</label>
                         <input
-                            class=""
+                            class="image_Back"
                             id="imgBack"
                             name="imgBack"
                             type="file"
