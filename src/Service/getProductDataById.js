@@ -24,7 +24,7 @@ const getProduct = {
         FROM product
         WHERE product_id IN (${arrayIds.join(", ")});
       `;
-      console.log(arrayIds, "arrayIds");
+
       const consulta = await conn.query(query);
 
       return consulta;
