@@ -7,7 +7,7 @@ const cartService = {
    */
   consulta: async () => {
     try {
-      const query = "select * from sql10668848.cart";
+      const query = "select * from cart";
       const resultados = await conn.query(query);
 
       return resultados;
@@ -19,7 +19,7 @@ const cartService = {
   },
   consultaCantidad: async (cartId) => {
     try {
-      const query = `select sum(quantity) as totalItems from sql10668848.cart WHERE cart_id = ${cartId}`;
+      const query = `select sum(quantity) as totalItems from cart WHERE cart_id = ${cartId}`;
       const [consulta] = await conn.query(query);
 
       return consulta;
@@ -35,18 +35,18 @@ const cartService = {
 
     try {
       const [productExists] = await conn.query(
-        "SELECT * FROM sql10668848.cart WHERE id_product = ?",
+        "SELECT * FROM cart WHERE id_product = ?",
         [product_id]
       );
 
       if (productExists.length === 0) {
-        const query = "INSERT INTO sql10668848.cart  VALUES(?,?,?,?,?);";
+        const query = "INSERT INTO cart  VALUES(?,?,?,?,?);";
         const consulta = await conn.query(query, [
           id,
-          id_cart,
-          id_user,
           product_id,
           quantity,
+          id_cart,
+          id_user,
         ]);
 
         return consulta;
@@ -54,8 +54,7 @@ const cartService = {
         const existingQuantity = productExists[0].quantity;
         const newQuantity =
           parseInt(existingQuantity, 10) + parseInt(quantity, 10);
-        const query =
-          "UPDATE sql10668848.cart SET quantity = ? WHERE id_product = ?";
+        const query = "UPDATE cart SET quantity = ? WHERE id_product = ?";
         const consulta = await conn.query(query, [newQuantity, product_id]);
 
         return consulta;

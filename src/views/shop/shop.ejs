@@ -1,187 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Shop | Funkoshop</title>
-        <link href="/assets/css/style.css" rel="stylesheet" />
-        <link href="/assets/css/style-shop.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
-    </head>
-    <body>
-        <%- include('../partials/hShop') %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | Funkoshop</title>
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/style-shop.css" rel="stylesheet" />
+    <link
+      rel="shorcut icon"
+      href="/assets/img/branding/isotype.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <%- include('../partials/hShop') %>
 
-        <!--Inicio Main-->
-        <main>
-            <!--Inicio Aside-->
-            <aside>
-                <div class="buscar-wrapper">
-                    <div class="buscar-title">BUSCAR</div>
-                    <div class="buscar-input">
-                        <input
-                            type="text"
-                            placeholder="Item o categoria"
-                            name="buscar-filter-value"
-                            id="buscar-filter-value"
-                        />
-                    </div>
-                </div>
-
-                <div class="ordenar-wrapper">
-                    <div class="ordenar-title">ORDENAR POR</div>
-                    <select
-                        class="ordenar-select"
-                        name="ordernar-value"
-                        id="ordernar-value"
-                        value=""
-                    >
-                        <option value="1">Mayor a menor</option>
-                        <option value="2">Stock</option>
-                    </select>
-                </div>
-
-                <div class="precio-wrapper">
-                    <div class="precio-title">PRECIO</div>
-                    <div class="precio-inputs">
-                        <div class="precio-min-label-wrapper">MIN</div>
-                        <div class="precio-min-value-wrapper">
-                            <input
-                                type="number"
-                                value="0"
-                                name="precio-min-value"
-                                id="precio-min-value"
-                            />
-                        </div>
-                        <div class="precio-max-label-wrapper">MAX</div>
-                        <div class="precio-max-value-wrapper">
-                            <input
-                                type="number"
-                                value="0"
-                                name="precio-max-value"
-                                id="precio-max-value"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="filtrar-wrapper">
-                    <div class="filtrar-title">FILTRAR</div>
-                    <div class="filtrar-checks">
-                        <div class="filtrar-sub-wrapper">
-                            <input
-                                type="checkbox"
-                                id="filtrar-nuevo-value"
-                                name="filtrar-nuevo-value"
-                                value="nuevos"
-                            />
-                            <label for="filtrar-nuevo-value">NUEVOS</label>
-                        </div>
-
-                        <div class="filtrar-sub-wrapper">
-                            <input
-                                type="checkbox"
-                                id="filtrar-ofertas-value"
-                                name="filtrar-ofertas-value"
-                                value="ofertas"
-                            />
-                            <label for="filtrar-ofertas-value">OFERTAS</label>
-                        </div>
-                        <div class="filtrar-sub-wrapper">
-                            <input
-                                type="checkbox"
-                                id="filtrar-edicion-value"
-                                name="filtrar-edicion-value"
-                                value="edicion"
-                            />
-                            <label for="filtrar-edicion-value"
-                                >EDICI&Oacute;N ESPECIAL</label
-                            >
-                        </div>
-
-                        <div class="filtrar-sub-wrapper">
-                            <input
-                                type="checkbox"
-                                id="filtrar-favorito-value"
-                                name="filtrar-favorito-value"
-                                value="favoritos"
-                            />
-                            <label for="filtrar-favorito-value"
-                                >FAVORITOS</label
-                            >
-                        </div>
-                    </div>
-                </div>
-            </aside>
-            <!--Fin Aside-->
-
-            <!--Inicio Seccion Principal-->
-            <div class="container-wrapper">
-                <div class="principal-wrapper">
-                    <div class="principal-sub-wrapper">
-                        <% shopCollections.forEach((product) => { %>
-                        <a
-                            class="card"
-                            href="/shop/item/<%= product.product_name %>"
-                        >
-                            <div class="card-title">
-                                <% if (product.isNew) { %>
-                                <div class="card-item_tag">Nuevo</div>
-                                <% } %>
-                            </div>
-                            <div class="card-item_link">
-                                <picture class="card-item_cover">
-                                    <img
-                                        src="<%= product.image_Front %>"
-                                        alt="<%= product.product_name %>"
-                                    />
-                                </picture>
-                            </div>
-                            <div class="card-item_content">
-                                <% if (product.licence) { %>
-                                <div class="card-item_licence">
-                                    <%= product.licence.licence_name %>
-                                </div>
-                                <% } %>
-                                <div class="card-item_name">
-                                    <%= product.product_name %>
-                                </div>
-                                <div class="card-item_price">
-                                    $ <%= product.price %>
-                                </div>
-                                <div class="card-payment">
-                                    <div class="card-item_promo">
-                                        <%= product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <% }); %>
-                    </div>
-                </div>
-
-            </div>
-            <!--Fin Seccion Principal-->
-        </main>
-        <div class="pagination-wrapper">
-            <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a class="active" href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">..</a>
-                <a href="#">30</a>
-                <a href="#">31</a>
-                <a href="#">&raquo;</a>
-            </div>
+    <!--Inicio Main-->
+    <main>
+      <!--Inicio Aside-->
+      <aside>
+        <div class="buscar-wrapper">
+          <div class="buscar-title">BUSCAR</div>
+          <div class="buscar-input">
+            <input
+              type="text"
+              placeholder="Item o categoria"
+              name="buscar-filter-value"
+              id="buscar-filter-value"
+            />
+          </div>
         </div>
 
-        <!--Fin Main-->
+        <div class="ordenar-wrapper">
+          <div class="ordenar-title">ORDENAR POR</div>
+          <select
+            class="ordenar-select"
+            name="ordernar-value"
+            id="ordernar-value"
+            value=""
+          >
+            <option value="1">Mayor a menor</option>
+            <option value="2">Stock</option>
+          </select>
+        </div>
 
-        <%- include('../partials/fShop') %>
+        <div class="precio-wrapper">
+          <div class="precio-title">PRECIO</div>
+          <div class="precio-inputs">
+            <div class="precio-min-label-wrapper">MIN</div>
+            <div class="precio-min-value-wrapper">
+              <input
+                type="number"
+                value="0"
+                name="precio-min-value"
+                id="precio-min-value"
+              />
+            </div>
+            <div class="precio-max-label-wrapper">MAX</div>
+            <div class="precio-max-value-wrapper">
+              <input
+                type="number"
+                value="0"
+                name="precio-max-value"
+                id="precio-max-value"
+              />
+            </div>
+          </div>
+        </div>
 
+        <div class="filtrar-wrapper">
+          <div class="filtrar-title">FILTRAR</div>
+          <div class="filtrar-checks">
+            <div class="filtrar-sub-wrapper">
+              <input
+                type="checkbox"
+                id="filtrar-nuevo-value"
+                name="filtrar-nuevo-value"
+                value="nuevos"
+              />
+              <label for="filtrar-nuevo-value">NUEVOS</label>
+            </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-        <script src="/assets/js/slider.js"></script>
-    </body>
+            <div class="filtrar-sub-wrapper">
+              <input
+                type="checkbox"
+                id="filtrar-ofertas-value"
+                name="filtrar-ofertas-value"
+                value="ofertas"
+              />
+              <label for="filtrar-ofertas-value">OFERTAS</label>
+            </div>
+            <div class="filtrar-sub-wrapper">
+              <input
+                type="checkbox"
+                id="filtrar-edicion-value"
+                name="filtrar-edicion-value"
+                value="edicion"
+              />
+              <label for="filtrar-edicion-value">EDICI&Oacute;N ESPECIAL</label>
+            </div>
+
+            <div class="filtrar-sub-wrapper">
+              <input
+                type="checkbox"
+                id="filtrar-favorito-value"
+                name="filtrar-favorito-value"
+                value="favoritos"
+              />
+              <label for="filtrar-favorito-value">FAVORITOS</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!--Fin Aside-->
+
+      <!--Inicio Seccion Principal-->
+      <div class="container-wrapper">
+        <div class="principal-wrapper">
+          <div class="principal-sub-wrapper">
+            <% shopCollections.forEach((product) => { %>
+            <a class="card" href="/shop/item/<%= product.product_id %>">
+              <div class="card-title">
+                <% if (product.isNew) { %>
+                <div class="card-item_tag">Nuevo</div>
+                <% } %>
+              </div>
+              <div class="card-item_link">
+                <picture class="card-item_cover">
+                  <img
+                    src="<%= product.image_Front %>"
+                    alt="<%= product.product_name %>"
+                  />
+                </picture>
+              </div>
+              <div class="card-item_content">
+                <% if (product.licence) { %>
+                <div class="card-item_licence">
+                  <%= product.licence.licence_name %>
+                </div>
+                <% } %>
+                <div class="card-item_name"><%= product.product_name %></div>
+                <div class="card-item_price">$ <%= product.price %></div>
+                <div class="card-payment">
+                  <div class="card-item_promo">
+                    <%= product.dues === 1 ? 'cuota sin interés' : product.dues
+                    + ' cuotas sin interés' %>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+      <!--Fin Seccion Principal-->
+    </main>
+    <div class="pagination-wrapper">
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a class="active" href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">..</a>
+        <a href="#">30</a>
+        <a href="#">31</a>
+        <a href="#">&raquo;</a>
+      </div>
+    </div>
+
+    <!--Fin Main-->
+
+    <%- include('../partials/fShop') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="/assets/js/slider.js"></script>
+  </body>
 </html>
