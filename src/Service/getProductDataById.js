@@ -1,8 +1,3 @@
-// import { productList } from "../data/productList.js";
-// export function getProductDataById(productId) {
-//     return productList.find((product) => product.id === productId);
-// }
-
 import conn from "../config/conn.js";
 
 const getProduct = {
@@ -31,7 +26,7 @@ const getProduct = {
       `;
       console.log(arrayIds, "arrayIds");
       const consulta = await conn.query(query);
-      console.log(consulta, "p");
+
       return consulta;
     } catch (error) {
       console.log(
