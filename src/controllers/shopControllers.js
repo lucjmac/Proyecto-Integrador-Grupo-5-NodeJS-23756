@@ -1,13 +1,13 @@
 import path from "path";
 
 import { conn } from "../config/conn.js";
-import { indexSliderService } from "../service/indexSliderService.js";
-import { cartItems } from "../data/cartItems.js";
-import { sliderItems } from "../data/sliderItems.js";
+import {
+  formatItemsData,
+  getIndexCollections,
+} from "../service/indexSliderService.js";
 import { shopCollections } from "../data/shopCollections.js";
 import getProduct from "../Service/getProductDataById.js";
 import cartService from "../Service/cartService.js";
-/*T0D0 CHECK*/
 
 const viewsPath = path.resolve() + "/src/views/shop";
 
@@ -53,76 +53,46 @@ const getCartItems = async () => {
 export class shopController {
   constructor() {}
 
+  async shopGet(req, res) {
+    const licenceId = req.query.licence_id;
 
-    async shopGet(req, res) {
-        const licenceId = req.query.licence_id;
+    try {
+      let licenceRows;
+      let productRows;
 
-        try {
-            let licenceRows;
-            let productRows;
+      if (licenceId) {
+        [licenceRows] = await conn.query("SELECT * FROM licence WHERE id = ?", [
+          licenceId,
+        ]);
 
-            if (licenceId) {
-                [licenceRows] = await conn.query(
-                    "SELECT * FROM licence WHERE id = ?",
-                    [licenceId]
-                );
+        [productRows] = await conn.query(
+          "SELECT * FROM product WHERE licence_id = ?",
+          [licenceId]
+        );
+      } else {
+        [licenceRows] = await conn.query("SELECT * FROM licence");
 
-                [productRows] = await conn.query(
-                    "SELECT * FROM product WHERE licence_id = ?",
-                    [licenceId]
-                );
-            } else {
-                [licenceRows] = await conn.query("SELECT * FROM licence");
+        [productRows] = await conn.query("SELECT * FROM product");
+      }
 
-                [productRows] = await conn.query("SELECT * FROM product");
-            }
+      const productsWithLicence = productRows.map((product) => {
+        const licence = licenceRows.find(
+          (licence) => licence.id === product.licence_id
+        );
+        return { ...product, licence };
+      });
 
-            const productsWithLicence = productRows.map((product) => {
-                const licence = licenceRows.find(
-                    (licence) => licence.id === product.licence_id
-                );
-                return { ...product, licence };
-            });
-
-            res.render(path.join(viewsPath, "shop.ejs"), {
-                licenceData: licenceRows,
-                shopCollections: productsWithLicence,
-                licenceId: licenceId,
-                showAllLicences: !licenceId,
-            });
-        } catch (error) {
-            console.error("Error al consultar los productos:", error);
-        }
+      res.render(path.join(viewsPath, "shop.ejs"), {
+        licenceData: licenceRows,
+        shopCollections: productsWithLicence,
+        licenceId: licenceId,
+        showAllLicences: !licenceId,
+      });
+    } catch (error) {
+      console.error("Error al consultar los productos:", error);
     }
+  }
 
-    async itemIdGet(req, res) {
-        try {
-            const productId = Number(req.params.id);
-
-            const [rows] = await conn.query(
-                "SELECT * FROM product WHERE product_id = ?",
-                [productId]
-            );
-
-            if (rows.length === 0) {
-                return res.status(404).send("Producto no encontrado");
-            }
-
-            const product = rows[0];
-
-            const sliderData = await indexSliderService();
-
-            res.render(path.join(viewsPath, "item.ejs"), {
-                indexCollections: sliderData.indexCollections,
-                sliderItems: sliderData.sliderItems,
-                product,
-            });
-        } catch (error) {
-            console.error("Error al obtener los datos:", error);
-            res.status(500).send("Error al obtener los datos");
-        }
-    }
-  /* T0D0 CHECK
   shopGet(req, res) {
     res.render(path.join(viewsPath, "shop.ejs"), {
       shopCollections: shopCollections,
@@ -135,7 +105,8 @@ export class shopController {
     const { category_id, licence_id } = product[0];
     const category = await getProduct.consultaCategory(category_id);
     const [licence] = await getProduct.consultaLicence(licence_id);
-    */
+
+    const { sliderItems } = await formatItemsData();
 
     res.render(path.join(viewsPath, "item.ejs"), {
       sliderItems: sliderItems,
@@ -147,7 +118,7 @@ export class shopController {
 
   async shopCartGet(req, res) {
     const { cartItems } = await getCartItems();
-
+    console.log("cartItems", cartItems);
     res.render(path.join(viewsPath, "cart.ejs"), {
       cartItems,
     });

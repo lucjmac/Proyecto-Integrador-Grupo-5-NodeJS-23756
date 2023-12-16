@@ -42,8 +42,7 @@ form {
   margin-bottom: 3.6rem;
 }
 
-.input-wrapper input::placeholder,
-.input-wrapper input {
+.input-wrapper input::placeholder {
   color: var(--light-grey);
 }
 
