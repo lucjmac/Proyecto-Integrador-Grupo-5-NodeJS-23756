@@ -107,11 +107,11 @@
                                     name="dues"
                                     id="dues"
                                 >
-                                <option value="<%= product && product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %>" hidden><%= product && product.dues === 1 ? 'cuota sin interés' : product.dues + ' cuotas sin interés' %></option>
-                                <option value="1" <% if (dues === '1') { %>selected<% } %>>1 Cuota sin interés</option>
-                                <option value="2" <% if (dues === '2') { %>selected<% } %>>2 Cuotas sin interés</option>
-                                <option value="3" <% if (dues === '3') { %>selected<% } %>>3 Cuotas sin interés</option>
-                                <option value="6" <% if (dues === '6') { %>selected<% } %>>6 Cuotas sin interés</option>
+                               
+                                <option value="1" <%- product.dues == 1 ? 'selected' : '' %>>1 Cuota sin interés</option>
+                                <option value="2" <%- product.dues == 2 ? 'selected' : '' %>>2 Cuotas sin interés</option>
+                                <option value="3"  <%- product.dues == 3 ? 'selected' : '' %>>3 Cuotas sin interés</option>
+                                <option value="6" <%- product.dues == 6 ? 'selected' : '' %>>6 Cuotas sin interés</option>
                                 </select>
                             </label>
                         </div>
@@ -126,6 +126,7 @@
                             name="imgFront"
                             type="file"
                             value=""
+                            data-value="<%= product && product.image_Front %>"
                         />
                     </div>
                     <div class="form-sub-container">
@@ -136,6 +137,7 @@
                             name="imgBack"
                             type="file"
                             value=""
+                            data-value="<%= product && product.image_Back %>"
                         />
                     </div>
                 </fieldset>
@@ -161,6 +163,7 @@
                         id="modificar"
                         name="modificar"
                         type="button"
+                        data-product-id="<%= product && product.product_id %>"
                     >
                         Modificar Producto
                     </button>
