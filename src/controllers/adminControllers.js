@@ -1,6 +1,9 @@
 import path from "path";
 import { conn } from "../config/conn.js";
-import { getFilteredProductList, getProductById } from "../Service/adminService.js";
+import {
+    getFilteredProductList,
+    getProductById,
+} from "../Service/adminService.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 
@@ -47,24 +50,71 @@ export class adminController {
         }
     }
 
-    adminEditIdPut(req, res) {
-        res.send("Route for edit/:id put");
+    async adminEditIdPut(req, res) {
+        try {
+            const productId = req.params.id;
+            const {
+                category_name,
+                licence_name,
+                product_name,
+                product_description,
+                sku,
+                price,
+                stock,
+                discount,
+                dues,
+                image_Front,
+                image_Back,
+            } = req.body;
+
+            const [licenceRows] = await conn.execute(
+                "SELECT id FROM licence WHERE licence_name = ?",
+                [licence_name]
+            );
+            if (licenceRows.length === 0) {
+                console.error("Licencia no encontrada");
+                res.status(404).send("Licencia no encontrada");
+                return;
+            }
+
+            const licence_id = licenceRows[0].id;
+
+            const [categoryRows] = await conn.execute(
+                "SELECT id FROM category WHERE category_name = ?",
+                [category_name]
+            );
+            if (categoryRows.length === 0) {
+                console.error("Categoría no encontrada");
+                res.status(404).send("Categoría no encontrada");
+                return;
+            }
+
+            const category_id = categoryRows[0].id;
+
+            await conn.execute('UPDATE product SET licence_id = ?, category_id = ?, product_name = ?, product_description = ?, sku = ?, price = ?, stock = ?, discount = ?, dues = ?, image_Front = ?, image_Back = ? WHERE product_id = ?', [licence_id, category_id, product_name, product_description, sku, price, stock, discount, dues, image_Front, image_Back, productId]);
+
+            console.log("Producto actualizado exitosamente");
+            res.send("Producto actualizado exitosamente");
+        } catch (error) {
+            console.error("Error al actualizar el producto:", error);
+            res.status(500).send("Error al actualizar el producto");
+        }
     }
 
     async adminEditIdDelete(req, res) {
         const productId = req.params.id;
-    
+
         if (req.method === "DELETE") {
             try {
                 const result = await conn.query(
                     "DELETE FROM product WHERE product_id = ?",
                     [productId]
                 );
-    
+
                 if (result.affectedRows === 0) {
                     return res.status(404).send("Producto no encontrado");
                 }
-    
+
                 res.json({ message: "Producto eliminado exitosamente" });
             } catch (error) {
                 console.error("Error al eliminar el producto:", error);

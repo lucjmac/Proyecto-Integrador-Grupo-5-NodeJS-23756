@@ -1,6 +1,5 @@
-const editButtons = document.querySelectorAll('.edit_button');
+const button = document.getElementById('modificar');
 
-editButtons.forEach(button => {
     button.addEventListener('click', () => {
         const productId = button.dataset.product_id;
 
@@ -15,7 +14,6 @@ editButtons.forEach(button => {
         const newProductDues = document.querySelector('.dues').value;
         const newProductImgFront = document.querySelector('.image_Front').value;
         const newProductImgBack = document.querySelector('.image_Back').value;
-        
 
         const updatedProduct = {
             category_name: newProductCategory,
@@ -48,7 +46,6 @@ editButtons.forEach(button => {
             }
         })
         .catch(error => {
-            console.error('Error en la solicitud PATCH/PUT:', error);
+            console.error('Error en la solicitud PUT:', error);
         });
     });
-});

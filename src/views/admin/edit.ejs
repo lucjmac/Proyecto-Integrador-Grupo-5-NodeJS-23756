@@ -18,14 +18,14 @@
                     <div class="form-sub-container">
                         <label class="label-select" for="category">Categoría</label>
                             <select class="category_name" name="category" id="category">
-                                <option value="<%= category %>" hidden></option>
+                                <option value="<%= category %>" hidden><%= category %></option>
                                 <option value="Figuras" <% if (category === 'Figuras') { %>selected<% } %>>Figuras</option>
                                 <option value="Llaveros" <% if (category === 'Llaveros') { %>selected<% } %>>Llaveros</option>
                                 <option value="Remeras" <% if (category === 'Remeras') { %>selected<% } %>>Remeras</option>
                         </select>
                         <label for="licence">Collection</label>
                         <select class="licence_name" name="licence" id="licence">
-                            <option value="<%= licence %>" hidden></option>
+                            <option value="<%= licence %>" hidden><%= licence %></option>
                             <option value="STAR WARS & THE MANDALORIAN" <% if (licence === 'STAR WARS & THE MANDALORIAN') { %>selected<% } %>>STAR WARS & THE MANDALORIAN</option>
                             <option value="POKEMON INDIGO" <% if (licence === 'POKEMON INDIGO') { %>selected<% } %>>POKEMON INDIGO</option>
                             <option value="HARRY POTTER" <% if (licence === 'HARRY POTTER') { %>selected<% } %>>HARRY POTTER</option>
@@ -160,7 +160,7 @@
                         class="btn-primary"
                         id="modificar"
                         name="modificar"
-                        type="submit"
+                        type="button"
                     >
                         Modificar Producto
                     </button>
@@ -171,5 +171,6 @@
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
         <script src="/assets/js/adminToEdit.js"></script>
+        <script src="/assets/js/editButton.js"></script>
     </body>
 </html>
