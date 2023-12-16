@@ -7,7 +7,7 @@ import adminRoutes from "./src/routes/adminRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
 
 // Remover al finalizar, solo para Testeos
-import  testRoutes   from "./src/routes/testRoutes.js";
+import testRoutes from "./src/routes/testRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -15,24 +15,23 @@ const root = path.resolve();
 const PORT = process.env.PORT || 8080;
 
 //template engine
-app.set("view engine", "ejs")
-    .set("views", path.join(root, "src", "views"));
+app.set("view engine", "ejs").set("views", path.join(root, "src", "views"));
 
 //Parsers
-app.use(express.json())
-    .use(express.urlencoded({ extended: true }));
+app.use(express.json()).use(express.urlencoded({ extended: true }));
 
 //Static files
 app.use(express.static("public"));
 
 //Routes
-app.use("/", mainRoutes)
-    .use("/shop", shopRoutes)
-    .use("/admin", adminRoutes)
-    .use("/auth", authRoutes)
-    .use("/test", testRoutes);
+app
+  .use("/", mainRoutes)
+  .use("/shop", shopRoutes)
+  .use("/admin", adminRoutes)
+  .use("/auth", authRoutes)
+  .use("/test", testRoutes);
 
 //Start server
 app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
+  console.log(`http://localhost:${PORT}`);
 });

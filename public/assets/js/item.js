@@ -21,7 +21,7 @@ const addToCart = async (event) => {
   const { product_id } = formProps;
 
   //   TODO: sacar el user ID que este almacenado en el local storage
-  const userID = 2;
+  const userID = 1;
   const id = Math.floor(Math.random() * 10000 + 1);
   const id_cart = 231;
 

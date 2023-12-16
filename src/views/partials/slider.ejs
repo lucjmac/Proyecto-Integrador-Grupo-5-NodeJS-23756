@@ -1,55 +1,42 @@
 <section class="slider container glide">
-    <h2 class="slider_title">ÚLTIMOS LANZAMIENTOS</h2>
-    <div class="glide__track" data-glide-el="track">
-        <ul class="slider_items glide__slides">
-            <% sliderItems.forEach((item) => { %>
-            <li class="slider_item glide__slide">
-                <article class="card-item">
-                    <a
-                        class="card-item_link"
-                        href="shop/item/<%= item.product_id %>"> 
-                    
-                        <picture class="card-item_cover">
-                            <span class="card-item_tag">NUEVO</span>
-                            <img
-                                class="card-item_img-front"
-                                src="<%= item.image_Front %>"
-                                alt="<%= item.product_description %>"
-                            />
-                            <img
-                                class="card-item_img-back"
-                                src="<%= item.image_Back %>"
-                                alt="<%= item.product_description %>"
-                            />
-                        </picture>
-                        <div class="card-item_content">
-                            <p class="card-item_licence">
-                                <% const licence =
-                                indexCollections.find(collection =>
-                                collection.id === item.licence_id); %> <%=
-                                licence ? licence.licence_name : '' %>
-                            </p>
-                            <h4 class="card-item_name">
-                                <%= item.product_name %>
-                            </h4>
-                            <p class="card-item_price"><%= item.price %></p>
-                            <p class="card-item_promo">
-                                <%= item.dues === 1 ? 'cuota sin interés' :
-                                item.dues + ' cuotas sin interés' %>
-                            </p>
-                        </div>
-                    </a>
-                </article>
-            </li>
-            <% }) %>
-        </ul>
-    </div>
-    <div class="glide__arrows" data-glide-el="controls">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
-            <iconify-icon icon="tabler:chevron-left"></iconify-icon>
-        </button>
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
-            <iconify-icon icon="tabler:chevron-right"></iconify-icon>
-        </button>
-    </div>
+  <h2 class="slider_title">ÚLTIMOS LANZAMIENTOS</h2>
+  <div class="glide__track" data-glide-el="track">
+    <ul class="slider_items glide__slides">
+      <% sliderItems.forEach((item) => { %>
+      <li class="slider_item glide__slide">
+        <article class="card-item">
+          <a class="card-item_link" href="/shop/item/<%= item.product_id %>">
+            <picture class="card-item_cover">
+              <span class="card-item_tag">NUEVO</span>
+              <img
+                class="card-item_img-front"
+                src="<%= item.image_Front %>"
+                alt="<%= item.product_description %>"
+              />
+              <img
+                class="card-item_img-back"
+                src="<%= item.image_Back %>"
+                alt="<%= item.product_description %>"
+              />
+            </picture>
+            <div class="card-item_content">
+              <p class="card-item_licence"><%= item.licence %></p>
+              <h4 class="card-item_name"><%= item.product_name %></h4>
+              <p class="card-item_price"><%= item.price %></p>
+              <p class="card-item_promo"><%= item.duesText %></p>
+            </div>
+          </a>
+        </article>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+  <div class="glide__arrows" data-glide-el="controls">
+    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+      <iconify-icon icon="tabler:chevron-left"></iconify-icon>
+    </button>
+    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+      <iconify-icon icon="tabler:chevron-right"></iconify-icon>
+    </button>
+  </div>
 </section>
