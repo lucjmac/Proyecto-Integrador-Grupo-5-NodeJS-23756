@@ -14,9 +14,6 @@ const app = express();
 const root = path.resolve();
 const PORT = process.env.PORT || 8080;
 
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASSWORD);
-
 //template engine
 app.set("view engine", "ejs")
     .set("views", path.join(root, "src", "views"));
@@ -27,7 +24,6 @@ app.use(express.json())
 
 //Static files
 app.use(express.static("public"));
-
 
 //Routes
 app.use("/", mainRoutes)
