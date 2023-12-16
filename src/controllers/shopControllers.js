@@ -8,7 +8,6 @@ import {
 import { shopCollections } from "../data/shopCollections.js";
 import getProduct from "../Service/getProductDataById.js";
 import cartService from "../Service/cartService.js";
-/*T0D0 CHECK*/
 
 const viewsPath = path.resolve() + "/src/views/shop";
 
@@ -93,34 +92,6 @@ export class shopController {
       console.error("Error al consultar los productos:", error);
     }
   }
-
-  // async itemIdGet(req, res) {
-  //   try {
-  //     const productId = Number(req.params.id);
-
-  //     const [rows] = await conn.query(
-  //       "SELECT * FROM product WHERE product_id = ?",
-  //       [productId]
-  //     );
-
-  //     if (rows.length === 0) {
-  //       return res.status(404).send("Producto no encontrado");
-  //     }
-
-  //     const product = rows[0];
-  //     console.log("1", product);
-  //     const sliderData = await indexSliderService();
-  //     console.log("2", sliderData);
-  //     res.render(path.join(viewsPath, "item.ejs"), {
-  //       indexCollections: sliderData.indexCollections,
-  //       sliderItems: sliderData.sliderItems,
-  //       product,
-  //     });
-  //   } catch (error) {
-  //     console.error("Error al obtener los datos:", error);
-  //     res.status(500).send("Error al obtener los datos");
-  //   }
-  // }
 
   shopGet(req, res) {
     res.render(path.join(viewsPath, "shop.ejs"), {
