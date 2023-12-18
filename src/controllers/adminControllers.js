@@ -1,9 +1,6 @@
 import path from "path";
 import { conn } from "../config/conn.js";
-import {
-  getFilteredProductList,
-  getProductById,
-} from "../Service/adminService.js";
+import { getFilteredProductList, getProductById } from "../Service/adminService.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
 

@@ -107,7 +107,6 @@
                                     name="dues"
                                     id="dues"
                                 >
-                               
                                 <option value="1" <%- product.dues == 1 ? 'selected' : '' %>>1 Cuota sin interés</option>
                                 <option value="2" <%- product.dues == 2 ? 'selected' : '' %>>2 Cuotas sin interés</option>
                                 <option value="3"  <%- product.dues == 3 ? 'selected' : '' %>>3 Cuotas sin interés</option>
@@ -151,7 +150,7 @@
                         </div>
                         <div class="card-gallery-wrapper">
                             <div class="card-gallery">
-                                <img id="imgFront" src="<%= product && product.image_Back %>" alt="<%= product && product.product_description %>">
+                                <img id="imgBack" src="<%= product && product.image_Back %>" alt="<%= product && product.product_description %>">
                             </div>
                             <p>Dorso</p>
                         </div>

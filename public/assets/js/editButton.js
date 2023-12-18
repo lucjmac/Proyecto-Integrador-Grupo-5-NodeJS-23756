@@ -7,9 +7,7 @@ button.addEventListener("click", () => {
   const newProductCategory = document.querySelector(".category_name").value;
   const newProductlicence = document.querySelector(".licence_name").value;
   const newProductName = document.querySelector(".product_name").value;
-  const newProductDescription = document.querySelector(
-    ".product_description"
-  ).value;
+  const newProductDescription = document.querySelector(".product_description").value;
   const newProductSku = document.querySelector(".sku").value;
 
   let newProductPrice = document.querySelector(".price").value;
