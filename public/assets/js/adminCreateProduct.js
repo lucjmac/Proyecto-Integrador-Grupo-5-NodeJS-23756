@@ -23,7 +23,12 @@ const createProduct = async (e) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ ...formProps, product_id: lastId + 1 }),
+    body: JSON.stringify({
+      ...formProps,
+      product_id: lastId + 1,
+      image_Front: "/assets/img/star-wars/bobbafeth-1.webp",
+      image_Back: "/assets/img/star-wars/bobbafeth-1.webp",
+    }),
   })
     .then((response) => {
       if (response.ok) {

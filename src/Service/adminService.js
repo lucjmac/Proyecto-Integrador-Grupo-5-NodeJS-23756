@@ -69,7 +69,7 @@ export async function getProductById(productId) {
 }
 
 export async function createProduct(body) {
-  let {
+  const {
     product_id,
     product_name,
     product_description,
@@ -84,8 +84,8 @@ export async function createProduct(body) {
     licence_id,
   } = body;
 
-  image_Front = "";
-  image_Back = "";
+  // image_Front = "";
+  // image_Back = "";
 
   const productQuery = `insert into product( product_id, product_name, product_description, price, stock,discount, sku, dues, image_Front, image_Back, category_id, licence_id) values(?,?,?,?,?,?,?,?,?,?,?,?)`;
 
