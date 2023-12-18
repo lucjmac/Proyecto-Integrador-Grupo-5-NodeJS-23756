@@ -6,14 +6,22 @@
         <title>Create | Funkoshop</title>
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/style-create.css" />
-        <link rel="stylesheet" href="/assets/css/style-edit.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="/assets/css/style-edit.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="shorcut icon"
+            href="/assets/img/branding/isotype.svg"
+            type="image/x-icon"
+        />
     </head>
     <body>
         <%- include('../partials/hAdm') %>
         <!-- Inicio Main -->
         <div class="container-create">
-            <div class="creacion">CREAR NUEVO ITEM</div>
+            <div class="creacion creacion_title">CREAR NUEVO ITEM</div>
             <form class="form-container" action="">
                 <fieldset>
                     <div class="form-sub-container">
@@ -21,56 +29,47 @@
                             >Categoría
                         </label>
                         <select
-                            class="categoria-select"
-                            name="categoria"
-                            id="categoria"
+                            class="categoria-select category_name"
+                            name="category"
+                            id="category"
                         >
-                            <option>Seleccionar</option>
-                            <option value="star-wars">Figuras</option>
-                            <option value="pokemon">Llaveros</option>
-                            <option value="harry-potter">Remeras</option>
+                            <option value="" hidden>Seleccionar</option>
+                            <option value="Figuras">Figuras</option>
+                            <option value="Llaveros">Llaveros</option>
+                            <option value="Remeras">Remeras</option>
                         </select>
 
-                        <label for="licencia"
-                            >Licencia
+                        <label for="licence">Licencia</label>
                             <select
-                                class="licencia-select"
-                                name="licencia"
-                                id="licencia"
+                                class="licencia-select licence_name"
+                                name="licence"
+                                id="licence"
                             >
-                                <option>Seleccionar</option>
-                                <option value="star-wars">STAR WARS</option>
-                                <option value="pokemon">POKEMON</option>
-                                <option value="harry-potter">
+                                <option value="" hidden>Seleccionar</option>
+                                <option value="STAR WARS & THE MANDALORIAN">STAR WARS & THE MANDALORIAN</option>
+                                <option value="POKEMON INDIGO">POKEMON INDIGO</option>
+                                <option value="HARRY POTTER">
                                     HARRY POTTER
                                 </option>
                             </select>
-                        </label>
                     </div>
                 </fieldset>
-
                 <fieldset>
                     <div class="form-sub-container input-wrapper">
                         <label for="product_name">Nombre del producto:</label>
-                        <input
-                            type="text"
-                            id="product_name"
-                            name="product_name"
-                            value="Kakashi el ninja"
-                        />
+                        <input type="text" id="name" name="name" value="product_name" />
                     </div>
-
                     <div class="form-sub-container">
                         <textarea
                             class="product_description"
-                            name=""
-                            id=""
+                            name="description"
+                            id="description"
                             cols="30"
                             rows="10"
+                            value="product_description"
                         ></textarea>
                     </div>
                 </fieldset>
-
                 <fieldset>
                     <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
@@ -80,69 +79,57 @@
                                 id="sku"
                                 name="sku"
                                 type="text"
-                                value=""
+                                value="sku"
                             />
                         </div>
 
                         <div class="form-sub-container input-wrapper">
                             <label for="price">Precio: </label>
                             <input
-                                class=""
+                                class="price"
                                 id="price"
                                 name="price"
                                 type="text"
-                                value=""
+                                value="price"
                             />
                         </div>
 
                         <div class="form-sub-container input-wrapper">
                             <label for="stock">Stock: </label>
                             <input
-                                class=""
+                                class="stock"
                                 id="stock"
                                 name="stock"
                                 type="text"
-                                value=""
+                                value="stock"
                             />
                         </div>
                     </div>
                 </fieldset>
-
                 <fieldset>
                     <div class="form-container-selects">
                         <div class="form-sub-container input-wrapper">
-                            <label for="descuento">Descuento: </label>
+                            <label for="discount">Descuento: </label>
                             <input
-                                class=""
-                                id="descuento"
-                                name="descuento"
+                                id="discount"
+                                name="discount"
                                 type="text"
-                                value=""
+                                value="discount"
                             />
                         </div>
                         <div class="form-sub-container">
-                            <label for="cuotas"
+                            <label for="dues"
                                 >Cuotas
                                 <select
-                                    class="cuota-select"
-                                    name="cuotas"
-                                    id="cuotas"
+                                    class="dues cuota-select"
+                                    name="dues"
+                                    id="dues"
                                 >
-                                    <option value="">
-                                        1 Cuota sin interés
-                                    </option>
-                                    <option value="">
-                                        2 Cuotas sin interés
-                                    </option>
-                                    <option value="">
-                                        3 Cuotas sin interés
-                                    </option>
-                                    <option value="">
-                                        3 Cuotas sin interés
-                                    </option>
-                                    <option value="">
-                                        6 Cuotas sin interés
-                                    </option>
+                                    <option value="" hidden>Seleccionar</option>
+                                    <option value="1">1 Cuota sin interés</option>
+                                    <option value="2">2 Cuotas sin interés</option>
+                                    <option value="3">3 Cuotas sin interés</option>
+                                    <option value="6">6 Cuotas sin interés</option>
                                 </select>
                             </label>
                         </div>
@@ -150,35 +137,71 @@
                 </fieldset>
                 <fieldset>
                     <div class="form-sub-container">
-                        <label for="imagenes">Imágenes:</label>
+                        <label for="imgFront">Imágen de Frente:</label>
                         <input
-                            class=""
-                            id="imagenes"
-                            name="imagenes"
+                            class="image_Front"
+                            id="image_Front"
+                            name="image_Front"
+                            type="file"
+                            value=""
+                        />
+                    </div>
+                    <div class="form-sub-container">
+                        <label for="imgBack">Imágen de Dorso:</label>
+                        <input
+                            class="image_Back"
+                            id="image_Back"
+                            name="image_Back"
                             type="file"
                             value=""
                         />
                     </div>
                 </fieldset>
-
-                <!-- !ACA APARECEN LAS IMAGENES DE LOS ARCHIVOS -->
-
-                <div class="form-sub-container" id="gallery-container">
-                    <div class="card-gallery">T0D0</div>
-                </div>
-
-                <div class="form-botonera">
-                    <input
-                        class="btn-primary"
-                        type="submit"
-                        value="Agregar Producto"
-                    />
-                    <input class="btn-primary" type="reset" value="Limpiar" />
+                <fieldset>
+                    <div
+                        class="form-sub-container gallery"
+                        id="gallery-container"
+                    >
+                        <div class="card-gallery-wrapper">
+                            <div class="card-gallery">
+                                <img id="" class="" src="" alt="" />
+                            </div>
+                            <p>Frente</p>
+                        </div>
+                        <div
+                            class="card-gallery-wrapper"
+                            id="gallery-container"
+                        >
+                            <div class="card-gallery">
+                                <img id="" class="" value = "" src="" alt="" />
+                            </div>
+                            <p>Dorso</p>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-sub-container button-wrapper">
+                    <button
+                        class="btn-primary "
+                        id="agregar_producto"
+                        name="agregar_producto"
+                        type="button"
+                    >
+                        Agregar Producto
+                    </button>
+                    <button
+                        class="btn-primary limpiar"
+                        id="limpiar"
+                        name="limpiar"
+                        type="button"
+                    >
+                        Limpiar
+                    </button>
                 </div>
             </form>
         </div>
-            <!--Fin Creacion-->
-    <%- include('../partials/fAdm') %>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-</body>
+        <!--Fin Creacion-->
+        <%- include('../partials/fAdm') %>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+        <!-- <script src="/assets/js/createButton.js"></script> -->
+    </body>
 </html>
