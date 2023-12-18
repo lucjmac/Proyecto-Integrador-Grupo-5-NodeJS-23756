@@ -12,6 +12,6 @@ router
 
     .get("/edit/:id", adminControllers.adminEditIdGet)
     .put("/edit/:id", adminControllers.adminEditIdPut)
-    .delete("/edit/:id", adminControllers.adminEditIdDelete);
+    .delete("/delete/:id", adminControllers.adminEditIdDelete);
 
 export default router;

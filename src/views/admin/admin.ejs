@@ -6,7 +6,11 @@
         <title>Admin | Funkoshop</title>
         <link href="/assets/css/style.css" rel="stylesheet" />
         <link href="/assets/css/style-admin.css" rel="stylesheet" />
-        <link rel="shorcut icon" href="/assets/img/branding/isotype.svg" type="image/x-icon" />
+        <link
+            rel="shorcut icon"
+            href="/assets/img/branding/isotype.svg"
+            type="image/x-icon"
+        />
     </head>
     <body>
         <!-- Header -->
@@ -27,7 +31,6 @@
                         class="search_input"
                         type="text"
                         placeholder="código, nombre o categoria"
-                        onkeyup="filterProducts(this.value)"
                     />
                 </label>
             </article>
@@ -52,27 +55,34 @@
                         <div class="list-item_text-header">
                             Nombre del Producto
                         </div>
-                        <div class="llist-item_text-header">Categoria</div>
+                        <div class="list-item_text-header">Categoria</div>
                         <div class="list-item_text-header"></div>
                         <div class="list-item_text-header"></div>
                     </div>
                 </article>
+
                 <article class="list_item">
                     <% productList.forEach((product) => { %>
                         <div class="list-item_content">
-                            <div class="list-item_text"><%= product.product_id %></div>
+                            <div class="list-item_text">
+                                <%= product.product_id %>
+                            </div>
                             <div class="list-item_text"><%= product.sku %></div>
-                            <div class="list-item_text"><%= product.product_name %></div>
-                            <div class="list-item_text"><%= product.licence_name %></div>
+                            <div class="list-item_text">
+                                <%= product.product_name %>
+                            </div>
+                            <div class="list-item_text">
+                                <%= product.licence_name %>
+                            </div>
                             <div class="list-item_text">
                                 <a class="edit_link" href="/admin/edit/<%= product.product_id %>">
                                     <img src="/assets/img/icons/edit_pencil.svg" alt="Edit Pencil Icon" />
                                 </a>
                             </div>
                             <div class="list-item_text">
-                                <a class="delete_link" href="#">
+                                <button class="delete_button" data-product_id="<%= product.product_id %>">
                                     <img src="/assets/img/icons/delete_trash.svg" alt="Trash Icon" />
-                                </a>
+                                </button>
                             </div>
                         </div>
                     <% }); %>
@@ -85,5 +95,6 @@
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
         <script src="/assets/js/adminSearch.js"></script>
+        <script src="/assets/js/adminDeleteButton.js"></script>
     </body>
 </html>

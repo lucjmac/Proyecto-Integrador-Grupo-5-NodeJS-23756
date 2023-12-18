@@ -19,7 +19,7 @@ const setItemTotal = () => {
   });
 };
 
-const summAllItems = () => {
+const sumAllItems = () => {
   const productItemWrappers = document.querySelectorAll(".product-item");
   const totals = [...productItemWrappers].reduce((acc, curr) => {
     const itemTotal = curr.querySelector(".item-total-price").innerText;

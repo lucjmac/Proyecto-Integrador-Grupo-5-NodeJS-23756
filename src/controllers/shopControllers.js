@@ -1,11 +1,7 @@
 import path from "path";
 
 import { conn } from "../config/conn.js";
-import {
-  formatItemsData,
-  getIndexCollections,
-} from "../service/indexSliderService.js";
-import { shopCollections } from "../data/shopCollections.js";
+import { formatItemsData } from "../service/indexSliderService.js";
 import getProduct from "../Service/getProductDataById.js";
 import cartService from "../Service/cartService.js";
 
@@ -93,10 +89,28 @@ export class shopController {
     }
   }
 
-  shopGet(req, res) {
-    res.render(path.join(viewsPath, "shop.ejs"), {
-      shopCollections: shopCollections,
+  async shopCartGet(req, res) {
+    const { cartItems } = await getCartItems();
+
+    res.render(path.join(viewsPath, "cart.ejs"), {
+      cartItems,
     });
+  }
+
+  shopCartPost(req, res) {
+    res.send("Route for go to checkout page");
+  }
+
+  async shopCartDelete(req, res) {
+    try {
+      await cartService.delete(req.body);
+
+      const { cartItems } = await getCartItems();
+
+      res.json({ cartItems: cartItems || [] });
+    } catch (error) {
+      console.error("Error in shopCartDelete:", error);
+    }
   }
 
   async itemIdGet(req, res) {
@@ -116,14 +130,6 @@ export class shopController {
     });
   }
 
-  async shopCartGet(req, res) {
-    const { cartItems } = await getCartItems();
-    console.log("cartItems", cartItems);
-    res.render(path.join(viewsPath, "cart.ejs"), {
-      cartItems,
-    });
-  }
-
   async itemIdAddPost(req, res) {
     const { isCart } = req.body;
     if (isCart) {
@@ -134,19 +140,5 @@ export class shopController {
     const [response] = await cartService.consultaCantidad(req.body.id_cart);
 
     res.json({ response });
-  }
-  async shopCartDelete(req, res) {
-    try {
-      await cartService.delete(req.body);
-
-      const { cartItems } = await getCartItems();
-
-      res.json({ cartItems: cartItems || [] });
-    } catch (error) {
-      console.error("Error in shopCartDelete:", error);
-    }
-  }
-  shopCartPost(req, res) {
-    res.send("Route for go to checkout page");
   }
 }

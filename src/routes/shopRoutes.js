@@ -10,6 +10,7 @@ router
   .get("/cart", shopControllers.shopCartGet)
   .post("/cart", shopControllers.shopCartPost)
   .delete("/cart", shopControllers.shopCartDelete)
+  
   .get("/item/:id", shopControllers.itemIdGet)
 
   .post("/item/:id/add", shopControllers.itemIdAddPost);

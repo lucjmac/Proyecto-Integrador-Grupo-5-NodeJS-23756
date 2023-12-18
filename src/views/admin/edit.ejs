@@ -16,21 +16,19 @@
             <form class="form-container" action="">
                 <fieldset>
                     <div class="form-sub-container">
-                        <label class="label-select" for="category"
-                            >Categoría
-                        </label>
-                        <select class="categoria-select" name="category" id="category">
-                            <option><%= product && product.category_id %></option>
-                            <option value="1" <% if (category_id && category_id === '1') { %>selected<% } %>>Figuras</option>
-                            <option value="2" <% if (category_id && category_id === '2') { %>selected<% } %>>Llaveros</option>
-                            <option value="3" <% if (category_id && category_id === '3') { %>selected<% } %>>Remeras</option>
+                        <label class="label-select" for="category">Categoría</label>
+                            <select class="category_name" name="category" id="category">
+                                <option value="<%= category %>" hidden><%= category %></option>
+                                <option value="Figuras" <% if (category === 'Figuras') { %>selected<% } %>>Figuras</option>
+                                <option value="Llaveros" <% if (category === 'Llaveros') { %>selected<% } %>>Llaveros</option>
+                                <option value="Remeras" <% if (category === 'Remeras') { %>selected<% } %>>Remeras</option>
                         </select>
                         <label for="licence">Collection</label>
-                        <select class="licencia-select" name="licence" id="licence">
-                            <option><%= product && product.licence_id %></option>
-                            <option value="1" <% if (licence_id === '1') { %>selected<% } %>>STAR WARS & THE MANDALORIAN</option>
-                            <option value="2" <% if (licence_id=== '2') { %>selected<% } %>>POKEMON INDIGO</option>
-                            <option value="3" <% if (licence_id === '3') { %>selected<% } %>>HARRY POTTER</option>
+                        <select class="licence_name" name="licence" id="licence">
+                            <option value="<%= licence %>" hidden><%= licence %></option>
+                            <option value="STAR WARS & THE MANDALORIAN" <% if (licence === 'STAR WARS & THE MANDALORIAN') { %>selected<% } %>>STAR WARS & THE MANDALORIAN</option>
+                            <option value="POKEMON INDIGO" <% if (licence === 'POKEMON INDIGO') { %>selected<% } %>>POKEMON INDIGO</option>
+                            <option value="HARRY POTTER" <% if (licence === 'HARRY POTTER') { %>selected<% } %>>HARRY POTTER</option>
                         </select>
                     </div>
                 </fieldset>
@@ -38,6 +36,7 @@
                     <div class="form-sub-container input-wrapper">
                         <label for="name">Nombre del producto:</label>
                         <input
+                            class="product_name"
                             type="text"
                             id="name"
                             name="name"
@@ -59,7 +58,7 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="sku">SKU:</label>
                             <input
-                                class="product_sku"
+                                class="sku"
                                 id="sku"
                                 name="sku"
                                 type="text"
@@ -69,17 +68,17 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="price">Precio: </label>
                             <input
-                                class=""
+                                class="price"
                                 id="price"
                                 name="price"
                                 type="text"
-                                value="<%= product && product.price %>"
+                                value="$ <%= product && product.price %>"
                             />
                         </div>
                         <div class="form-sub-container input-wrapper">
                             <label for="stock">Stock: </label>
                             <input
-                                class=""
+                                class="stock"
                                 id="stock"
                                 name="stock"
                                 type="text"
@@ -93,7 +92,7 @@
                         <div class="form-sub-container input-wrapper">
                             <label for="discount">Descuento: </label>
                             <input
-                                class=""
+                                class="discount"
                                 id="discount"
                                 name="discount"
                                 type="text"
@@ -104,15 +103,15 @@
                             <label for="dues"
                                 >Cuotas:</label>
                                 <select
-                                    class="cuota-select"
+                                    class="dues"
                                     name="dues"
                                     id="dues"
                                 >
-                                <option selected><%= product && product.dues %></option>
-                                <option value="1" <% if (dues === '1') { %>selected<% } %>>1 Cuota sin interés</option>
-                                <option value="2" <% if (dues === '2') { %>selected<% } %>>2 Cuotas sin interés</option>
-                                <option value="3" <% if (dues === '3') { %>selected<% } %>>3 Cuotas sin interés</option>
-                                <option value="6" <% if (dues === '6') { %>selected<% } %>>6 Cuotas sin interés</option>
+                               
+                                <option value="1" <%- product.dues == 1 ? 'selected' : '' %>>1 Cuota sin interés</option>
+                                <option value="2" <%- product.dues == 2 ? 'selected' : '' %>>2 Cuotas sin interés</option>
+                                <option value="3"  <%- product.dues == 3 ? 'selected' : '' %>>3 Cuotas sin interés</option>
+                                <option value="6" <%- product.dues == 6 ? 'selected' : '' %>>6 Cuotas sin interés</option>
                                 </select>
                             </label>
                         </div>
@@ -122,33 +121,39 @@
                     <div class="form-sub-container">
                         <label for="imgFront">Imágenes:</label>
                         <input
-                            class=""
+                            class="image_Front"
                             id="imgFront"
                             name="imgFront"
                             type="file"
                             value=""
+                            data-value="<%= product && product.image_Front %>"
                         />
                     </div>
                     <div class="form-sub-container">
                         <label for="imgBack">Imágenes:</label>
                         <input
-                            class=""
+                            class="image_Back"
                             id="imgBack"
                             name="imgBack"
                             type="file"
                             value=""
+                            data-value="<%= product && product.image_Back %>"
                         />
                     </div>
                 </fieldset>
                 <fieldset>
-                    <div class="form-sub-container" id="gallery-container">
-                        <div class="card-gallery">
-                            <img id="imgFront" src="<%= product && product.image_Front %>" alt="<%= product && product.product_description %>">
+                    <div class="form-sub-container gallery" id="gallery-container">
+                        <div class="card-gallery-wrapper">
+                            <div class="card-gallery">
+                                <img id="imgFront" src="<%= product && product.image_Front %>" alt="<%= product && product.product_description %>">
+                            </div>
+                            <p>Frente</p>
                         </div>
-                    </div>
-                    <div class="form-sub-container" id="gallery-container">
-                        <div class="card-gallery">
-                            <img id="imgFront" src="<%= product && product.image_Back %>" alt="<%= product && product.product_description %>">
+                        <div class="card-gallery-wrapper">
+                            <div class="card-gallery">
+                                <img id="imgFront" src="<%= product && product.image_Back %>" alt="<%= product && product.product_description %>">
+                            </div>
+                            <p>Dorso</p>
                         </div>
                     </div>
                 </fieldset> 
@@ -157,7 +162,8 @@
                         class="btn-primary"
                         id="modificar"
                         name="modificar"
-                        type="submit"
+                        type="button"
+                        data-product-id="<%= product && product.product_id %>"
                     >
                         Modificar Producto
                     </button>
@@ -168,5 +174,6 @@
         <%- include('../partials/fAdm') %>
         <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
         <script src="/assets/js/adminToEdit.js"></script>
+        <script src="/assets/js/editButton.js"></script>
     </body>
 </html>

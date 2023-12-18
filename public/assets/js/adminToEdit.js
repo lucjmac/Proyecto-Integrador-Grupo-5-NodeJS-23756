@@ -1,7 +1,7 @@
 if (typeof product !== "undefined" && typeof product.product_id !== "undefined") {
     const productId = product.product_id;
 
-    const selectElement = document.getElementById("code");
+    const selectElement = document.getElementById("productId");
 
     for (var i = 0; i < selectElement.options.length; i++) {
         var optionElement = selectElement.options[i];
@@ -27,20 +27,32 @@ if (typeof product !== "undefined" && typeof product.product_id !== "undefined")
                 var imgbackElement = document.getElementById("imgback");
 
                 skuElement.value = selectedProduct.sku;
-                categoryElement.value = selectedProduct.category;
-                licenceElement.value = selectedProduct.licence;
-                nameElement.value = selectedProduct.name;
-                descriptionElement.value = selectedProduct.description;
+                categoryElement.value = selectedProduct.category_name;
+                licenceElement.value = selectedProduct.licence_name;
+                nameElement.value = selectedProduct.product_name;
+                descriptionElement.value = selectedProduct.product_description;
                 priceElement.value = selectedProduct.price;
                 stockElement.value = selectedProduct.stock;
                 discountElement.value = selectedProduct.discount;
                 duesElement.value = selectedProduct.dues;
-                imgfrontElement.value = selectedProduct.imgfront;
-                imgbackElement.value = selectedProduct.imgback;
-
+                imgfrontElement.value = selectedProduct.image_Front;
+                imgbackElement.value = selectedProduct.image_Back;
             }
         }
     }
 } else {
     console.error("product.id no está definido o no tiene un valor válido");
+}
+
+function loadImage(input, previewId) {
+    if (input.files && input.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const preview = document.getElementById(previewId);
+        preview.src = e.target.result;
+    };
+
+    reader.readAsDataURL(input.files[0]);
+    }
 }
