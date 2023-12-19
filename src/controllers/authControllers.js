@@ -33,24 +33,39 @@ export class AuthController {
 
   async authRegisterPost(req, res) {
     try {
-      // Maneja la lógica de registro
       const { name, lastname, email, password, 'repeat-password': repeatPassword } = req.body;
-
-      // Verifica si las contraseñas coinciden
+  
       if (password !== repeatPassword) {
         return res.render(path.join(viewsPath, "register.ejs"), { error: "Las contraseñas no coinciden" });
       }
-    
-      // Realiza el registro en la base de datos
+  
       const result = await authService.register({ username: name, lastname: lastname, password: password, email });
-
+  
       if (result[0].affectedRows > 0) {
-        res.redirect("/auth/login"); // Redirige a la página de login
+        res.redirect("/auth/login");
       } else {
         res.render(path.join(viewsPath, "register.ejs"), { error: "Error al registrar el usuario" });
       }
     } catch (error) {
       console.log("Error en authRegisterPost: " + error);
+      res.status(500).send("Error interno del servidor");
+    }
+  }
+  
+  async authLoginPost(req, res) {
+    try {
+      const { email, password } = req.body;
+  
+      const user = await authService.login(email, password);
+  
+      if (user) {
+        req.session.user = user;
+        res.redirect("/dashboard");
+      } else {
+        res.render(path.join(viewsPath, "login.ejs"), { error: "Credenciales inválidas" });
+      }
+    } catch (error) {
+      console.log("Error en authLoginPost: " + error);
       res.status(500).send("Error interno del servidor");
     }
   }
