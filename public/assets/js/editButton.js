@@ -3,15 +3,19 @@ const button = document.getElementById("modificar");
 
 button.addEventListener("click", () => {
   const productId = button.dataset.productId;
-  console.log("w", productId, button.dataset);
+
   const newProductCategory = document.querySelector(".category_name").value;
   const newProductlicence = document.querySelector(".licence_name").value;
   const newProductName = document.querySelector(".product_name").value;
-  const newProductDescription = document.querySelector(".product_description").value;
+  const newProductDescription = document.querySelector(
+    ".product_description"
+  ).value;
   const newProductSku = document.querySelector(".sku").value;
 
   let newProductPrice = document.querySelector(".price").value;
-  newProductPrice = Number(newProductPrice.split("$")[1].trim());
+  if (newProductPrice.includes("$")) {
+    newProductPrice = Number(newProductPrice.split("$")[1].trim());
+  }
 
   const newProductStock = document.querySelector(".stock").value;
   const newProductDiscount = document.querySelector(".discount").value;

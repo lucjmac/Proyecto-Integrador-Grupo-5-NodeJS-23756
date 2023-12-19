@@ -1,207 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Create | Funkoshop</title>
-        <link rel="stylesheet" href="/assets/css/style.css" />
-        <link rel="stylesheet" href="/assets/css/style-create.css" />
-        <link
-            rel="stylesheet"
-            href="/assets/css/style-edit.css"
-            rel="stylesheet"
-        />
-        <link
-            rel="shorcut icon"
-            href="/assets/img/branding/isotype.svg"
-            type="image/x-icon"
-        />
-    </head>
-    <body>
-        <%- include('../partials/hAdm') %>
-        <!-- Inicio Main -->
-        <div class="container-create">
-            <div class="creacion creacion_title">CREAR NUEVO ITEM</div>
-            <form class="form-container" action="">
-                <fieldset>
-                    <div class="form-sub-container">
-                        <label class="label-select" for="categoria"
-                            >Categoría
-                        </label>
-                        <select
-                            class="categoria-select category_name"
-                            name="category"
-                            id="category"
-                        >
-                            <option value="" hidden>Seleccionar</option>
-                            <option value="Figuras">Figuras</option>
-                            <option value="Llaveros">Llaveros</option>
-                            <option value="Remeras">Remeras</option>
-                        </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create | Funkoshop</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style-create.css" />
+    <link rel="stylesheet" href="/assets/css/style-edit.css" rel="stylesheet" />
+    <link
+      rel="shorcut icon"
+      href="/assets/img/branding/isotype.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <%- include('../partials/hAdm') %>
+    <!-- Inicio Main -->
+    <div class="container-create">
+      <div class="creacion creacion_title">CREAR NUEVO ITEM</div>
+      <form class="form-container form-create" action="">
+        <fieldset>
+          <div class="form-sub-container">
+            <label class="label-select" for="category_id">Categoría </label>
+            <select
+              class="categoria-select category_name"
+              name="category_id"
+              id="category_id"
+            >
+              <option>Seleccionar</option>
+              <option value="1">Figuras</option>
+              <option value="2">Llaveros</option>
+              <option value="3">Remeras</option>
+            </select>
 
-                        <label for="licence">Licencia</label>
-                            <select
-                                class="licencia-select licence_name"
-                                name="licence"
-                                id="licence"
-                            >
-                                <option value="" hidden>Seleccionar</option>
-                                <option value="STAR WARS & THE MANDALORIAN">STAR WARS & THE MANDALORIAN</option>
-                                <option value="POKEMON INDIGO">POKEMON INDIGO</option>
-                                <option value="HARRY POTTER">
-                                    HARRY POTTER
-                                </option>
-                            </select>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form-sub-container input-wrapper">
-                        <label for="product_name">Nombre del producto:</label>
-                        <input type="text" id="name" name="name" value="product_name" />
-                    </div>
-                    <div class="form-sub-container">
-                        <textarea
-                            class="product_description"
-                            name="description"
-                            id="description"
-                            cols="30"
-                            rows="10"
-                            value="product_description"
-                        ></textarea>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form-container-selects">
-                        <div class="form-sub-container input-wrapper">
-                            <label for="sku">SKU:</label>
-                            <input
-                                class=""
-                                id="sku"
-                                name="sku"
-                                type="text"
-                                value="sku"
-                            />
-                        </div>
+            <label for="licence_id">Licencia</label>
+            <select
+              class="licencia-select licence_name"
+              name="licence_id"
+              id="licence_id"
+            >
+              <option value="" hidden>Seleccionar</option>
+              <option value="2">STAR WARS & THE MANDALORIAN</option>
+              <option value="1">POKEMON INDIGO</option>
+              <option value="3">HARRY POTTER</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-sub-container input-wrapper">
+            <label for="product_name">Nombre del producto:</label>
+            <input
+              type="text"
+              id="product_name"
+              name="product_name"
+              value="product_name"
+            />
+          </div>
+          <div class="form-sub-container">
+            <textarea
+              class="product_description"
+              name="product_description"
+              id="product_description"
+              cols="30"
+              rows="10"
+              value="product_description"
+            ></textarea>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-container-selects">
+            <div class="form-sub-container input-wrapper">
+              <label for="sku">SKU:</label>
+              <input class="" id="sku" name="sku" type="text" value="sku" />
+            </div>
 
-                        <div class="form-sub-container input-wrapper">
-                            <label for="price">Precio: </label>
-                            <input
-                                class="price"
-                                id="price"
-                                name="price"
-                                type="text"
-                                value="price"
-                            />
-                        </div>
+            <div class="form-sub-container input-wrapper">
+              <label for="price">Precio: </label>
+              <input
+                class="price"
+                id="price"
+                name="price"
+                type="text"
+                value="price"
+              />
+            </div>
 
-                        <div class="form-sub-container input-wrapper">
-                            <label for="stock">Stock: </label>
-                            <input
-                                class="stock"
-                                id="stock"
-                                name="stock"
-                                type="text"
-                                value="stock"
-                            />
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form-container-selects">
-                        <div class="form-sub-container input-wrapper">
-                            <label for="discount">Descuento: </label>
-                            <input
-                                id="discount"
-                                name="discount"
-                                type="text"
-                                value="discount"
-                            />
-                        </div>
-                        <div class="form-sub-container">
-                            <label for="dues"
-                                >Cuotas
-                                <select
-                                    class="dues cuota-select"
-                                    name="dues"
-                                    id="dues"
-                                >
-                                    <option value="" hidden>Seleccionar</option>
-                                    <option value="1">1 Cuota sin interés</option>
-                                    <option value="2">2 Cuotas sin interés</option>
-                                    <option value="3">3 Cuotas sin interés</option>
-                                    <option value="6">6 Cuotas sin interés</option>
-                                </select>
-                            </label>
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div class="form-sub-container">
-                        <label for="imgFront">Imágen de Frente:</label>
-                        <input
-                            class="image_Front"
-                            id="image_Front"
-                            name="image_Front"
-                            type="file"
-                            value=""
-                        />
-                    </div>
-                    <div class="form-sub-container">
-                        <label for="imgBack">Imágen de Dorso:</label>
-                        <input
-                            class="image_Back"
-                            id="image_Back"
-                            name="image_Back"
-                            type="file"
-                            value=""
-                        />
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <div
-                        class="form-sub-container gallery"
-                        id="gallery-container"
-                    >
-                        <div class="card-gallery-wrapper">
-                            <div class="card-gallery">
-                                <img id="" class="" src="" alt="" />
-                            </div>
-                            <p>Frente</p>
-                        </div>
-                        <div
-                            class="card-gallery-wrapper"
-                            id="gallery-container"
-                        >
-                            <div class="card-gallery">
-                                <img id="" class="" value = "" src="" alt="" />
-                            </div>
-                            <p>Dorso</p>
-                        </div>
-                    </div>
-                </fieldset>
-                <div class="form-sub-container button-wrapper">
-                    <button
-                        class="btn-primary "
-                        id="agregar_producto"
-                        name="agregar_producto"
-                        type="button"
-                    >
-                        Agregar Producto
-                    </button>
-                    <button
-                        class="btn-primary limpiar"
-                        id="limpiar"
-                        name="limpiar"
-                        type="button"
-                    >
-                        Limpiar
-                    </button>
-                </div>
-            </form>
+            <div class="form-sub-container input-wrapper">
+              <label for="stock">Stock: </label>
+              <input
+                class="stock"
+                id="stock"
+                name="stock"
+                type="text"
+                value="stock"
+              />
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-container-selects">
+            <div class="form-sub-container input-wrapper">
+              <label for="discount">Descuento: </label>
+              <input
+                id="discount"
+                name="discount"
+                type="text"
+                value="discount"
+              />
+            </div>
+            <div class="form-sub-container">
+              <label for="dues"
+                >Cuotas
+                <select class="dues cuota-select" name="dues" id="dues">
+                  <option value="" hidden>Seleccionar</option>
+                  <option value="1">1 Cuota sin interés</option>
+                  <option value="2">2 Cuotas sin interés</option>
+                  <option value="3">3 Cuotas sin interés</option>
+                  <option value="6">6 Cuotas sin interés</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-sub-container">
+            <label for="imgFront">Imágen de Frente:</label>
+            <input
+              class="image_Front"
+              id="image_Front"
+              name="image_Front"
+              type="file"
+              value=""
+            />
+          </div>
+          <div class="form-sub-container">
+            <label for="imgBack">Imágen de Dorso:</label>
+            <input
+              class="image_Back"
+              id="image_Back"
+              name="image_Back"
+              type="file"
+              value=""
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-sub-container gallery" id="gallery-container">
+            <div class="card-gallery-wrapper">
+              <div class="card-gallery">
+                <img id="" class="" src="" alt="" />
+              </div>
+              <p>Frente</p>
+            </div>
+            <div class="card-gallery-wrapper" id="gallery-container">
+              <div class="card-gallery">
+                <img id="" class="" value="" src="" alt="" />
+              </div>
+              <p>Dorso</p>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-sub-container button-wrapper">
+          <button
+            class="btn-primary"
+            id="agregar_producto"
+            name="agregar_producto"
+            type="button"
+          >
+            Agregar Producto
+          </button>
+          <button
+            class="btn-primary limpiar"
+            id="limpiar"
+            name="limpiar"
+            type="button"
+          >
+            Limpiar
+          </button>
         </div>
-        <!--Fin Creacion-->
-        <%- include('../partials/fAdm') %>
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="/assets/js/createButton.js"></script>
-    </body>
+      </form>
+    </div>
+    <!--Fin Creacion-->
+    <%- include('../partials/fAdm') %>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="/assets/js/createButton.js"></script>
+  </body>
 </html>
