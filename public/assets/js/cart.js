@@ -46,7 +46,7 @@ const setSubtotal = () => {
     productItemsContainer[0].children &&
     productItemsContainer[0].children.length === 0
       ? 0
-      : summAllItems();
+      : sumAllItems();
 
   summary.innerHTML = totals.toFixed(2);
 };
@@ -64,7 +64,7 @@ const setTotal = () => {
     productItemsContainer[0].children &&
     productItemsContainer[0].children.length === 0
       ? 0
-      : summAllItems();
+      : sumAllItems();
 
   const shipping =
     productItemsContainer[0] &&
