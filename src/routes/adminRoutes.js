@@ -1,17 +1,19 @@
 import express from "express";
 import { adminController } from "../controllers/adminControllers.js";
+import requireAuth from "../middleware/loginConfirm.js";
 
 const router = express.Router();
 const adminControllers = new adminController();
 
 router
-    .get("/", adminControllers.adminGet)
+    .get("/", requireAuth, adminControllers.adminGet)
 
-    .get("/create", adminControllers.adminCreateGet)
-    .post("/create", adminControllers.adminCreatePost)
+    .get("/create", requireAuth, adminControllers.adminCreateGet)
+    .post("/create", requireAuth, adminControllers.adminCreatePost)
 
-    .get("/edit/:id", adminControllers.adminEditIdGet)
-    .put("/edit/:id", adminControllers.adminEditIdPut)
-    .delete("/delete/:id", adminControllers.adminEditIdDelete);
+    .get("/edit/:id", requireAuth, adminControllers.adminEditIdGet)
+    .put("/edit/:id", requireAuth, adminControllers.adminEditIdPut)
+
+    .delete("/delete/:id", requireAuth, adminControllers.adminEditIdDelete);
 
 export default router;

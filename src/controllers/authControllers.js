@@ -52,24 +52,6 @@ export class AuthController {
     }
   }
   
-  async authLoginPost(req, res) {
-    try {
-      const { email, password } = req.body;
-  
-      const user = await authService.login(email, password);
-  
-      if (user) {
-        req.session.user = user;
-        res.redirect("/dashboard");
-      } else {
-        res.render(path.join(viewsPath, "login.ejs"), { error: "Credenciales inválidas" });
-      }
-    } catch (error) {
-      console.log("Error en authLoginPost: " + error);
-      res.status(500).send("Error interno del servidor");
-    }
-  }
-
   authLogoutGet(req, res) {
     // Maneja la lógica de cierre de sesión
     res.send("Route for Logout");
