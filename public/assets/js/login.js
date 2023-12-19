@@ -1,11 +1,11 @@
-const loginForm = document.querySelector(".account"); // Obtener el formulario de inicio de sesión
-const messageContainer = document.getElementById("message-container"); // Obtener el contenedor del mensaje
+const loginForm = document.querySelector(".account"); 
+const messageContainer = document.getElementById("message-container"); 
 
 loginForm.addEventListener("submit", (event) => {
-    event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+    event.preventDefault(); 
 
-    const email = document.getElementById("account_email").value; // Obtener el valor del campo de correo electrónico
-    const password = document.getElementById("password").value; // Obtener el valor del campo de contraseña
+    const email = document.getElementById("account_email").value; 
+    const password = document.getElementById("password").value; 
 
     fetch("/auth/login", {
         method: "POST",
@@ -16,9 +16,9 @@ loginForm.addEventListener("submit", (event) => {
     })
         .then((response) => {
             if (response.ok) {
-                // Resto del código para manejar el inicio de sesión exitoso
+                
             } else {
-                // Resto del código para manejar el inicio de sesión fallido
+                
                 const confirmation = confirm("Usuario incorrecto. ¿Deseas registrarte?");
                 
                 if (confirmation) {
