@@ -14,6 +14,11 @@ export class adminController {
   async adminGet(req, res) {
     const searchInput = req.query.searchInput;
 
+    if (!req.session.userId) {
+      req.flash("error", "Usuario no registrado. Debe iniciar sesión.");
+      res.redirect("/auth/login");
+    }
+
     try {
       const filteredProductList = await getFilteredProductList(searchInput);
 
