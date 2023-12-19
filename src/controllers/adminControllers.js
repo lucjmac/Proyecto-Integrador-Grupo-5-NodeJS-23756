@@ -3,6 +3,7 @@ import { conn } from "../config/conn.js";
 import {
   getFilteredProductList,
   getProductById,
+  createProduct,
 } from "../Service/adminService.js";
 
 const viewsPath = path.resolve() + "/src/views/admin";
@@ -31,8 +32,15 @@ export class adminController {
     res.render(path.join(viewsPath, "create.ejs"), {});
   }
 
-  adminCreatePost(req, res) {
-    res.send("Route for create with POST in Admin View");
+  async adminCreatePost(req, res) {
+    try {
+      const result = await createProduct(req.body);
+
+      res.send("Route for create with POST in Admin View");
+    } catch (error) {
+      console.error("Error executing queries:", error);
+      res.status(500).send("Internal Server Error");
+    }
   }
 
   async adminEditIdGet(req, res) {

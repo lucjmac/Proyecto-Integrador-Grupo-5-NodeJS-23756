@@ -6,9 +6,6 @@ import shopRoutes from "./src/routes/shopRoutes.js";
 import adminRoutes from "./src/routes/adminRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
 
-// Remover al finalizar, solo para Testeos
-import testRoutes from "./src/routes/testRoutes.js";
-
 dotenv.config();
 const app = express();
 const root = path.resolve();
@@ -29,7 +26,6 @@ app
   .use("/shop", shopRoutes)
   .use("/admin", adminRoutes)
   .use("/auth", authRoutes)
-  .use("/test", testRoutes);
 
 //Start server
 app.listen(PORT, () => {

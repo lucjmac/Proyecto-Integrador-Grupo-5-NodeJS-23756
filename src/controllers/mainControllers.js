@@ -1,5 +1,5 @@
 import path from "path";
-import { indexSliderService } from "../service/indexSliderService.js";
+import { formatItemsData } from "../service/indexSliderService.js";
 
 const viewsPath = path.resolve() + "/src/views";
 
@@ -7,7 +7,7 @@ export class mainController {
   constructor() {}
 
   async homeGet(req, res) {
-    const { indexCollections, sliderItems } = await indexSliderService().catch(
+    const { indexCollections, sliderItems } = await formatItemsData().catch(
       (error) => {
         console.error("Error al obtener los datos del slider:", error);
         res.status(500).send("Error al obtener los datos de la base de datos");
@@ -15,8 +15,8 @@ export class mainController {
     );
 
     res.render(path.join(viewsPath, "index.ejs"), {
-      indexCollections: indexCollections,
-      sliderItems: sliderItems,
+      indexCollections,
+      sliderItems,
     });
   }
 

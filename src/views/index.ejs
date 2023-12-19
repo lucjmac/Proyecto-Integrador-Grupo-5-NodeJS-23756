@@ -1,60 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home | Funkoshop</title>
-        <link rel="stylesheet" href="/assets/css/style.css" />
-        <link rel="stylesheet" href="/assets/css/style-index.css" />
-        <link
-            rel="shortcut icon"
-            href="/assets/img/branding/isotype.svg"
-            type="image/x-icon"
-        />
-    </head>
-    <body>
-        <!-- Header -->
-        <%- include('partials/hShop') %>
-        <!-- Inicio Section Hero -->
-        <section class="hero">
-            <article class="hero_content container">
-                <div class="hero_title-text">
-                    <h3 class="hero_title">Nuevos Ingresos</h3>
-                    <p class="hero_text">
-                        Descubrí el próximo Funko Pop de tu colección
-                    </p>
-                </div>
-                <a class="hero_link" href="/shop">SHOP</a>
-            </article>
-        </section>
-        <!-- Fin Section Hero -->
-        <!-- Inicio Main -->
-        <main>
-            <!-- Inicio Section Star Wars, Pokemon y Harry Potter -->
-            <% indexCollections.forEach((item) => { %>
-            <section class="collection container">
-                <article class="collection_content">
-                    <h3 class="collection_title"><%= item.licence_name %></h3>
-                    <p class="collection_text"><%= item.licence_description %></p>
-                    <a class="collection_link" href="/shop?licence_id=<%= item.id %>">VER COLECCIÓN</a>
-                </article>
-                <picture class="collection_cover">
-                    <img
-                        src="<%= item.licence_image %>"
-                        alt="<%= item.licence_alt %>"
-                    />
-                </picture>
-            </section>
-            <% }); %>
-            <!-- Fin Section Star Wars, Pokemon y Harry Potter -->
-            <!-- Section Ultimos Lanzamientos -->
-            <%- include('partials/slider') %>
-            <!-- Fin Main -->
-            <!-- Footer -->
-            <%- include('partials/fShop') %>
-        </main>
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-        <script src="/assets/js/slider.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Funkoshop</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/style-index.css" />
+    <link
+      rel="shortcut icon"
+      href="/assets/img/branding/isotype.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('partials/hShop') %>
+    <!-- Inicio Section Hero -->
+    <section class="hero">
+      <article class="hero_content container">
+        <div class="hero_title-text">
+          <h3 class="hero_title">Nuevos Ingresos</h3>
+          <p class="hero_text">Descubrí el próximo Funko Pop de tu colección</p>
+        </div>
+        <a class="hero_link" href="/shop">SHOP</a>
+      </article>
+    </section>
+    <!-- Fin Section Hero -->
+    <!-- Inicio Main -->
+    <main>
+      <!-- Inicio Section Star Wars, Pokemon y Harry Potter -->
+      <% indexCollections.forEach((item) => { %>
+      <section class="collection container">
+        <article class="collection_content">
+          <h3 class="collection_title"><%= item.licence_name %></h3>
+          <p class="collection_text"><%= item.licence_description %></p>
+          <a class="collection_link" href="/shop?licence_id=<%= item.id %>"
+            >VER COLECCIÓN</a
+          >
+        </article>
+        <picture class="collection_cover">
+          <img
+            src="<%= item.licence_image %>"
+            alt="<%= item.product_description %>"
+          />
+        </picture>
+      </section>
+      <% }); %>
+      <!-- Fin Section Star Wars, Pokemon y Harry Potter -->
+      <!-- Section Ultimos Lanzamientos -->
+      <%- include('partials/slider') %>
+      <!-- Fin Main -->
+      <!-- Footer -->
+      <%- include('partials/fShop') %>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="/assets/js/slider.js"></script>
+    <script src="/assets/js/item.js"></script>
+  </body>
 </html>
