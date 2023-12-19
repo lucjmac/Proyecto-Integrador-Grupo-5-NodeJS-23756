@@ -1,23 +1,12 @@
 import conn from "../config/conn.js";
 
-export const indexSliderService = async () => {
-  try {
-    const { sliderItems, indexCollections } = await formatItemsData();
-
-    return {
-      indexCollections,
-      sliderItems,
-    };
-  } catch (error) {
-    console.error("Error al obtener los datos del slider:", error);
-    throw new Error("Error al obtener los datos del slider");
-  }
-};
-
 export const getIndexCollections = async () => {
-  const indexCollections = await conn.query(
-    "SELECT l.id, l.licence_name, l.licence_description, l.licence_image, p.product_description FROM licence l JOIN product p ON l.licence_image = p.image_Front"
-  );
+  const indexCollections = await conn.query("SELECT * FROM licence ");
+
+  // const indexCollections = await conn.query(
+  //   "SELECT l.id, l.licence_name, l.licence_description, l.licence_image, p.product_description FROM licence l JOIN product p ON l.licence_image = p.image_Front"
+  // );
+
   return indexCollections[0];
 };
 
@@ -49,6 +38,6 @@ export const formatItemsData = async () => {
         sin interés`,
     };
   });
+
   return { indexCollections, sliderItems };
 };
-
