@@ -96,6 +96,9 @@
 
 input {
   height: 30px;
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
 }
 
 input:hover {
@@ -160,6 +163,23 @@ main {
 .input-wrapper input::placeholder,
 .input-wrapper input {
   color: var(--light-grey);
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
+}
+
+textarea {
+  color: var(--dark-admin-font);
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
+}
+
+textarea::placeholder {
+  color: var(--light-grey);
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
 }
 
 .input-wrapper input {

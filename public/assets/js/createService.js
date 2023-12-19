@@ -1,3 +1,33 @@
+//RENDERIZAR IMAGENES EN LOS RECUADROS
+const inputFront = document.getElementById('image_Front');
+const inputBack = document.getElementById('image_Back');
+const imgFront = document.querySelector('.card-gallery-wrapper:nth-child(1) img');
+const imgBack = document.querySelector('.card-gallery-wrapper:nth-child(2) img');
+
+inputFront.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    imgFront.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+inputBack.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    imgBack.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+
+//BUTTON
 const HOST = window.location.origin;
 const addButton = document.getElementById("agregar_producto");
 const form = document.querySelector(".form-container.form-create");

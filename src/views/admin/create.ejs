@@ -27,7 +27,7 @@
               name="category_id"
               id="category_id"
             >
-              <option>Seleccionar</option>
+              <option value='' hidden >Seleccionar</option>
               <option value="1">Figuras</option>
               <option value="2">Llaveros</option>
               <option value="3">Remeras</option>
@@ -39,7 +39,7 @@
               name="licence_id"
               id="licence_id"
             >
-              <option value="" hidden>Seleccionar</option>
+              <option value="" hidden >Seleccionar</option>
               <option value="2">STAR WARS & THE MANDALORIAN</option>
               <option value="1">POKEMON INDIGO</option>
               <option value="3">HARRY POTTER</option>
@@ -53,7 +53,8 @@
               type="text"
               id="product_name"
               name="product_name"
-              value="product_name"
+              value=""
+              placeholder="Kakashi Hatake Shippuden Saga"
             />
           </div>
           <div class="form-sub-container">
@@ -63,7 +64,8 @@
               id="product_description"
               cols="30"
               rows="10"
-              value="product_description"
+              value=""
+              placeholder="Descripción del producto"
             ></textarea>
           </div>
         </fieldset>
@@ -71,7 +73,7 @@
           <div class="form-container-selects">
             <div class="form-sub-container input-wrapper">
               <label for="sku">SKU:</label>
-              <input class="" id="sku" name="sku" type="text" value="sku" />
+              <input class="" id="sku" name="sku" type="text" value="" placeholder="SSK111AB001"/>
             </div>
 
             <div class="form-sub-container input-wrapper">
@@ -81,7 +83,8 @@
                 id="price"
                 name="price"
                 type="text"
-                value="price"
+                value=""
+                placeholder="$ 0.000,00"
               />
             </div>
 
@@ -92,7 +95,8 @@
                 id="stock"
                 name="stock"
                 type="text"
-                value="stock"
+                value=""
+                placeholder="0"
               />
             </div>
           </div>
@@ -105,7 +109,8 @@
                 id="discount"
                 name="discount"
                 type="text"
-                value="discount"
+                value=""
+                placeholder="0%"
               />
             </div>
             <div class="form-sub-container">
@@ -183,6 +188,6 @@
     <!--Fin Creacion-->
     <%- include('../partials/fAdm') %>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <script src="/assets/js/createButton.js"></script>
+    <script src="/assets/js/createService.js"></script>
   </body>
 </html>
