@@ -29,7 +29,6 @@ app
   .use("/shop", shopRoutes)
   .use("/admin", adminRoutes)
   .use("/auth", authRoutes)
-  .use("/test", testRoutes);
 
 //Start server
 app.listen(PORT, () => {

@@ -27,7 +27,7 @@ export class adminController {
     }
 
     adminCreateGet(req, res) {
-        res.send("Route for create with Get in Admin View");
+        res.render(path.join(viewsPath, "create.ejs"), {});
     }
 
     async adminCreatePost(req, res) {
