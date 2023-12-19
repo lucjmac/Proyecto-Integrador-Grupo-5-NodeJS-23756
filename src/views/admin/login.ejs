@@ -18,7 +18,9 @@
     <main>
       <div class="container-login">
         <div class="creacion">INGRESAR A MI CUENTA</div>
-        <div id="message-container"></div> <!-- Nuevo elemento message-container -->
+        <div id="message-container"></div>
+        <!-- Nuevo elemento message-container -->
+
         <form class="account" method="post" action="/auth/login">
           <div class="account_input">
             <label class="tamano account_email" for="account_email"
@@ -62,6 +64,13 @@
             <a href="#">Olvidé mi contraseña</a>
           </div>
         </form>
+
+        <% if (messages.error) { %>
+        <div class="error-message">
+          <p><%= messages.error %></p>
+          <p>No tiene usuario? <a href="/auth/register">Registrarse</a></p>
+        </div>
+        <% } %>
       </div>
     </main>
     <%- include('../partials/fAdm') %>

@@ -17,41 +17,63 @@ export class AuthController {
   async authLoginPost(req, res) {
     try {
       // Maneja la lógica de inicio de sesión
-      const {email, password} = req.body;
+      const { email, password } = req.body;
       const result = await authService.login(email, password);
-  
+
       if (result.success) {
+        req.session.userId = result.user.user_id;
+
         res.redirect("/admin"); // Redirige a la página de administración
-      } else {
-        res.render(path.join(viewsPath, "login.ejs"), { error: result.message });
       }
     } catch (error) {
+      // Display a flash message for the user
+      req.flash(
+        "error",
+        "Usuario o contraseña inválido. Por favor intentelo nuevamente."
+      );
+
+      // Redirect to the login page
+      res.redirect("/auth/login");
       console.log("Error en authLoginPost: " + error);
-      res.status(500).send("Error interno del servidor");
     }
   }
 
   async authRegisterPost(req, res) {
     try {
-      const { name, lastname, email, password, 'repeat-password': repeatPassword } = req.body;
-  
+      const {
+        name,
+        lastname,
+        email,
+        password,
+        "repeat-password": repeatPassword,
+      } = req.body;
+
       if (password !== repeatPassword) {
-        return res.render(path.join(viewsPath, "register.ejs"), { error: "Las contraseñas no coinciden" });
+        return res.render(path.join(viewsPath, "register.ejs"), {
+          error: "Las contraseñas no coinciden",
+        });
       }
-  
-      const result = await authService.register({ username: name, lastname: lastname, password: password, email });
-  
+
+      const result = await authService.register({
+        username: name,
+        lastname: lastname,
+        password: password,
+        email,
+      });
+
       if (result[0].affectedRows > 0) {
         res.redirect("/auth/login");
       } else {
-        res.render(path.join(viewsPath, "register.ejs"), { error: "Error al registrar el usuario" });
+        res.render(path.join(viewsPath, "register.ejs"), {
+          error: "Error al registrar el usuario",
+        });
       }
     } catch (error) {
       console.log("Error en authRegisterPost: " + error);
       res.status(500).send("Error interno del servidor");
     }
   }
-  
+
   authLogoutGet(req, res) {
     // Maneja la lógica de cierre de sesión
     res.send("Route for Logout");

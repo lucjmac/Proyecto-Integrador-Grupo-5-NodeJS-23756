@@ -231,6 +231,16 @@ fieldset {
   height: 40px;
 }
 
+.error-message {
+  margin-top: 2rem;
+  font-size: 14px;
+  color: var(--primary-solid);
+
+  a {
+    text-decoration: underline;
+  }
+}
+
 @media (max-width: 768px) {
   .account {
     width: 80vw;
