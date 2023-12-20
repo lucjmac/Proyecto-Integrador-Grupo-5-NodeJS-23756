@@ -31,7 +31,7 @@ const cartService = {
     }
   },
   insertar: async (valor) => {
-    const { product_id, quantity, id, id_cart, id_user } = valor;
+    const { product_id, quantity, id, id_cart } = valor;
 
     try {
       const [productExists] = await conn.query(
@@ -40,13 +40,12 @@ const cartService = {
       );
 
       if (productExists.length === 0) {
-        const query = "INSERT INTO cart  VALUES(?,?,?,?,?);";
+        const query = "INSERT INTO cart  VALUES(?,?,?,?);";
         const consulta = await conn.query(query, [
           id,
           product_id,
           quantity,
           id_cart,
-          id_user,
         ]);
 
         return consulta;
