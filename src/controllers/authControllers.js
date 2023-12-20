@@ -7,13 +7,15 @@ export class AuthController {
   authLoginGet(req, res) {
     // Renderiza la página de inicio de sesión
     res.render(path.join(viewsPath, "login.ejs"), {
-      userName: req.session.userName,
+      userName: req.session.userName ? req.session.userName : "",
     });
   }
 
   authRegisterGet(req, res) {
     // Renderiza la página de registro
-    res.render(path.join(viewsPath, "register.ejs"), {});
+    res.render(path.join(viewsPath, "register.ejs"), {
+      userName: req.session.userName ? req.session.userName : "",
+    });
   }
 
   async authLoginPost(req, res) {

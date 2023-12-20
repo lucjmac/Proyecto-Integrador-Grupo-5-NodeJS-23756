@@ -1,6 +1,5 @@
 import express from "express";
 import { adminController } from "../controllers/adminControllers.js";
-import requireAuth from "../middleware/loginConfirm.js";
 
 const router = express.Router();
 const adminControllers = new adminController();

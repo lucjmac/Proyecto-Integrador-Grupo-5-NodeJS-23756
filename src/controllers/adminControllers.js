@@ -26,7 +26,7 @@ export class adminController {
         productList: filteredProductList,
         searchInput: searchInput,
         noResults: filteredProductList.length === 0,
-        userName: req.session.userName,
+        userName: req.session.userName ? req.session.userName : "",
       });
     } catch (error) {
       console.error("Error executing queries:", error);
@@ -36,7 +36,7 @@ export class adminController {
 
   adminCreateGet(req, res) {
     res.render(path.join(viewsPath, "create.ejs"), {
-      userName: req.session.userName,
+      userName: req.session.userName ? req.session.userName : "",
     });
   }
 
@@ -59,7 +59,7 @@ export class adminController {
       console.log("productData", productData);
       res.render(path.join(viewsPath, "edit.ejs"), {
         productData,
-        userName: req.session.userName,
+        userName: req.session.userName ? req.session.userName : "",
       });
     } catch (error) {
       console.error("Error retrieving product from database:", error);
