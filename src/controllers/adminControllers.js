@@ -26,6 +26,7 @@ export class adminController {
         productList: filteredProductList,
         searchInput: searchInput,
         noResults: filteredProductList.length === 0,
+        userName: req.session.userName,
       });
     } catch (error) {
       console.error("Error executing queries:", error);
@@ -34,7 +35,9 @@ export class adminController {
   }
 
   adminCreateGet(req, res) {
-    res.render(path.join(viewsPath, "create.ejs"), {});
+    res.render(path.join(viewsPath, "create.ejs"), {
+      userName: req.session.userName,
+    });
   }
 
   async adminCreatePost(req, res) {
@@ -53,8 +56,11 @@ export class adminController {
 
     try {
       const productData = await getProductById(productId);
-
-      res.render(path.join(viewsPath, "edit.ejs"), productData);
+      console.log("productData", productData);
+      res.render(path.join(viewsPath, "edit.ejs"), {
+        productData,
+        userName: req.session.userName,
+      });
     } catch (error) {
       console.error("Error retrieving product from database:", error);
       res.status(500).send("Internal Server Error");
@@ -144,7 +150,9 @@ export class adminController {
           return res.status(404).send("Producto no encontrado");
         }
 
-        res.json({ message: "Producto eliminado exitosamente" });
+        res.json({
+          message: "Producto eliminado exitosamente",
+        });
       } catch (error) {
         console.error("Error al eliminar el producto:", error);
         res.status(500).send("Error interno del servidor");

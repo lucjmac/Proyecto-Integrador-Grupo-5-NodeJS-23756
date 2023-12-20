@@ -6,7 +6,9 @@ const viewsPath = path.resolve() + "/src/views/admin";
 export class AuthController {
   authLoginGet(req, res) {
     // Renderiza la página de inicio de sesión
-    res.render(path.join(viewsPath, "login.ejs"), {});
+    res.render(path.join(viewsPath, "login.ejs"), {
+      userName: req.session.userName,
+    });
   }
 
   authRegisterGet(req, res) {
@@ -22,7 +24,7 @@ export class AuthController {
 
       if (result.success) {
         req.session.userId = result.user.user_id;
-
+        req.session.userName = result.user.name;
         res.redirect("/admin"); // Redirige a la página de administración
       }
     } catch (error) {
@@ -75,7 +77,9 @@ export class AuthController {
   }
 
   authLogoutGet(req, res) {
+    req.session.destroy();
     // Maneja la lógica de cierre de sesión
-    res.send("Route for Logout");
+    // res.send("Route for Logout");
+    res.redirect("/auth/login");
   }
 }

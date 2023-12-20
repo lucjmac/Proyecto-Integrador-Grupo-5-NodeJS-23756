@@ -149,6 +149,10 @@ header {
   background-color: var(--primary-900);
 }
 
+.navbar_link .username {
+  text-transform: uppercase;
+}
+
 header .navbar_link:hover {
   transform: scale(1.1);
   -webkit-transform: scale(1.1);

@@ -6,14 +6,14 @@ const router = express.Router();
 const adminControllers = new adminController();
 
 router
-    .get("/", requireAuth, adminControllers.adminGet)
+  .get("/", adminControllers.adminGet)
 
-    .get("/create", requireAuth, adminControllers.adminCreateGet)
-    .post("/create", requireAuth, adminControllers.adminCreatePost)
+  .get("/create", adminControllers.adminCreateGet)
+  .post("/create", adminControllers.adminCreatePost)
 
-    .get("/edit/:id", requireAuth, adminControllers.adminEditIdGet)
-    .put("/edit/:id", requireAuth, adminControllers.adminEditIdPut)
+  .get("/edit/:id", adminControllers.adminEditIdGet)
+  .put("/edit/:id", adminControllers.adminEditIdPut)
 
-    .delete("/delete/:id", requireAuth, adminControllers.adminEditIdDelete);
+  .delete("/delete/:id", adminControllers.adminEditIdDelete);
 
 export default router;
