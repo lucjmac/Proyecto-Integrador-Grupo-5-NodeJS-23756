@@ -1,25 +1,30 @@
 <footer class="footer">
-    <nav class="navbar container">
-        <ul class="">
-            <li class="">
-                <a class="navbar_link" href="/shop">SHOP</a>
-            </li>
-            <li class="">
-                <a class="navbar_link" href="/auth/register">REGISTRARSE</a>
-            </li>
-            <li class="">
-                <a class="navbar_link" href="/auth/login">INGRESAR</a>
-            </li>
-            <li class="">
-                <a class="navbar_link" href="/contact">CONTACTO</a>
-            </li>
-        </ul>
-        <picture class="navbar_iso">
-            <img
-                src="/assets/img/branding/isotype.svg"
-                alt="Isotipo Funkoshop"
-            />
-        </picture>
-    </nav>
-    <p class="footer_copy">All rights reserved 2023 - Funkoshop &copy;</p>
+  <nav class="navbar container">
+    <ul class="">
+      <li class="">
+        <a class="navbar_link" href="/shop">SHOP</a>
+      </li>
+      <% if(userName){ %>
+
+      <li class="navbar_item">
+        <a class="navbar_link" href="/auth/logout">SALIR</a>
+      </li>
+      <% } else { %>
+      <li class="">
+        <a class="navbar_link" href="/auth/register">REGISTRARSE</a>
+      </li>
+      <li class="">
+        <a class="navbar_link" href="/auth/login">INGRESAR</a>
+      </li>
+      <% } %>
+
+      <li class="">
+        <a class="navbar_link" href="/contact">CONTACTO</a>
+      </li>
+    </ul>
+    <picture class="navbar_iso">
+      <img src="/assets/img/branding/isotype.svg" alt="Isotipo Funkoshop" />
+    </picture>
+  </nav>
+  <p class="footer_copy">All rights reserved 2023 - Funkoshop &copy;</p>
 </footer>
