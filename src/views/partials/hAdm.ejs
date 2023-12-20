@@ -10,14 +10,17 @@
       </a>
     </picture>
     <ul class="navbar_menu">
+      <% if(userName){ %>
+      <li class="navbar_item">
+        <p class="username">Hola <%= userName %></p>
+      </li>
+      <% } %>
       <li class="navbar_item with-submenu">
         <a class="navbar_link with-icon" href="/">VER TIENDA</a>
       </li>
 
       <% if(userName){ %>
-      <li class="navbar_item">
-        <p class="username">Hola <%= userName %></p>
-      </li>
+
       <li class="navbar_item">
         <a class="navbar_link" href="/admin">ADMIN</a>
       </li>
