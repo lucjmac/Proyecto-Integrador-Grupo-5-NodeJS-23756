@@ -5,7 +5,7 @@ const productItemsContainer = document.querySelectorAll(".cart-product-items ");
 const updateMiniCart = () => {
   const miniCartBubble = document.querySelector(".navbar_cart .bubble");
   const totalItems = localStorage.getItem("cartItems");
-  miniCartBubble.innerText = totalItems;
+  miniCartBubble.innerText = totalItems ? totalItems : 0;
 };
 const setItemTotal = () => {
   const productItem = document.querySelectorAll(".product-item");
