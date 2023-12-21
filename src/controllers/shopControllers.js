@@ -83,6 +83,7 @@ export class shopController {
         shopCollections: productsWithLicence,
         licenceId: licenceId,
         showAllLicences: !licenceId,
+        userName: req.session.userName,
       });
     } catch (error) {
       console.error("Error al consultar los productos:", error);
@@ -94,6 +95,7 @@ export class shopController {
 
     res.render(path.join(viewsPath, "cart.ejs"), {
       cartItems,
+      userName: req.session.userName,
     });
   }
 
@@ -127,6 +129,7 @@ export class shopController {
       product: product[0],
       category,
       licence: licence[0],
+      userName: req.session.userName,
     });
   }
 

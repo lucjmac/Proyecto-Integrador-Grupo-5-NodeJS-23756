@@ -17,11 +17,14 @@ export class mainController {
     res.render(path.join(viewsPath, "index.ejs"), {
       indexCollections,
       sliderItems,
+      userName: req.session.userName,
     });
   }
 
   contactGet(req, res) {
-    res.render(path.join(viewsPath, "/shop/contact.ejs"), {});
+    res.render(path.join(viewsPath, "/shop/contact.ejs"), {
+      userName: req.session.userName,
+    });
   }
 
   aboutGet(req, res) {

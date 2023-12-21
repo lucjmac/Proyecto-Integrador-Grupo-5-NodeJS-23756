@@ -96,6 +96,9 @@
 
 input {
   height: 30px;
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
 }
 
 input:hover {
@@ -160,6 +163,23 @@ main {
 .input-wrapper input::placeholder,
 .input-wrapper input {
   color: var(--light-grey);
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
+}
+
+textarea {
+  color: var(--dark-admin-font);
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
+}
+
+textarea::placeholder {
+  color: var(--light-grey);
+  font-size: var(--font-medium);
+  font-family: var(--base-font);
+  font-weight: 400;
 }
 
 .input-wrapper input {
@@ -229,6 +249,16 @@ fieldset {
   padding: 0px 20px 0px 20px;
   margin: 0 30px 0px 30px;
   height: 40px;
+}
+
+.error-message {
+  margin-top: 2rem;
+  font-size: 14px;
+  color: var(--primary-solid);
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 @media (max-width: 768px) {

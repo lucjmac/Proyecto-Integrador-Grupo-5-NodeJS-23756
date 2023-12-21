@@ -1,100 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Admin | Funkoshop</title>
-        <link href="/assets/css/style.css" rel="stylesheet" />
-        <link href="/assets/css/style-admin.css" rel="stylesheet" />
-        <link
-            rel="shorcut icon"
-            href="/assets/img/branding/isotype.svg"
-            type="image/x-icon"
-        />
-    </head>
-    <body>
-        <!-- Header -->
-        <%- include('../partials/hAdm') %>
-        <!-- Inicio Main -->
-        <main>
-            <article class="search container">
-                <label class="search_content" for="search_input">
-                    <a class="search_link" href="#search_input">
-                        <img
-                            src="/assets/img/icons/search_icon.svg"
-                            alt="Search Icon"
-                        />
-                    </a>
-                    <input
-                        id="search_input"
-                        name="search_input"
-                        class="search_input"
-                        type="text"
-                        placeholder="código, nombre o categoria"
-                    />
-                </label>
-            </article>
-            <section class="list container">
-                <article class="list_header">
-                    <h1 class="list_title">LISTADO DE PRODUCTOS</h1>
-                    <div class="list-add">
-                        <p class="list-add_text">AGREGAR</p>
-                        <a class="list-add_link" href="/admin/create">
-                            <img
-                                src="/assets/img/icons/plus-icon.svg"
-                                alt="Plus Icon"
-                            />
-                        </a>
-                    </div>
-                </article>
-                <!-- Inicio Lista de Productos -->
-                <article class="list_item-header">
-                    <div class="list-item_content-header">
-                        <div class="list-item_text-header">ID</div>
-                        <div class="list-item_text-header">Código</div>
-                        <div class="list-item_text-header">
-                            Nombre del Producto
-                        </div>
-                        <div class="list-item_text-header">Categoria</div>
-                        <div class="list-item_text-header"></div>
-                        <div class="list-item_text-header"></div>
-                    </div>
-                </article>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Funkoshop</title>
+    <link href="/assets/css/style.css" rel="stylesheet" />
+    <link href="/assets/css/style-admin.css" rel="stylesheet" />
+    <link
+      rel="shorcut icon"
+      href="/assets/img/branding/isotype.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('../partials/hAdm') %>
+    <!-- Inicio Main -->
+    <main>
+      <article class="search container">
+        <label class="search_content" for="search_input">
+          <a class="search_link" href="#search_input">
+            <img src="/assets/img/icons/search_icon.svg" alt="Search Icon" />
+          </a>
+          <input
+            id="search_input"
+            name="search_input"
+            class="search_input"
+            type="text"
+            placeholder="código, nombre o categoria"
+          />
+        </label>
+      </article>
+      <section class="list container">
+        <article class="list_header">
+          <h1 class="list_title">LISTADO DE PRODUCTOS</h1>
+          <div class="list-add">
+            <p class="list-add_text">AGREGAR</p>
+            <a class="list-add_link" href="/admin/create">
+              <img src="/assets/img/icons/plus-icon.svg" alt="Plus Icon" />
+            </a>
+          </div>
+        </article>
+        <!-- Inicio Lista de Productos -->
+        <article class="list_item-header">
+          <div class="list-item_content-header">
+            <div class="list-item_text-header">ID</div>
+            <div class="list-item_text-header">Código</div>
+            <div class="list-item_text-header">Nombre del Producto</div>
+            <div class="list-item_text-header">Categoria</div>
+            <div class="list-item_text-header"></div>
+            <div class="list-item_text-header"></div>
+          </div>
+        </article>
 
-                <article class="list_item">
-                    <% productList.forEach((product) => { %>
-                        <div class="list-item_content">
-                            <div class="list-item_text">
-                                <%= product.product_id %>
-                            </div>
-                            <div class="list-item_text"><%= product.sku %></div>
-                            <div class="list-item_text">
-                                <%= product.product_name %>
-                            </div>
-                            <div class="list-item_text">
-                                <%= product.licence_name %>
-                            </div>
-                            <div class="list-item_text">
-                                <a class="edit_link" href="/admin/edit/<%= product.product_id %>">
-                                    <img src="/assets/img/icons/edit_pencil.svg" alt="Edit Pencil Icon" />
-                                </a>
-                            </div>
-                            <div class="list-item_text">
-                                <button class="delete_button" data-product_id="<%= product.product_id %>">
-                                    <img src="/assets/img/icons/delete_trash.svg" alt="Trash Icon" />
-                                </button>
-                            </div>
-                        </div>
-                    <% }); %>
-                </article>
-                <!-- Fin Lista de Productos -->
-            </section>
-        </main>
-        <!-- Fin Main -->
-        <!-- Footer -->
-        <%- include('../partials/fAdm') %>
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-        <script src="/assets/js/adminSearch.js"></script>
-        <script src="/assets/js/adminDeleteButton.js"></script>
-    </body>
+        <article class="list_item">
+          <% productList.forEach((product) => { %>
+          <div class="list-item_content">
+            <div class="list-item_text"><%= product.product_id %></div>
+            <div class="list-item_text"><%= product.sku %></div>
+            <div class="list-item_text"><%= product.product_name %></div>
+            <div class="list-item_text"><%= product.licence_name %></div>
+            <div class="list-item_text">
+              <a class="edit_link" href="/admin/edit/<%= product.product_id %>">
+                <img
+                  src="/assets/img/icons/edit_pencil.svg"
+                  alt="Edit Pencil Icon"
+                />
+              </a>
+            </div>
+            <div class="list-item_text">
+              <button
+                class="delete_button"
+                data-product_id="<%= product.product_id %>"
+              >
+                <img
+                  src="/assets/img/icons/delete_trash.svg"
+                  alt="Trash Icon"
+                />
+              </button>
+            </div>
+          </div>
+          <% }); %>
+        </article>
+        <!-- Fin Lista de Productos -->
+      </section>
+    </main>
+    <!-- Fin Main -->
+    <!-- Footer -->
+    <%- include('../partials/fAdm') %>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="/assets/js/adminSearch.js"></script>
+    <script src="/assets/js/adminDeleteButton.js"></script>
+  </body>
 </html>

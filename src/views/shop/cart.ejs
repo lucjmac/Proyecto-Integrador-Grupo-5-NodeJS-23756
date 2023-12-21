@@ -29,65 +29,67 @@
         <% } else { %>
         <ul class="cart-product-items">
           <% cartItems.forEach((item, index) => { %>
-          <li class="product-item card-background">
-            <a class="item-detail" href="/shop/item/<%= item.product_id %>">
-              <img
-                src="<%= item.image_Front %>"
-                alt="<%= item.product_name %>"
-              />
-              <div class="item-description">
-                <h3 class="item-title"><%= item.product_name %></h3>
-                <p class="item-category"><%= item.licence %></p>
-                <p class="item-price">
-                  Precio: $ <span><%= item.price %></span>
-                </p>
+          <a href="/shop/item/<%= item.product_id %>">
+            <li class="product-item card-background">
+              <a class="item-detail" href="/shop/item/<%= item.product_id %>">
+                <img
+                  src="<%= item.image_Front %>"
+                  alt="<%= item.product_name %>"
+                />
+                <div class="item-description">
+                  <h3 class="item-title"><%= item.product_name %></h3>
+                  <p class="item-category"><%= item.licence %></p>
+                  <p class="item-price">
+                    Precio: $ <span><%= item.price %></span>
+                  </p>
+                </div>
+              </a>
+
+              <div
+                id="quantity-<%= item.product_id %>"
+                class="item-quantity quantity-action-wrapper"
+              >
+                <input
+                  type="number"
+                  id="quantity"
+                  value="<%= item.selectedQty %>"
+                  onchange="addToCart(<%= item.product_id %>)"
+                />
+                <div class="quantity-action">
+                  <button id="add" onclick="addToCart(<%= item.product_id %>)">
+                    <img
+                      src="../../assets/img/icons/plus-icon.svg"
+                      alt="icono agregar"
+                    />
+                  </button>
+                  <button
+                    id="subtract"
+                    onclick="addToCart(<%= item.product_id %>)"
+                  >
+                    <img
+                      src="../../assets/img/icons/minus-icon.svg"
+                      alt="icono quitar"
+                    />
+                  </button>
+                </div>
               </div>
-            </a>
 
-            <div
-              id="quantity-<%= item.product_id %>"
-              class="item-quantity quantity-action-wrapper"
-            >
-              <input
-                type="number"
-                id="quantity"
-                value="<%= item.selectedQty %>"
-                onchange="addToCart(<%= item.product_id %>)"
-              />
-              <div class="quantity-action">
-                <button id="add" onclick="addToCart(<%= item.product_id %>)">
-                  <img
-                    src="../../assets/img/icons/plus-icon.svg"
-                    alt="icono agregar"
-                  />
-                </button>
-                <button
-                  id="subtract"
-                  onclick="addToCart(<%= item.product_id %>)"
-                >
-                  <img
-                    src="../../assets/img/icons/minus-icon.svg"
-                    alt="icono quitar"
-                  />
-                </button>
+              <div class="item-total">
+                <p class="item-total-price">$0.00</p>
               </div>
-            </div>
 
-            <div class="item-total">
-              <p class="item-total-price">$0.00</p>
-            </div>
-
-            <button
-              onclick="deleteItem(<%= item.product_id %>)"
-              class="delete-button"
-              aria-label="Eliminar articulo"
-            >
-              <img
-                src="../../assets/img/icons/close-icon.svg"
-                alt="icono eliminar"
-              />
-            </button>
-          </li>
+              <button
+                onclick="deleteItem(<%= item.product_id %>)"
+                class="delete-button"
+                aria-label="Eliminar articulo"
+              >
+                <img
+                  src="../../assets/img/icons/close-icon.svg"
+                  alt="icono eliminar"
+                />
+              </button>
+            </li>
+          </a>
           <% }); %>
         </ul>
         <% } %>

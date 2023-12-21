@@ -5,7 +5,7 @@ const productItemsContainer = document.querySelectorAll(".cart-product-items ");
 const updateMiniCart = () => {
   const miniCartBubble = document.querySelector(".navbar_cart .bubble");
   const totalItems = localStorage.getItem("cartItems");
-  miniCartBubble.innerText = totalItems;
+  miniCartBubble.innerText = totalItems ? totalItems : 0;
 };
 const setItemTotal = () => {
   const productItem = document.querySelectorAll(".product-item");
@@ -236,8 +236,6 @@ const deleteItem = (productId) => {
 };
 
 const addToCart = async (productId) => {
-  //   TODO: sacar el user ID que este almacenado en el local storage
-  const userID = 2;
   const id = Math.floor(Math.random() * 10000 + 1);
   const id_cart = 231;
 
@@ -247,7 +245,6 @@ const addToCart = async (productId) => {
   }
 
   const quantityInput = document.querySelector(`#quantity-${productId} input`);
-  // const quantityInput = nose.querySelector("input");
 
   setTimeout(() => {
     fetch(`${HOST}/shop/item/${productId}/add`, {
@@ -257,7 +254,6 @@ const addToCart = async (productId) => {
         quantity: quantityInput.value,
         id,
         id_cart,
-        id_user: userID,
         isCart: true,
       }),
       headers: {

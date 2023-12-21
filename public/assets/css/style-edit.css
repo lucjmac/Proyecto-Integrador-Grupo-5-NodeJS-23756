@@ -57,6 +57,7 @@ main {
     border-bottom: 2px solid var(--primary-solid);
     height: 40px;
     align-self: center;
+    color: black;
 }
 
 .input-wrapper input:focus {

@@ -10,7 +10,7 @@ const miniCartBubble = document.querySelector(".navbar_cart .bubble");
 
 const updateMiniCart = () => {
   const totalItems = localStorage.getItem("cartItems");
-  miniCartBubble.innerText = totalItems;
+  miniCartBubble.innerText = totalItems ? totalItems : 0;
 };
 
 const addToCart = async (event) => {
@@ -20,8 +20,6 @@ const addToCart = async (event) => {
   const formProps = Object.fromEntries(formData);
   const { product_id } = formProps;
 
-  //   TODO: sacar el user ID que este almacenado en el local storage
-  const userID = 1;
   const id = Math.floor(Math.random() * 10000 + 1);
   const id_cart = 231;
 
@@ -32,7 +30,7 @@ const addToCart = async (event) => {
 
   fetch(`${HOST}/shop/item/${product_id}/add`, {
     method: "POST",
-    body: JSON.stringify({ ...formProps, id, id_cart, id_user: userID }),
+    body: JSON.stringify({ ...formProps, id, id_cart }),
     headers: {
       "Content-Type": "application/json",
     },
